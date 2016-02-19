@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # index
     url(r'^$', views.index, name='index'),
+    # beijingmore
+    url(r'^beijingmore$', views.beijingmore),
 ]

@@ -7,16 +7,15 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="keywords" content="due time studio">
         <meta name="description" content="Due Time Studio, Creative, Motivated">
-        {% block icon %}
-            <link rel="icon" href="/static/img/Logo_DueTime.png">
-        {% endblock icon %}
+        {% block icon %}<link rel="icon" href="/static/img/Logo_DueTime.png">{% endblock icon %}
         <title>{% block title %}{% endblock %} | Due Time Studio</title>
         <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.js"></script>
         <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
-        {% block head %}{% endblock head %}
         <link rel="stylesheet" href="/static/css/KyanCssUtil.css">
         <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css">
+        {% block head %}{% endblock %}
         {% block css %}{% endblock %}
+        {% block js %}{% endblock %}
     </head>
     <body>
         <!-- ############ CONTENT ############-->
@@ -45,6 +44,7 @@
                 bottom: 0px;
                 right: 0px;
                 pointer-events: none;
+                z-index: 10;
             }
             #footer-div .footer {
                 margin-bottom: 0;
@@ -67,6 +67,5 @@
             }
         </style>
         {% endblock footer %}
-        {% block js %}{% endblock %}
     </body>
 </html>
