@@ -22,5 +22,7 @@ urlpatterns = [
     # index
     url(r'^$', views.index, name='index'),
     # beijingmore
-    url(r'^beijingmore$', views.beijingmore),
+    url(r'^beijingmore$', views.beijingmoreIndex),
+    url(r'^beijingmore/food', views.beijingmoreFood),
+    url(r'^beijingmore/music', views.beijingmoreMusic),
 ]
