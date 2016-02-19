@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="keywords" content="due time studio">
+        <meta name="description" content="Due Time Studio, Creative, Motivated">
+        {% block icon %}
+            <link rel="icon" href="/static/img/Logo_DueTime.png">
+        {% endblock icon %}
+        <title>{% block title %}{% endblock %} | Due Time Studio</title>
+        <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.js"></script>
+        <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+        {% block head %}{% endblock head %}
+        <link rel="stylesheet" href="/static/css/KyanCssUtil.css">
+        <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css">
+        {% block css %}{% endblock %}
+    </head>
+    <body>
+        <!-- ############ CONTENT ############-->
+        <div style="height:100%">
+            {% block content %}
+            {% endblock content %}
+        </div>
+        <!-- ############ FOOTER ############-->
+        {% block footer %}
+        <div id='footer-div'>
+            <blockquote class="footer hidden-xs blockquote-reverse">
+                <div id="behappy" class="benormal">
+                    <i>Creative, Motivated, Enthusiasm, Amazing</i>
+                </div>
+                <footer>
+                    <span class="moveable-area">
+                        By
+                        <a href="http://www.duetime.cn" class="no-decoration">Due Time Studio</a>
+                    </span>
+                </footer>
+            </blockquote>
+        </div>
+        <style>
+            #footer-div {
+                position: fixed;
+                bottom: 0px;
+                right: 0px;
+                pointer-events: none;
+            }
+            #footer-div .footer {
+                margin-bottom: 0;
+            }
+            #footer-div #behappy {
+                text-shadow: 0 0 1px white;
+                opacity: 0;
+            }
+            #footer-div:hover #behappy {
+                opacity: 1;
+            }
+            #footer-div .moveable-area {
+                pointer-events: auto;
+            }
+            .container {
+                padding-bottom: 40px;
+            }
+            .container-fluid {
+                padding-bottom: 40px;
+            }
+        </style>
+        {% endblock footer %}
+        {% block js %}{% endblock %}
+    </body>
+</html>
