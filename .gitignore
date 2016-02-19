@@ -64,3 +64,4 @@ target/
 # password protect
 mysql.pswd
 test.sqlite3
+db.sqlite3
