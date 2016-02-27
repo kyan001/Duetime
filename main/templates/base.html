@@ -18,7 +18,7 @@
             var ta_filter = new Array('localhost','127.0.0.1','local.')
             for (tf in ta_filter) {
                 if( window.location.hostname.indexOf(ta_filter[tf])<0 ){
-                    break
+                    continue
                 }
                 jQuery.getScript('http://tajs.qq.com/stats?sId=54577965')
             }
