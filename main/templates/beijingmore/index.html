@@ -26,6 +26,15 @@
         background-position: 50% 50% !important;
         min-height: 100%;
     }
+/* utils */
+    .square-spin > div {
+        background: white;
+    }
+    div.loader {
+        width: 50px;
+        margin: 15px auto;
+        opacity: 0.9;
+    }
 /* div-text */
     .div-text{
         word-wrap: break-word;
@@ -154,6 +163,11 @@
 
     <!-- 食物栏 -->
     <div class="row content-div lazyload" id='div-food' data-original='/static/beijingmore/tanghulu.jpg'>
+        <div class='col-xs-12'>
+            <div class='loader'>
+                <div class='loader-inner square-spin'></div>
+            </div>
+        </div>
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-1 div-content-text div-text">
             <h1><b>Foods</b></h1>
             <p class="text-muted">
@@ -164,6 +178,11 @@
     </div>
     <!-- 音乐 -->
     <div class="row content-div lazyload" id="div-music" data-original='/static/beijingmore/music.jpg'>
+        <div class='col-xs-12'>
+            <div class='loader'>
+                <div class='loader-inner square-spin'></div>
+            </div>
+        </div>
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-6 div-content-text div-text">
             <h1><b>Music</b></h1>
             <p class="text-muted">
@@ -174,6 +193,11 @@
     </div>
     <!-- 体育 -->
     <div class="row content-div lazyload" id="div-sports" data-original='/static/beijingmore/sports.jpg'>
+        <div class='col-xs-12'>
+            <div class='loader'>
+                <div class='loader-inner square-spin'></div>
+            </div>
+        </div>
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-1 div-content-text div-text">
             <h1><b>Sports</b></h1>
             <p class="text-muted">
@@ -184,6 +208,11 @@
     </div>
     <!-- 自然 -->
     <div class="row content-div lazyload" id="div-shopping" data-original='/static/beijingmore/shopping.jpg'>
+        <div class='col-xs-12'>
+            <div class='loader'>
+                <div class='loader-inner square-spin'></div>
+            </div>
+        </div>
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-6 div-content-text div-text">
             <h1><b>Shopping</b></h1>
             <p class="text-muted">
@@ -236,13 +265,18 @@
             grabCursor: true,
         });
         $('.lazyload').lazyload({
-            effect: 'fadeIn'
+            effect: 'fadeIn',
+            threshold: 200,
         });
         $('body').scrollspy({
             target: '#navbar-container',
             offset: 50
         });
         $('.div-content-text > p').css('max-height', $(window).height()-70-35-20-39-10-10-46-35-70)
+        $('.loader-inner').loaders()
+        $('.lazyload').on('appear',function(){
+            $(this).find('.loader').slideUp()
+        });
     })
 </script>
 {% endblock %}
