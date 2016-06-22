@@ -25,4 +25,7 @@ urlpatterns = [
     url(r'^beijingmore$', views.beijingmoreIndex),
     url(r'^beijingmore/food', views.beijingmoreFood),
     url(r'^beijingmore/music', views.beijingmoreMusic),
+    # robo talk
+    url(r'^robotalk$', views.robotalkIndex),
+    url(r'^robotalk/getresponse$', views.robotalkGetresponse),
 ]
