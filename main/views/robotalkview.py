@@ -33,6 +33,7 @@ def robotalkGetresponse(request):  # AJAX
     }
     robo1_says = getResponse(robo1, robo1_param)
     robo2_resp = getResponse(robo2, robo2_param)
+    robo2_says = json.loads(robo2_resp).get('content').replace('{br}', '<br/>')
     result = {
         'result1': {
             'txt': robo1_says,
