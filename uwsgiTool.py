@@ -16,9 +16,8 @@
 #
 import os
 import sys
-sys.path.append('/home/kyan001/KyanToolKit_Unix')
-import KyanToolKit_Py
-ktk = KyanToolKit_Py.KyanToolKit_Py()
+import KyanToolKit
+ktk = KyanToolKit.KyanToolKit()
 
 #--Pre-conditions Check-------------------------------------------
 ktk.needPlatform("linux");
@@ -48,6 +47,7 @@ else:
     ktk.byeBye();
 #--run commands---------------------------------------------------
 if "start" == oprtn:
+    ktk.runCmd("sudo echo ''");
     ktk.runCmd("sudo uwsgi -x '" + uwsgi_xml +"' --pidfile '" + pid_file + "' &");
 elif "stop" == oprtn:
     ktk.runCmd("sudo uwsgi --stop " + pid_file);
