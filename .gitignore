@@ -61,7 +61,5 @@ target/
 #Ipython Notebook
 .ipynb_checkpoints
 
-# password protect
-mysql.pswd
-test.sqlite3
+# db protection
 db.sqlite3
