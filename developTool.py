@@ -10,6 +10,8 @@ import consoleiotools as cit
 import KyanToolKit
 ktk = KyanToolKit.KyanToolKit()
 
+git_username = 'duetime'
+git_email = 'admin@duetime.cn'
 
 
 def manage_file_exist():
