@@ -25,7 +25,9 @@ SECRET_KEY = '*1u+hsunpkqwq@k)+^uja^i80ivg&xy-o^ddxrr=n$u3&$k^xc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.duetime.cn',
+]
 
 
 # Application definition
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'django_cleanup',
 ]
 
 MIDDLEWARE_CLASSES = [
