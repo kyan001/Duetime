@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """Run develop commands for django project"""
 import os
 import sys
@@ -9,9 +8,6 @@ import socket
 import consoleiotools as cit
 import KyanToolKit
 ktk = KyanToolKit.KyanToolKit()
-
-git_username = 'duetime'
-git_email = 'admin@duetime.cn'
 
 
 def manage_file_exist():
@@ -23,7 +19,7 @@ def manage_file_exist():
     return os.path.exists('./manage.py')
 
 
-@cit.as_session('Installing Requirements')
+@cit.as_session('-- Installing Requirements --')
 def requirements_install():
     """Install necessary modules by pip & requirements.pip"""
     if not os.path.exists('./requirements.pip'):
@@ -35,50 +31,57 @@ def requirements_install():
         ktk.runCmd('sudo pip3 install -r requirements.pip')
 
 
-@cit.as_session('Applying changes to database')
+def run_by_py3(cmd):
+    py3_cmd = 'py' if 'win32' in sys.platform else 'python3'
+    ktk.runCmd("{py3} {cmd}".format(py3=py3_cmd, cmd=cmd))
+
+
+@cit.as_session('-- Applying changes to database --')
 def migrate_db():
     """Apply changes to database"""
-    ktk.runCmd('py manage.py makemigrations')
-    ktk.runCmd('py manage.py migrate')
+    run_by_py3('manage.py makemigrations')
+    run_by_py3('manage.py migrate')
 
 
-@cit.as_session('Enter DB shell --')
+@cit.as_session('-- Enter DB shell --')
 def db_shell():
     """Enter Django database shell mode"""
-    ktk.runCmd('py manage.py dbshell')
+    run_by_py3('manage.py dbshell')
 
 
-@cit.as_session('Enter interactive shell')
+@cit.as_session('-- Enter interactive shell --')
 def interactive_shell():
     """Enter Django shell mode"""
-    ktk.runCmd('py manage.py shell')
+    run_by_py3('manage.py shell')
 
 
-@cit.as_session('Runserver localhost')
+@cit.as_session('-- Runserver localhost --')
 def runserver_dev():
     """Runserver in development environment, only for localhost debug use"""
-    ktk.runCmd('py manage.py runserver')
+    run_by_py3('manage.py runserver')
 
 
-@cit.as_session('Runserver LAN')
+@cit.as_session('-- Runserver LAN --')
 def runserver_lan():
     """Runserver in development environment, for Local Area Network debug use"""
     my_ip = socket.gethostbyname(socket.gethostname())
     cit.info('Your LAN IP address: {}'.format(my_ip))
-    ktk.runCmd('py manage.py runserver 0.0.0.0:8000')
+    run_by_py3('manage.py runserver 0.0.0.0:8000')
 
 
-@cit.as_session('System Checking')
+@cit.as_session('-- System Checking --')
 def system_check():
     """Check if django projects has a problem"""
-    ktk.runCmd('py manage.py check')
+    run_by_py3('manage.py check')
 
 
-@cit.as_session('Create superuser')
+@cit.as_session('-- Create superuser --')
 def create_superuser():
     """Create superuser account for Django admin"""
+    git_username = cit.get_input('Username:')
+    git_email = cit.get_input('Email:')
     cit.info('Password is specified, ask someone for it')
-    ktk.runCmd('py manage.py createsuperuser --username {username} --email {email}'.format(username=git_username, email=git_email))
+    run_by_py3('manage.py createsuperuser --username {username} --email {email}'.format(username=git_username, email=git_email))
 
 
 def show_menu():
