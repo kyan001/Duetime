@@ -11,42 +11,80 @@ import consoleiotools as cit
 import KyanToolKit
 ktk = KyanToolKit.KyanToolKit()
 
-# -Pre-conditions Check-------------------------------------------
-ktk.needPlatform("linux")
+__version__ = '1.2.1'
 
-# -set params-----------------------------------------------------
-# config file
-uwsgi_xml = "./uwsgi.xml"
-if os.path.isfile(uwsgi_xml):
-    cit.info("uwsgi config file: " + uwsgi_xml)
-else:
-    cit.err("uwsgi config file not found: " + uwsgi_xml)
-# pid file
-dir_name = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
-pid_file = "/var/run/uwsgi_{}.pid".format(dir_name)
-if os.path.exists(pid_file):
-    cit.warn("uwsgi is running @ " + pid_file)
-else:
-    cit.info("No uwsgi running")
-# choice
-operations = ["start", "stop", "reload"]
-oprtn = ""
-if len(sys.argv) != 2:
-    oprtn = cit.get_choice(operations)
-elif sys.argv[1] in operations:
-    oprtn = sys.argv[1]
-else:
-    cit.err("Wrong Params: " + sys.argv[1])
-    cit.bye()
 
-# -run commands---------------------------------------------------
-if "start" == oprtn:
-    ktk.runCmd("sudo echo ''")
-    ktk.runCmd("sudo uwsgi -x '" + uwsgi_xml + "' --pidfile '" + pid_file + "' &")
-elif "stop" == oprtn:
-    ktk.runCmd("sudo uwsgi --stop " + pid_file)
-elif "reload" == oprtn:
-    ktk.runCmd("sudo uwsgi --reload " + pid_file)
-else:
-    cit.err("Wrong operation: " + oprtn)
-    cit.bye()
+def main():
+    # precheck
+    ktk.needPlatform("linux")
+    # defines
+    uwsgi_xml = get_config_file("./uwsgi.xml")  # uwsgi config file
+    pid_file = get_pid_file()  # exist when running
+    # run
+    if pid_file and uwsgi_xml:
+        check_pid_file(pid_file)
+        operation = get_operation()
+        run_operation(operation, uwsgi_xml, pid_file)
+    else:
+        cit.bye()
+
+
+def get_pid_file():
+    """generate pid_file path and name according to script's dirname
+
+    returns:
+        '/var/run/uwsgi_dirname.pid'
+    """
+    dir_name = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
+    return "/var/run/uwsgi_{}.pid".format(dir_name)
+
+
+def get_config_file(xml_file='./uwsgi.xml'):
+    """check if uswgi config file exists"""
+    dir_path = os.path.dirname(os.path.abspath(__file__))
+    default_xml_file = "{}/uwsgi.xml".format(dir_path)
+    if xml_file and os.path.isfile(xml_file):
+        cit.info("uwsgi config file: " + xml_file)
+        return xml_file
+    elif os.path.isfile(default_xml_file):
+        return get_config_file(default_xml_file)
+    else:
+        cit.err("uwsgi config file not found: " + xml_file)
+        return None
+
+
+def check_pid_file(pid_file):
+    """check if this uwsgi is already running"""
+    if os.path.exists(pid_file):
+        cit.warn("uwsgi is running @ " + pid_file)
+    else:
+        cit.info("No uwsgi running")
+
+
+def get_operation():
+    """start a new uwsgi, stop a running uwsgi, or reload the config and codes"""
+    operations = ["start", "stop", "reload"]
+    if len(sys.argv) != 2:
+        return cit.get_choice(operations)
+    elif sys.argv[1] in operations:
+        return sys.argv[1]
+    else:
+        cit.err("Wrong Params: " + sys.argv[1])
+        cit.bye()
+
+
+def run_operation(oprtn, config_file, pid_file):
+    if "start" == oprtn:
+        ktk.runCmd("sudo echo ''")
+        ktk.runCmd("sudo uwsgi -x '{c}' --pidfile '{p}'".format(c=config_file, p=pid_file))
+    elif "stop" == oprtn:
+        ktk.runCmd("sudo uwsgi --stop " + pid_file)
+    elif "reload" == oprtn:
+        ktk.runCmd("sudo uwsgi --reload " + pid_file)
+    else:
+        cit.err("Wrong operation: " + oprtn)
+        cit.bye()
+
+
+if __name__ == '__main__':
+    main()
