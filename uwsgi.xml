@@ -7,6 +7,7 @@
     <gid>www-data</gid>
     <pythonpath>/home/kyan001/src/duetime</pythonpath>
     <module>duetime.wsgi:application</module>
+    <daemonize>/var/log/duetime_uwsgi.log</daemonize>
     <master/>
     <processes>4</processes>
     <plugins>python34</plugins>
