@@ -1,5 +1,5 @@
-from django.shortcuts import render_to_response, redirect
-from main.models import *
+from django.shortcuts import render_to_response
+
 
 def index(request):
     context = {'request': request}

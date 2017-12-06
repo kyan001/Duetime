@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from main import views
+import main.views.beijingmore
+import main.views.index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # index
-    url(r'^$', views.index, name='index'),
+    url(r'^$', main.views.index.index, name='index'),
     # beijingmore
-    url(r'^beijingmore$', views.beijingmoreIndex),
-    url(r'^beijingmore/food', views.beijingmoreFood),
-    url(r'^beijingmore/music', views.beijingmoreMusic),
+    url(r'^beijingmore$', main.views.beijingmore.beijingmoreIndex),
+    url(r'^beijingmore/food', main.views.beijingmore.beijingmoreFood),
+    url(r'^beijingmore/music', main.views.beijingmore.beijingmoreMusic),
 ]
