@@ -2,14 +2,14 @@
 """Run develop commands for django project"""
 import os
 import sys
-import collections
 import socket
+import webbrowser
 
 import consoleiotools as cit
 from KyanToolKit import KyanToolKit as ktk
 
 
-__version__ = '1.1.1'
+__version__ = '1.5.1'
 
 
 def manage_file_exist():
@@ -60,6 +60,7 @@ def interactive_shell():
 @cit.as_session('Runserver localhost')
 def runserver_dev():
     """Runserver in development environment, only for localhost debug use"""
+    webbrowser.open('http://127.0.0.1:8000/')
     run_by_py3('manage.py runserver')
 
 
@@ -71,10 +72,37 @@ def runserver_lan():
     run_by_py3('manage.py runserver 0.0.0.0:8000')
 
 
+@cit.as_session('Run Testcases')
+def run_testcases():
+    """Run Django testcases"""
+    start_dir = 'main.tests'
+    run_by_py3('-Wall manage.py test {} --verbosity 2'.format(start_dir))
+
+
 @cit.as_session('System Checking')
 def system_check():
     """Check if django projects has a problem"""
     run_by_py3('manage.py check')
+
+
+@cit.as_session('Dump Data')
+def dump_data():
+    """Dump Database data to a json file"""
+    run_by_py3('manage.py dumpdata main > datadump.json')
+
+
+@cit.as_session('Load Data')
+def load_data():
+    """Load Database data from a json file"""
+    run_by_py3('manage.py loaddata datadump.json')
+
+
+@cit.as_session('Git Assume Unchanged')
+def assume_unchanged():
+    cit.info('Current assume unchanged files:')
+    ktk.runCmd('git ls-files -v | grep -e "^[hsmrck]"')
+    filename = cit.get_input("Enter a TRACKED file's filename:")
+    ktk.runCmd('git update-index --assume-unchanged {}'.format(filename))
 
 
 @cit.as_session('Create superuser')
@@ -82,7 +110,6 @@ def create_superuser():
     """Create superuser account for Django admin"""
     git_username = cit.get_input('Username:')
     git_email = cit.get_input('Email:')
-    cit.info('Password is specified, ask someone for it')
     run_by_py3('manage.py createsuperuser --username {username} --email {email}'.format(username=git_username, email=git_email))
 
 
@@ -92,24 +119,35 @@ def show_menu():
     returns:
         a callable function name
     """
-    commands = collections.OrderedDict({
+    commands = {
         'Install Requirements Modules': requirements_install,
         'Make & migrate database': migrate_db,
         'Create superuser account': create_superuser,
         'Runserver (localhost:8000)': runserver_dev,
         'Runserver (LAN ip:8000)': runserver_lan,
         'Shell: Interactive': interactive_shell,
-        'Shell: Database': db_shell,
+        'Shell: DB': db_shell,
+        'Run Testcases': run_testcases,
         'Django system check': system_check,
+        'DB Data Dump (App:main)': dump_data,
+        'DB Data Load (datadump.json)': load_data,
+        'Git Assume Unchanged': assume_unchanged,
         'Exit': cit.bye,
-    })
-    cit.echo('Select one of these:')
-    selection = cit.get_choice(sorted(commands.keys()))
+    }
+    menu = sorted(commands.keys())
+    if len(sys.argv) > 1:
+        arg = sys.argv.pop()
+        selection = arg if arg in commands else menu[int(arg) - 1]
+    else:
+        cit.echo('Select one of these:')
+        selection = cit.get_choice(menu)
     return commands.get(selection)
 
 
 def main():
     ktk.clearScreen()
+    cit.echo('Django Tool: version {}'.format(__version__))
+    cit.br()
     if not manage_file_exist():
         cit.err('No manage.py detected. Please run this under projects folder')
         cit.bye()
