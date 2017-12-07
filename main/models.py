@@ -34,3 +34,9 @@ class Notiecard(BaseModel):
     kcol = models.CharField(max_length=30)
     vcol = models.CharField(max_length=30)
     username = models.CharField(max_length=30)
+
+
+class Notieitem(BaseModel):
+    notiecardid = models.IntegerField(max_length=30)
+    kword = models.CharField(max_length=128)
+    val = models.CharField(max_length=512)
