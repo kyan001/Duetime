@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 import main.views.beijingmore
 import main.views.index
+import main.views.zyj
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,4 +27,5 @@ urlpatterns = [
     url(r'^beijingmore$', main.views.beijingmore.beijingmoreIndex),
     url(r'^beijingmore/food', main.views.beijingmore.beijingmoreFood),
     url(r'^beijingmore/music', main.views.beijingmore.beijingmoreMusic),
+    url(r'^zyj/notie',main.views.zyj.zyjNotie),
 ]
