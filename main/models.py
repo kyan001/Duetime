@@ -1,4 +1,6 @@
 from django.db import models
+from django.forms.models import model_to_dict
+from django.http import Http404
 
 
 class BaseManager(models.Manager):
@@ -31,12 +33,15 @@ class BaseModel(models.Model):
 
 class Notiecard(BaseModel):
     title = models.CharField(max_length=30)
-    kcol = models.CharField(max_length=30)
-    vcol = models.CharField(max_length=30)
-    username = models.CharField(max_length=30)
+    kcol = models.CharField(max_length=30, blank=True)
+    vcol = models.CharField(max_length=30, blank=True)
+    username = models.CharField(max_length=30, blank=True)
 
+    @property
+    def notieitems(self):
+        return Notieitem.objects.filter(notiecardid=self.id)
 
 class Notieitem(BaseModel):
-    notiecardid = models.IntegerField(max_length=30)
-    kword = models.CharField(max_length=128)
-    val = models.CharField(max_length=512)
+    notiecardid = models.IntegerField()
+    kword = models.CharField(max_length=128, blank=True)
+    val = models.CharField(max_length=512, blank=True)
