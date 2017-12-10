@@ -1,0 +1,40 @@
+<div class="ani-fast hover-shadow panel panel-primary">
+    <div class="panel-heading">
+        {{ card.title }}
+        <span class="pull-right small">
+            {{ card.id }}
+        </span>
+    </div>
+    <table class="table">
+        <tr>
+            <td>最后修改：</td>
+            <td>{{ card.modified|date:"Y-m-d H:i" }}</td>
+        </tr>
+        <tr>
+            <td>创建时间：</td>
+            <td>{{ card.created|date:"Y-m-d H:i" }}</td>
+        </tr>
+    </table>
+    <table class="table table-striped table-bordered table-hover">
+        {% if card.kcol or card.vcol %}
+            <tr>
+                <th class="text-center">
+                    {{ card.kcol|default:"-" }}
+                </th>
+                <th class="text-center">
+                    {{ card.vcol|default:"-" }}
+                </th>
+            </tr>
+        {% endif %}
+        {% for item in card.notieitems %}
+            <tr>
+                <td class="text-center">
+                    {{ item.kword }}
+                </td>
+                <td class="text-center">
+                    {{ item.val }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div><!--.panel-->

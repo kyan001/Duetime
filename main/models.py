@@ -44,6 +44,10 @@ class Notiecard(BaseModel):
     def notieitems(self):
         return Notieitem.objects.filter(notiecardid=self.id)
 
+    @property
+    def last_updated(self):
+        return self.notieitems.order_by('-modified').get().modified
+
 
 class Notieitem(BaseModel):
     notiecardid = models.IntegerField()

@@ -2,39 +2,37 @@
 {% block title %}Beijing More - Every street has a story{% endblock %}
 
 {% block css %}
+    <style>
+        .inner-container {
+            padding-top: 15px;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
 <div class="container">
-    {% for card in cards %}
-        <div class='row'>
-            <div class="panel panel-primary">
-                <div class="panel-heading">{{card.title}}</div>
-                <table id="fee" class="table table-striped table-bordered table-hover">
-                    {% if card.kcol or card.vcol %}
-                        <tr>
-                            <th class="text-center">
-                                {{ card.kcol|default:"-" }}
-                            </th>
-                            <th class="text-center">
-                                {{ card.vcol|default:"-" }}
-                            </th>
-                        </tr>
-                    {% endif %}
-                    {% for item in card.notieitems %}
-                        <tr>
-                            <td class="text-center">
-                                {{ item.kword }}
-                            </td>
-                            <td class="text-center">
-                                {{ item.val }}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
-        </div>
-    {% endfor %}
+    <div class="inner-container">
+        <div class="visible-xs-block">
+            {% for card in cards %}
+                {% include "cardnote/listitem.html" with card=card %}
+            {% endfor %}
+        </div><!--.visible-xs-block-->
+        <div class="hidden-xs">
+            <div class="row">
+                {% for cards_col in cards_cols %}
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {% for card in cards_col %}
+                                    {% include "cardnote/listitem.html" with card=card %}
+                                {% endfor %}
+                            </div><!--.col-->
+                        </div><!--.row-->
+                    </div><!--.col-->
+                {% endfor %}
+            </div><!--.row-->
+        </div><!--.hidden-xs-->
+    </div><!--.inner-container-->
 </div>
 {% endblock content %}
 
