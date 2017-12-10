@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import Http404
 
-from main.models import Notiecard, Notieitem
+from main.models import CardnoteCard, CardnoteItem
 
 
 def cardnoteList(request):
@@ -11,7 +11,7 @@ def cardnoteList(request):
         'cards_cols': [],
     }
     COLUMNS = 3  # how many columns in sm/md/lg
-    cards = Notiecard.objects.all()
+    cards = CardnoteCard.objects.all()
     for cl_i in range(COLUMNS):
         cl_col = [card for i, card in enumerate(cards) if i % COLUMNS == cl_i]
         context.get('cards_cols').append(cl_col)
@@ -32,7 +32,7 @@ def cardnoteAddcard(request):
     vcol = request.POST.get('vcol')
     if not title:
         raise Http404('Title cannot be empty')
-    card = Notiecard(title=title, kcol=kcol, vcol=vcol)
+    card = CardnoteCard(title=title, kcol=kcol, vcol=vcol)
     card.save()
     print(card.id)
     return redirect('/cardnote/list')

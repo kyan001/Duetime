@@ -31,33 +31,33 @@ class BaseModel(models.Model):
         return model_to_dict(self)
 
 
-class Notiecard(BaseModel):
+class CardnoteCard(BaseModel):
     title = models.CharField(max_length=30)
     kcol = models.CharField(max_length=30, blank=True)
     vcol = models.CharField(max_length=30, blank=True)
     username = models.CharField(max_length=30, blank=True)
 
     def __str__(self):
-        return "{self.id}. {self.title} ({self.kcol}/{self.vcol})".format(self=self)
+        return "{self.id}. {self.title} ({self.kcol} / {self.vcol})".format(self=self)
 
     @property
-    def notieitems(self):
-        return Notieitem.objects.filter(notiecardid=self.id)
+    def cardnoteitems(self):
+        return CardnoteItem.objects.filter(cardnotecardid=self.id)
 
     @property
     def last_updated(self):
-        return self.notieitems.order_by('-modified').get().modified
+        return self.cardnoteitems.order_by('-modified').get().modified
 
 
-class Notieitem(BaseModel):
-    notiecardid = models.IntegerField()
+class CardnoteItem(BaseModel):
+    cardnotecardid = models.IntegerField()
     kword = models.CharField(max_length=128, blank=True)
     val = models.CharField(max_length=512, blank=True)
 
     def __str__(self):
-        return "{self.id}. ({self.notiecard.title}) {self.kword}/{self.val}".format(self=self)
+        return "{self.id}. ({self.cardnotecard.title}) {self.kword}: {self.val}".format(self=self)
 
     @property
-    def notiecard(self):
-        card = Notiecard.objects.get(id=self.notiecardid)
+    def cardnotecard(self):
+        card = CardnoteCard.objects.get(id=self.cardnotecardid)
         return card

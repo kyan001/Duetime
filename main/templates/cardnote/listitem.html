@@ -3,6 +3,7 @@
         <div class="panel-heading">
             <span class="glyphicon glyphicon-list"></span>
             <span>{{ card.title }}</span>
+            <span class="small">{{ card.cardnoteitems.count }}</span>
             <span class="pull-right small">
                 {{ card.id }}
             </span>
@@ -18,7 +19,7 @@
                     </th>
                 </tr>
             {% endif %}
-            {% for item in card.notieitems %}
+            {% for item in card.cardnoteitems %}
                 <tr>
                     <td class="text-center">
                         {{ item.kword }}
