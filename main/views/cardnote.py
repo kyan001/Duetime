@@ -10,9 +10,8 @@ def cardnoteList(request):
     context = {
         'cards_cols': [],
     }
-    COLUMNS = 3
+    COLUMNS = 3  # how many columns in sm/md/lg
     cards = Notiecard.objects.all()
-
     for cl_i in range(COLUMNS):
         cl_col = [card for i, card in enumerate(cards) if i % COLUMNS == cl_i]
         context.get('cards_cols').append(cl_col)
