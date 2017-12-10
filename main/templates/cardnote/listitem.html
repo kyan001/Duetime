@@ -1,40 +1,47 @@
-<div class="ani-fast hover-shadow panel panel-primary">
-    <div class="panel-heading">
-        {{ card.title }}
-        <span class="pull-right small">
-            {{ card.id }}
-        </span>
-    </div>
-    <table class="table">
-        <tr>
-            <td>最后修改：</td>
-            <td>{{ card.modified|date:"Y-m-d H:i" }}</td>
-        </tr>
-        <tr>
-            <td>创建时间：</td>
-            <td>{{ card.created|date:"Y-m-d H:i" }}</td>
-        </tr>
-    </table>
-    <table class="table table-striped table-bordered table-hover">
-        {% if card.kcol or card.vcol %}
-            <tr>
-                <th class="text-center">
-                    {{ card.kcol|default:"-" }}
-                </th>
-                <th class="text-center">
-                    {{ card.vcol|default:"-" }}
-                </th>
-            </tr>
-        {% endif %}
-        {% for item in card.notieitems %}
-            <tr>
-                <td class="text-center">
-                    {{ item.kword }}
-                </td>
-                <td class="text-center">
-                    {{ item.val }}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-</div><!--.panel-->
+<a class="no-decoration" href="/cardnote/detail?id={{ card.id }}">
+    <div class="ani-fast hover-shadow panel panel-primary">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list"></span>
+            <span>{{ card.title }}</span>
+            <span class="pull-right small">
+                {{ card.id }}
+            </span>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+            {% if card.kcol or card.vcol %}
+                <tr>
+                    <th class="text-center">
+                        {{ card.kcol|default:"···" }}
+                    </th>
+                    <th class="text-center">
+                        {{ card.vcol|default:"···" }}
+                    </th>
+                </tr>
+            {% endif %}
+            {% for item in card.notieitems %}
+                <tr>
+                    <td class="text-center">
+                        {{ item.kword }}
+                    </td>
+                    <td class="text-center">
+                        {{ item.val }}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td class="text-center text-muted" colspan="2">无可用数据</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="panel-footer small">
+            <span class="text-muted">
+                <span class="glyphicon glyphicon-play"></span>
+                <span>{{ card.created|date:"Y-m-d H:i" }}</span>
+            </span>
+            <span class="text-muted pull-right">
+                <span class="glyphicon glyphicon-pause"></span>
+                <span>{{ card.created|date:"Y-m-d H:i" }}</span>
+            </span>
+        </div>
+    </div><!--.panel-->
+</a>
