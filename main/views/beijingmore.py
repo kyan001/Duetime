@@ -1,16 +1,13 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 
 
 def beijingmoreIndex(request):
-    context = {'request': request}
-    return render_to_response('beijingmore/index.html', context)
+    return render(request, 'beijingmore/index.html')
 
 
 def beijingmoreFood(request):
-    context = {'request': request}
-    return render_to_response('beijingmore/food.html', context)
+    return render(request, 'beijingmore/food.html')
 
 
 def beijingmoreMusic(request):
-    context = {'request': request}
-    return render_to_response('beijingmore/music.html', context)
+    return render(request, 'beijingmore/music.html')
