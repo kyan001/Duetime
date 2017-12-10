@@ -41,6 +41,7 @@ class Notiecard(BaseModel):
     def notieitems(self):
         return Notieitem.objects.filter(notiecardid=self.id)
 
+
 class Notieitem(BaseModel):
     notiecardid = models.IntegerField()
     kword = models.CharField(max_length=128, blank=True)
