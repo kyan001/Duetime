@@ -37,6 +37,9 @@ class Notiecard(BaseModel):
     vcol = models.CharField(max_length=30, blank=True)
     username = models.CharField(max_length=30, blank=True)
 
+    def __str__(self):
+        return "{self.id}. {self.title} ({self.kcol}/{self.vcol})".format(self=self)
+
     @property
     def notieitems(self):
         return Notieitem.objects.filter(notiecardid=self.id)
@@ -46,3 +49,11 @@ class Notieitem(BaseModel):
     notiecardid = models.IntegerField()
     kword = models.CharField(max_length=128, blank=True)
     val = models.CharField(max_length=512, blank=True)
+
+    def __str__(self):
+        return "{self.id}. ({self.notiecard.title}) {self.kword}/{self.val}".format(self=self)
+
+    @property
+    def notiecard(self):
+        card = Notiecard.objects.get(id=self.notiecardid)
+        return card
