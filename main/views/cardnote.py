@@ -1,16 +1,15 @@
 from django.shortcuts import render
-
+from django.core.context_processors import csrf
 from main.models import Notiecard, Notieitem
 
 
-def zyjNotie(request):
+def cardnoteList(request):
 	""" 以卡片形式记录日常
 	"""
-	# username = request.GET['zyj']
-	# feeType = request.GET['Water']
 	cards = Notiecard.objects.all()
 	# render
 	context = {
 		'cards': cards
 	}
-	return render(request,'zyj/notie.html',context)
+	return render(request,'cardnote/list.html',context)
+
