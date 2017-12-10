@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Beijing More - Every street has a story{% endblock %}
+
+{% block css %}
+    <style>
+        #notieaddPage {
+            margin-top: 25px;
+        }
+        #notieaddPage.table{
+            cell-padding: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div id='notieaddPage' class="container">
+    <form action='/cardnote/createcard' method='post'>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="input-title">新增项目：</label>
+            <input id="input-title" name="title" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="input-kcol">关键字名称：</label>
+            <input id="input-kcol" name="kcol" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="input-vcol">值名称：</label>
+            <input id="input-vcol" name="vcol" type="text" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+{% endblock content %}
+
+{% block js %}
+    <script>
+        $(function(){
+        })
+    </script>
+{% endblock %}
+
+{% block footer %}
+    {{super}}
+{% endblock %}

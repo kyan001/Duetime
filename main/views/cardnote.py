@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.core.context_processors import csrf
+from django.shortcuts import redirect
+from django.http import Http404
+
 from main.models import Notiecard, Notieitem
 
 
@@ -13,3 +15,20 @@ def cardnoteList(request):
 	}
 	return render(request,'cardnote/list.html',context)
 
+def cardnoteAddcard(request):
+	""" 跳转到新项目增加页面
+	"""
+	return render(request,'cardnote/addcard.html')
+
+def cardnoteCreatecard(request):
+	""" 增加新项目到服务器
+	"""
+	title = request.POST.get('title')
+	kcol = request.POST.get('kcol')
+	vcol = request.POST.get('vcol')
+	if not title:
+		raise Http404('Title cannot be empty')
+	card = Notiecard(title=title, kcol=kcol, vcol=vcol)
+	card.save()
+	print(card.id)
+	return redirect('/cardnote/list')
