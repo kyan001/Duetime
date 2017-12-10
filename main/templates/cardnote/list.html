@@ -2,48 +2,38 @@
 {% block title %}Beijing More - Every street has a story{% endblock %}
 
 {% block css %}
-    <style>
-        #fee {
-            margin-top: 25px;
-        }
-    </style>
 {% endblock %}
 
 {% block content %}
 <div class="container">
     {% for card in cards %}
-        <table id="fee" class="table table-striped table-bordered table-hover">
-            <tr>
-                <th class="text-center">
-                    {{ card.kcol }}
-                </th>
-                <th class="text-center">
-                    {{ card.vcol }}
-                </th>
-                <th class="text-center">
-                    {{ card.title }}
-                </th>
-                <th class="text-center">
-                    {{ card.username }}
-                </th>
-            </tr>
-            {% for item in card.notieitems %}
-                <tr>
-                    <td class="text-center">
-                        {{ item.kword }}
-                    </td>
-                    <td class="text-center">
-                        {{ item.val }}
-                    </td>
-                    <td class="text-center">
-                        {{ item.modified }}
-                    </td>
-                    <td class="text-center">
-                        {{ item.created }}
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
+        <div class='row'>
+            <div class="panel panel-primary">
+                <div class="panel-heading">{{card.title}}</div>
+                <table id="fee" class="table table-striped table-bordered table-hover">
+                    {% if card.kcol or card.vcol %}
+                        <tr>
+                            <th class="text-center">
+                                {{ card.kcol|default:"-" }}
+                            </th>
+                            <th class="text-center">
+                                {{ card.vcol|default:"-" }}
+                            </th>
+                        </tr>
+                    {% endif %}
+                    {% for item in card.notieitems %}
+                        <tr>
+                            <td class="text-center">
+                                {{ item.kword }}
+                            </td>
+                            <td class="text-center">
+                                {{ item.val }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
     {% endfor %}
 </div>
 {% endblock content %}
