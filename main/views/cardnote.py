@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import Http404
+from django.contrib import messages
 
 from main.models import CardnoteCard, CardnoteItem
 
@@ -22,6 +23,7 @@ def cardnoteList(request):
 
 def cardnoteNewcard(request):
     """Add new card Page"""
+    messages.info(request, '添加新卡片')  # only for messages testing
     return render(request, 'cardnote/newcard.html')
 
 
@@ -35,4 +37,6 @@ def cardnoteAddcard(request):
     card = CardnoteCard(title=title, kcol=kcol, vcol=vcol)
     card.save()
     print(card.id)
+    # render
+    messages.success(request, '新卡片《{card.title}》已添加'.format(card=card))
     return redirect('/cardnote/list')

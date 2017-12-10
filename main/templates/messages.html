@@ -1,0 +1,66 @@
+<!-- MESSAGES START -->
+<div class="messages-div">
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="row messages-row">
+                <div class="messages alert alert-{{msg.tags}} alert-dismissible fade in pull-right" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true" class="dismiss-btn">×</span>
+                    </button>
+                    <span class="glyphicon glyphicon-bell"></span>
+                    <span>{{ msg|safe }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+<style>
+    .messages-div,
+    .messages-row,
+    .messages {
+        pointer-events: none;
+    }
+    .messages-div {
+        position: fixed;
+        top: 80px;
+        right: 5%;
+        width: 100%;
+        z-index: 999;
+    }
+    .messages .close {
+        pointer-events: auto;
+    }
+</style>
+<script>
+    $(".messages").delay(7777).slideUp()  // for existing messages: 7.777s before slideup
+    function msgAlert(word, type) {
+        var html = $("<div class='row messages-row'></div>")
+        var msg = $("<div class='messages alert alert-dismissible fade in pull-right' role='alert'></div>").addClass("alert-" + type)
+        var button = $("<button type='button' class='close' data-dismiss='alert' aria-label='Close'></button>")
+        var dismiss = $("<span aria-hidden='true' class='dismiss-btn'>×</span>")
+        var icon = $("<span class='glyphicon glyphicon-bell'></span>")
+        var txt = $("<span> " + word + "</span>")
+        button.append(dismiss)
+        msg.append(button)
+        msg.append(icon)
+        msg.append(txt)
+        html.append(msg)
+        html.delay(word.length * 300).fadeOut(word.length * 300)  // for each char: 0.3s before fadeout, and fadeout last 0.3s
+        $(".messages-div").prepend(html)
+    };
+    $.extend({
+        warning: function(word) {
+            msgAlert(word, "warning");
+        },
+        success: function(word) {
+            msgAlert(word, "success");
+        },
+        danger: function(word) {
+            msgAlert(word, "danger");
+        },
+        info: function(word) {
+            msgAlert(word, "info");
+        },
+    });
+</script>
+<!-- MESSAGES END -->
