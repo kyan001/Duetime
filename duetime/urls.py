@@ -28,6 +28,6 @@ urlpatterns = [
     url(r'^beijingmore/food$', main.views.beijingmore.beijingmoreFood),
     url(r'^beijingmore/music$', main.views.beijingmore.beijingmoreMusic),
     url(r'^cardnote/list$', main.views.cardnote.cardnoteList),
-    url(r'^cardnote/addcard$', main.views.cardnote.cardnoteAddcard),
-    url(r'^cardnote/createcard$', main.views.cardnote.cardnoteCreatecard),
+    url(r'^cardnote/newcard$', main.views.cardnote.cardnoteNewcard),
+    url(r'^cardnote/addcard$', main.views.cardnote.cardnoteAddcard),  # POST
 ]
