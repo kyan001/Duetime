@@ -3,33 +3,43 @@
 
 {% block css %}
     <style>
-        #notieaddPage {
-            margin-top: 25px;
-        }
-        #notieaddPage.table{
-            cell-padding: 10px;
+        .inner-container {
+            padding-top: 15px;
         }
     </style>
 {% endblock %}
 
 {% block content %}
-<div id='notieaddPage' class="container">
-    <form action='/cardnote/createcard' method='post'>
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="input-title">新增项目：</label>
-            <input id="input-title" name="title" type="text" class="form-control">
+<div class="container">
+    <div class="inner-container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">新建卡片</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action='/cardnote/createcard' method='post'>
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="input-title">卡片名称：</label>
+                                <input id="input-title" class="form-control" name="title" type="text" placeholder="" autofocus="autofocus">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-kcol">第一列：</label>
+                                <input id="input-kcol" class="form-control" name="kcol" type="text" placeholder="（选填）">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-vcol">第二列：</label>
+                                <input id="input-vcol" class="form-control" name="vcol" type="text" placeholder="（选填）">
+                            </div>
+                            <button type="submit" class="btn btn-success pull-right">新建</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="input-kcol">关键字名称：</label>
-            <input id="input-kcol" name="kcol" type="text" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="input-vcol">值名称：</label>
-            <input id="input-vcol" name="vcol" type="text" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+    </div><!--.inner-container-->
 </div>
 {% endblock content %}
 
