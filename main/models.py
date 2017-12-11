@@ -1,3 +1,5 @@
+import random
+
 from django.db import models
 from django.forms.models import model_to_dict
 from django.http import Http404
@@ -32,6 +34,13 @@ class BaseModel(models.Model):
 
 
 class CardnoteCard(BaseModel):
+    CATEGORIES = (
+        ('danger', '红色'),
+        ('warning', '橙色'),
+        ('success', '绿色'),
+        ('primary', '蓝色'),
+        ('default', '灰色'),
+    )
     title = models.CharField(max_length=30)
     kcol = models.CharField(max_length=30, blank=True)
     vcol = models.CharField(max_length=30, blank=True)
@@ -47,6 +56,10 @@ class CardnoteCard(BaseModel):
     @property
     def last_updated(self):
         return self.cardnoteitems.order_by('-modified').get().modified
+
+    @property
+    def category(self):
+        return random.choice([k for (k, v) in self.CATEGORIES])
 
 
 class CardnoteItem(BaseModel):
