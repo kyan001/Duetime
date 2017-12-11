@@ -55,6 +55,7 @@ def cardnoteDeletecard(request):
 		items.delete()
 	return redirect('/cardnote/list')
 
+
 def cardnoteUpdatecard(request):
 	"""更新卡片信息"""
 	cardnotecardid = request.POST.get('id') or 0
@@ -73,3 +74,17 @@ def cardnoteUpdatecard(request):
     # render
     messages.success(request, '卡片《{card.title}》已更新'.format(card=card))
     return redirect('/cardnote/list')
+
+
+def cardnoteDetail(request):
+	"""卡片详情页"""
+	cardnotecardid = request.GET.get('id') or 0
+	if not cardnotecardid:
+		raise Http404("Id should not be empty")
+	card = CardnoteCard.objects.get_or_404(id=int(cardnotecardid))
+	context = {
+		'card': card
+	}
+	return render(request, 'cardnote/detail.html', context)
+
+
