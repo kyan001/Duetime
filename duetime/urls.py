@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^cardnote/list$', main.views.cardnote.cardnoteList),
     url(r'^cardnote/newcard$', main.views.cardnote.cardnoteNewcard),
     url(r'^cardnote/addcard$', main.views.cardnote.cardnoteAddcard),  # POST
+    url(r'^cardnote/deletecard$', main.views.cardnote.cardnoteDeletecard),  # GET
 ]

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import Http404
 from django.contrib import messages
+from django.db import transaction
 
 from main.models import CardnoteCard, CardnoteItem
 
@@ -40,3 +41,17 @@ def cardnoteAddcard(request):
     # render
     messages.success(request, '新卡片《{card.title}》已添加'.format(card=card))
     return redirect('/cardnote/list')
+
+
+def cardnoteDeletecard(request):
+	"""删除一个卡片"""
+	cardnotecardid = request.GET.get('id') or 0
+	if not cardnotecardid:
+		raise Http404("Id should not be empty")
+	card = CardnoteCard.objects.get_or_404(id=int(cardnotecardid))
+	items = card.cardnoteitems
+	with transaction.atomic():
+		messages.success(request, "卡片《{card.title}》已删除".format(card=card))
+		card.delete()
+		items.delete()
+	return redirect('/cardnote/list')
