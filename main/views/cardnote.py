@@ -56,12 +56,12 @@ def cardnoteDeletecard(request):
 	return redirect('/cardnote/list')
 
 
-def cardnoteUpdatecard(request):
-	"""更新卡片信息"""
 	cardnotecardid = request.POST.get('id') or 0
 	if not cardnotecardid:
 		raise Http404("Id should not be empty")
 	title = request.POST.get('title')
+def cardnoteUpdate(request):
+    """Update Card and Items"""
     kcol = request.POST.get('kcol')
     vcol = request.POST.get('vcol')
     if not title:

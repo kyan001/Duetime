@@ -31,6 +31,6 @@ urlpatterns = [
     url(r'^cardnote/newcard$', main.views.cardnote.cardnoteNewcard),
     url(r'^cardnote/addcard$', main.views.cardnote.cardnoteAddcard),  # POST
     url(r'^cardnote/deletecard$', main.views.cardnote.cardnoteDeletecard),  # GET
-    url(r'^cardnote/updatecard$', main.views.cardnote.cardnoteUpdatecard),  # POST
+    url(r'^cardnote/update$', main.views.cardnote.cardnoteUpdate),  # POST
     url(r'^cardnote/detail$', main.views.cardnote.cardnoteDetail),  # GET
 ]
