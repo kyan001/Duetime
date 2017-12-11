@@ -36,7 +36,6 @@ def cardnoteAddcard(request):
         raise Http404('Title cannot be empty')
     card = CardnoteCard(title=title, kcol=kcol, vcol=vcol)
     card.save()
-    print(card.id)
     # render
     messages.success(request, '新卡片《{card.title}》已添加'.format(card=card))
     return redirect('/cardnote/list')
