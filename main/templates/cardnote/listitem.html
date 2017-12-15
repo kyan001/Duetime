@@ -1,5 +1,5 @@
 <a class="no-decoration" href="/cardnote/detail?id={{ card.id }}">
-    <div class="ani-fast hover-shadow panel panel-{{ card.category }}">
+    <div class="ani-fast hover-shadow panel panel-{{ card.category|default:'default' }}">
         <div class="panel-heading">
             <span class="glyphicon glyphicon-list"></span>
             <span>{{ card.title }}</span>

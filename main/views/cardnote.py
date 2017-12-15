@@ -65,6 +65,7 @@ def cardnoteUpdate(request):
     title = request.POST.get('title')
     kcol = request.POST.get('kcol')
     vcol = request.POST.get('vcol')
+    category = request.POST.get('category') or 'default'
     new_items_in_json = request.POST.get('newitems')
     # inputs validation
     if not cardnotecardid:
@@ -80,6 +81,7 @@ def cardnoteUpdate(request):
         card.title = title
         card.kcol = kcol
         card.vcol = vcol
+        card.category = category
         card.save()
         # items part
         card.cardnoteitems.delete()

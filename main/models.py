@@ -35,16 +35,18 @@ class BaseModel(models.Model):
 
 class CardnoteCard(BaseModel):
     CATEGORIES = (
-        ('danger', '红色'),
-        ('warning', '橙色'),
-        ('success', '绿色'),
-        ('primary', '蓝色'),
         ('default', '灰色'),
+        ('primary', '蓝色'),
+        ('info', '浅蓝色'),
+        ('success', '绿色'),
+        ('warning', '橙色'),
+        ('danger', '红色'),
     )
     title = models.CharField(max_length=30)
     kcol = models.CharField(max_length=30, blank=True)
     vcol = models.CharField(max_length=30, blank=True)
     username = models.CharField(max_length=30, blank=True)
+    category = models.CharField(max_length=20, blank=True, choices=CATEGORIES, default='default')
 
     def __str__(self):
         return "{self.id}. {self.title} ({self.kcol} / {self.vcol})".format(self=self)
@@ -56,10 +58,6 @@ class CardnoteCard(BaseModel):
     @property
     def last_updated(self):
         return self.cardnoteitems.order_by('-modified').get().modified
-
-    @property
-    def category(self):
-        return random.choice([k for (k, v) in self.CATEGORIES])
 
 
 class CardnoteItem(BaseModel):
