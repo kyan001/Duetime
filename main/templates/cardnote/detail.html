@@ -56,10 +56,10 @@
                                         列名
                                     </th>
                                     <th>
-                                        <input class="form-control" type="text" name="kcol" value="{{ card.kcol }}" placeholder="{{ card.kcol|default:'选填' }}">
+                                        <input class="form-control input-sm" type="text" name="kcol" value="{{ card.kcol }}" placeholder="{{ card.kcol|default:'选填' }}">
                                     </th>
                                     <th>
-                                        <input class="form-control" type="text" name="vcol" value="{{ card.vcol }}" placeholder="{{ card.vcol|default:'选填' }}">
+                                        <input class="form-control input-sm" type="text" name="vcol" value="{{ card.vcol }}" placeholder="{{ card.vcol|default:'选填' }}">
                                     </th>
                                     <th class="text-center">
                                         操作
@@ -71,23 +71,21 @@
                                             #{{ forloop.counter }}
                                         </td>
                                         <td>
-                                            <input class="form-control" type="text" data-name="kword" value="{{ old_item.kword }}" placeholder="{{ old_item.kword }}">
+                                            <input class="form-control input-sm" type="text" data-name="kword" value="{{ old_item.kword }}" placeholder="{{ old_item.kword }}">
                                         </td>
                                         <td>
-                                            <input class="form-control" type="text" data-name="val" value="{{ old_item.val }}" placeholder="{{ old_item.val }}">
+                                            <input class="form-control input-sm" type="text" data-name="val" value="{{ old_item.val }}" placeholder="{{ old_item.val }}">
                                         </td>
                                         <td>
-                                            <a class="btn btn-danger" role="button" onclick="removeItemRow(this)">
-                                                <span class="glyphicon glyphicon-remove"></span>
+                                            <a class="btn btn-link btn-sm hover-turning-container" role="button" onclick="removeItemRow(this)">
+                                                <span class="glyphicon glyphicon-remove text-danger"></span>
                                             </a>
                                         </td>
                                     </tr>
                                 {% endfor %}
                                 <tr id="new-row-btn-tr">
-                                    <td colspan="3">
-                                    </td>
-                                    <td colspan="1">
-                                        <a class="btn btn-default btn-block" onclick="addItemRow()">
+                                    <td colspan="4">
+                                        <a class="btn btn-default btn-sm pull-right" onclick="addItemRow()">
                                             <span class="glyphicon glyphicon-plus"></span>
                                         </a>
                                     </td>
@@ -147,9 +145,9 @@
         }
         function addItemRow(){
             var tr = $("<tr class='item-row'></tr>")
-            var kword_input = $("<input class='form-control' type='text' data-name='kword' placeholder='（选填）'>")
-            var val_input = $("<input class='form-control' type='text' data-name='val' placeholder='（选填）'>")
-            var remove_btn = $("<a class='btn btn-danger' role='button' onclick='removeItemRow(this)'></a>").append("<span class='glyphicon glyphicon-remove'></span>")
+            var kword_input = $("<input class='form-control input-sm' type='text' data-name='kword' placeholder='（选填）'>")
+            var val_input = $("<input class='form-control input-sm' type='text' data-name='val' placeholder='（选填）'>")
+            var remove_btn = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='removeItemRow(this)'></a>").append("<span class='glyphicon glyphicon-remove text-danger'></span>")
             var tds = [
                 $("<td></td>").addClass("text-center").text("New"),
                 $("<td></td>").append(kword_input),
