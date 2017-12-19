@@ -138,3 +138,8 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
 MESSAGE_TAGS = {
     django.contrib.messages.constants.ERROR: 'danger',
 }
+
+# User
+LOGIN_URL = '/user/signin'
+LOGIN_REDIRECT_URL = '/'
+LOGTOU_REDIRECT_URL = '/'
