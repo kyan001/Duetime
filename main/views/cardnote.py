@@ -26,12 +26,14 @@ def cardnoteList(request):
     return render(request, 'cardnote/list.html', context)
 
 
+@login_required
 def cardnoteNewcard(request):
     """Add new card Page"""
     messages.info(request, '添加新卡片')  # only for messages testing
     return render(request, 'cardnote/newcard.html')
 
 
+@login_required
 def cardnoteAddcard(request):
     """增加新项目到服务器"""
     title = request.POST.get('title')
@@ -46,6 +48,7 @@ def cardnoteAddcard(request):
     return redirect('/cardnote/list')
 
 
+@login_required
 def cardnoteDeletecard(request):
     """删除一个卡片"""
     cardnotecardid = request.GET.get('id') or 0
@@ -60,6 +63,7 @@ def cardnoteDeletecard(request):
     return redirect('/cardnote/list')
 
 
+@login_required
 def cardnoteUpdate(request):
     """Update Card and Items"""
     # get inputs
@@ -98,6 +102,7 @@ def cardnoteUpdate(request):
     return redirect('/cardnote/detail?id={}'.format(card.id))
 
 
+@login_required
 def cardnoteDetail(request):
     """卡片详情页"""
     cardnotecardid = request.GET.get('id') or 0
