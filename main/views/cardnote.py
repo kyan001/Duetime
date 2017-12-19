@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import Http404
@@ -9,6 +10,7 @@ from django.db import transaction
 from main.models import CardnoteCard, CardnoteItem
 
 
+@login_required
 def cardnoteList(request):
     """Cards List"""
     context = {
