@@ -15,14 +15,20 @@ Including anot9jher URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 import main.views.beijingmore
 import main.views.index
 import main.views.cardnote
+import main.views.user
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # index
     url(r'^$', main.views.index.index, name='index'),
+    # user
+    url(r'^user/signup$', main.views.user.userSignup),  # POST
+    url(r'^user/signin$', auth_views.LoginView.as_view(template_name='user/signin.html'), name='login'),  # POST
+    url(r'^user/signout$', auth_views.LogoutView.as_view(), name='logout'),
     # beijingmore
     url(r'^beijingmore$', main.views.beijingmore.beijingmoreIndex),
     url(r'^beijingmore/food$', main.views.beijingmore.beijingmoreFood),

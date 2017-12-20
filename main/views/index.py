@@ -1,6 +1,5 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 
 
 def index(request):
-    context = {'request': request}
-    return render_to_response('index/index.html', context)
+    return render(request, 'index/index.html')
