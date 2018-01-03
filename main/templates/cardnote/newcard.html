@@ -9,6 +9,15 @@
     </style>
 {% endblock %}
 
+{% block function-btn %}
+    <a href="javascript:void(0)" onclick="history.back()">
+        <span class="text-primary">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+            <span>Go Back</span>
+        </span>
+    </a>
+{% endblock function-btn %}
+
 {% block content %}
 <div class="container">
     <div class="inner-container">
