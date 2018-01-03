@@ -29,7 +29,7 @@ def cardnoteList(request):
 @login_required
 def cardnoteNewcard(request):
     """Add new card Page"""
-    messages.info(request, '添加新卡片')  # only for messages testing
+    messages.info(request, 'Adding new card')  # only for messages testing
     return render(request, 'cardnote/newcard.html')
 
 
@@ -44,7 +44,7 @@ def cardnoteAddcard(request):
     card = CardnoteCard(title=title, kcol=kcol, vcol=vcol)
     card.save()
     # render
-    messages.success(request, '新卡片《{card.title}》已添加'.format(card=card))
+    messages.success(request, 'New card 《{card.title}》 added'.format(card=card))
     return redirect('/cardnote/list')
 
 
@@ -57,7 +57,7 @@ def cardnoteDeletecard(request):
     card = CardnoteCard.objects.get_or_404(id=int(cardnotecardid))
     items = card.cardnoteitems
     with transaction.atomic():
-        messages.success(request, "卡片《{card.title}》已删除".format(card=card))
+        messages.success(request, "Card 《{card.title}》 removed".format(card=card))
         card.delete()
         items.delete()
     return redirect('/cardnote/list')
@@ -98,7 +98,7 @@ def cardnoteUpdate(request):
                 tmp_itm.val = new_item.get("val")
                 tmp_itm.save()
     # render
-    messages.success(request, '卡片《{card.title}》已更新'.format(card=card))
+    messages.success(request, 'Card 《{card.title}》 updated'.format(card=card))
     return redirect('/cardnote/detail?id={}'.format(card.id))
 
 

@@ -35,12 +35,12 @@ class BaseModel(models.Model):
 
 class CardnoteCard(BaseModel):
     CATEGORIES = (
-        ('default', '灰色'),
-        ('primary', '蓝色'),
-        ('info', '浅蓝色'),
-        ('success', '绿色'),
-        ('warning', '橙色'),
-        ('danger', '红色'),
+        ('default', 'Default'),
+        ('primary', 'Primary'),
+        ('info', 'Info'),
+        ('success', 'Success'),
+        ('warning', 'Warning'),
+        ('danger', 'Danger'),
     )
     title = models.CharField(max_length=30)
     kcol = models.CharField(max_length=30, blank=True)

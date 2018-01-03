@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}卡片笔记 - 详情{% endblock %}
+{% block title %}Cardnote - Detail{% endblock %}
 
 {% block css %}
     <style>
@@ -38,7 +38,7 @@
                                 <span class="input-group-btn">
                                     <a class="btn btn-danger" href="/cardnote/deletecard?id={{ card.id }}">
                                         <span class="glyphicon glyphicon-remove"></span>
-                                        <span>删除卡片</span>
+                                        <span>Delete!</span>
                                     </a>
                                 </span>
                             </div>
@@ -59,7 +59,7 @@
                             <table class="table table-striped table-bordered table-hover">
                                 <tr>
                                     <th class="text-center">
-                                        列名
+                                        <span class="glyphicon glyphicon-sort-by-order"></span>
                                     </th>
                                     <th>
                                         <input class="form-control input-sm" type="text" name="kcol" value="{{ card.kcol }}" placeholder="{{ card.kcol|default:'选填' }}">
@@ -68,7 +68,7 @@
                                         <input class="form-control input-sm" type="text" name="vcol" value="{{ card.vcol }}" placeholder="{{ card.vcol|default:'选填' }}">
                                     </th>
                                     <th class="text-center">
-                                        操作
+                                        <span class="glyphicon glyphicon-edit"></span>
                                     </th>
                                 </tr>
                                 {% for old_item in card.cardnoteitems %}

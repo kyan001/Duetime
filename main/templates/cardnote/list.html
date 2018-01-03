@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}卡片笔记 - 列表{% endblock %}
+{% block title %}Cardnote - List{% endblock %}
 
 {% block css %}
     <style>
@@ -11,8 +11,10 @@
 
 {% block function-btn %}
     <a href="/cardnote/newcard">
-        <span class="glyphicon glyphicon-plus"></span>
-        <span class="text-success">新增卡片</span>
+        <span class="text-success">
+            <span class="glyphicon glyphicon-plus"></span>
+            <span>New Card</span>
+        </span>
     </a>
 {% endblock function-btn %}
 
