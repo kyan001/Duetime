@@ -46,7 +46,7 @@
                                     》
                                 </span>
                                 <span class="input-group-btn">
-                                    <a class="btn btn-danger" href="/cardnote/deletecard?id={{ card.id }}">
+                                    <a class="btn btn-danger" onclick="confirmDelete(this)" href="javascript:void(0);" data-href="/cardnote/deletecard?id={{ card.id }}">
                                         <span class="glyphicon glyphicon-remove"></span>
                                         <span>Delete!</span>
                                     </a>
@@ -194,6 +194,23 @@
             $("#categories-group .btn").removeClass('active')
             $(ele).addClass("active")
             $("input[name='category']").val(category)
+        }
+        function confirmDelete(ele){
+            // 点击删除时，最后确认的框
+            var result = confirm("Are you sure to delete this card?\n(Delete cannot be undo)")
+            if(result){
+                disableAllBtn()
+                window.location = $(ele).data('href')
+            } else {
+                $.info("Delete canceled.")
+            }
+        }
+        function disableAllBtn(){
+            // submit() 前应禁用所有按钮。
+            $(".btn").attr("disabled", "disabled")
+            $(".btn").click(function(){
+                return false;
+            })
         }
     </script>
 {% endblock %}
