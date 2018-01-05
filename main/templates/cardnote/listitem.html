@@ -35,16 +35,18 @@
                     </td>
                 </tr>
             {% endfor %}
+            <tr class="small">
+                <td colspan="2">
+                    <span class="text-muted">
+                        <span class="glyphicon glyphicon-play"></span>
+                        <span>{{ card.created|date:"Y-m-d H:i" }}</span>
+                    </span>
+                    <span class="text-muted pull-right">
+                        <span class="glyphicon glyphicon-pause"></span>
+                        <span>{{ card.modified|date:"Y-m-d H:i" }}</span>
+                    </span>
+                </td>
+            </tr>
         </table>
-        <div class="panel-footer small">
-            <span class="text-muted">
-                <span class="glyphicon glyphicon-play"></span>
-                <span>{{ card.created|date:"Y-m-d H:i" }}</span>
-            </span>
-            <span class="text-muted pull-right">
-                <span class="glyphicon glyphicon-pause"></span>
-                <span>{{ card.modified|date:"Y-m-d H:i" }}</span>
-            </span>
-        </div>
     </div><!--.panel-->
 </a>
