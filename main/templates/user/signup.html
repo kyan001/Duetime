@@ -27,9 +27,15 @@
                             <label id="id_email_label" for="id_email_input">Email</label>
                             <input id="id_email_input" class="form-control" type="email" name="email" autocomplete="off">
                         </div>
-                        <div class="btn-group btn-group-justified">
-                            <a class="btn btn-success" role="button" onclick="$('#signup-form').submit()">Sign up</a>
-                            <a class="btn btn-default" href="/user/signin">Log in</a>
+                        <div class="btn-group btn-group-flex">
+                            <a class="flex-4 btn btn-default" href="/user/signin">
+                                <span class="text-success glyphicon glyphicon-chevron-left"></span>
+                                <span class="text-success">Log in</span>
+                            </a>
+                            <a class="flex-8 btn btn-primary" role="button" onclick="$('#signup-form').submit()">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                <span>Sign up</span>
+                            </a>
                         </div>
                     </form>
                 </div>
