@@ -51,9 +51,6 @@ class CardnoteCard(BaseModel):
     username = models.CharField(max_length=30, blank=True)
     category = models.CharField(max_length=20, blank=True, choices=CATEGORIES, default='default')
 
-    def __str__(self):
-        return "{self.id}. {self.title} ({self.kcol} / {self.vcol}) @{self.user.username}".format(self=self)
-
     @property
     def cardnoteitems(self):
         return CardnoteItem.objects.filter(cardnotecardid=self.id)
@@ -71,9 +68,6 @@ class CardnoteItem(BaseModel):
     cardnotecardid = models.IntegerField()
     kword = models.CharField(max_length=128, blank=True)
     val = models.CharField(max_length=512, blank=True)
-
-    def __str__(self):
-        return "{self.id}. ({self.cardnotecard.title}) {self.kword}: {self.val}".format(self=self)
 
     @property
     def cardnotecard(self):
