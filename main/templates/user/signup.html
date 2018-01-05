@@ -19,15 +19,15 @@
                     <form id="signup-form" method="post" action="/user/signup">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label id="id_username_label" for="id_username_input">Username</label>
+                            <label for="id_username_input">Username:</label>
                             <input id="id_username_input" class="form-control" type="text" name="username" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <label id="id_password_label" for="id_password_input">Password</label>
+                            <label for="id_password_input">Password:</label>
                             <input id="id_password_input" class="form-control" type="password" name="password" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <label id="id_email_label" for="id_email_input">Email</label>
+                            <label for="id_email_input">Email:</label>
                             <input id="id_email_input" class="form-control" type="email" name="email" autocomplete="off">
                         </div>
                         <div class="btn-group btn-group-flex">
