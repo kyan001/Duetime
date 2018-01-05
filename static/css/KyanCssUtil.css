@@ -1,10 +1,12 @@
 /*!
- * KyanCssUtil.css v1.3.0
+ * KyanCssUtil.css v1.4.0
  */
 
 /* a */
 a.no-decoration,
-a.no-decoration:hover {
+a.no-decoration:hover,
+.no-decoration-container a,
+.no-decoration-container a:hover {
     text-decoration: none !important;
 }
 
