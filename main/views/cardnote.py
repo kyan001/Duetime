@@ -17,7 +17,8 @@ def cardnoteList(request):
         'cards_cols': [],
     }
     COLUMNS = 3  # how many columns in sm/md/lg
-    cards = CardnoteCard.objects.all()
+    user = request.user
+    cards = CardnoteCard.objects.filter(userid=user.id)
     for cl_i in range(COLUMNS):
         cl_col = [card for i, card in enumerate(cards) if i % COLUMNS == cl_i]
         context.get('cards_cols').append(cl_col)
@@ -41,7 +42,9 @@ def cardnoteAddcard(request):
     vcol = request.POST.get('vcol')
     if not title:
         raise Http404('Title cannot be empty')
+    user = request.user
     card = CardnoteCard(title=title, kcol=kcol, vcol=vcol)
+    card.userid = user.id
     card.save()
     # render
     messages.success(request, 'New card 《{card.title}》 added'.format(card=card))
@@ -54,7 +57,10 @@ def cardnoteDeletecard(request):
     cardnotecardid = request.GET.get('id') or 0
     if not cardnotecardid:
         raise Http404("Id should not be empty")
+    user = request.user
     card = CardnoteCard.objects.get_or_404(id=int(cardnotecardid))
+    if card.userid != user.id:
+        raise Http404("You are not the owner of this card. Delete failed")
     items = card.cardnoteitems
     with transaction.atomic():
         messages.success(request, "Card 《{card.title}》 removed".format(card=card))
@@ -79,7 +85,10 @@ def cardnoteUpdate(request):
     if not title:
         raise Http404('Title cannot be empty')
     # get card and items
+    user = request.user
     card = CardnoteCard.objects.get_or_404(id=int(cardnotecardid))
+    if card.userid != user.id:
+        raise Http404("You are not the owner of this card. Update failed")
     new_items = json.loads(new_items_in_json) if new_items_in_json else []
     # update and save and delete
     with transaction.atomic():
@@ -108,7 +117,10 @@ def cardnoteDetail(request):
     cardnotecardid = request.GET.get('id') or 0
     if not cardnotecardid:
         raise Http404("Id should not be empty")
+    user = request.user
     card = CardnoteCard.objects.get_or_404(id=int(cardnotecardid))
+    if card.userid != user.id:
+        raise Http404("You are not the owner of this card.")
     context = {
         'card': card
     }

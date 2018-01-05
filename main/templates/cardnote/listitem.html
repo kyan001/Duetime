@@ -29,7 +29,10 @@
                 </tr>
             {% empty %}
                 <tr>
-                    <td class="text-center text-muted" colspan="2">无可用数据</td>
+                    <td class="text-center text-muted" colspan="2">
+                        <span class="glyphicon glyphicon-warning-sign"></span>
+                        No Data
+                    </td>
                 </tr>
             {% endfor %}
         </table>
