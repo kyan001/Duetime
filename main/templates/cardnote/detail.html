@@ -100,9 +100,9 @@
                                 {% endfor %}
                                 <tr id="new-row-btn-tr" class="">
                                     <td class="invisible"></td>
-                                    <td class="success" colspan="2">
+                                    <td class="active" colspan="2">
                                         <a id="add-btn" class="btn btn-default btn-sm btn-block" onclick="addItemRow()">
-                                            <span class="glyphicon glyphicon-plus"></span>
+                                            <span class="text-success glyphicon glyphicon-plus"></span>
                                         </a>
                                     </td>
                                     <td class="invisible"></td>
@@ -124,6 +124,9 @@
                                 <a id="save-btn" class="flex-10 btn btn-success" role="button" onclick="submitForm()">
                                     <span class="glyphicon glyphicon-ok"></span>
                                     <span>Save</span>
+                                </a>
+                                <a class="flex-2 btn btn-default" href="/cardnote/list">
+                                    <span class="glyphicon glyphicon-remove"></span>
                                 </a>
                             </div>
                         </div>
