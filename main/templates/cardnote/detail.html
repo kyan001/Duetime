@@ -187,7 +187,9 @@
                 $("<td></td>").append(remove_btn),
             ]
             for(i in tds){
+                tds[i].hide()
                 tr.append(tds[i])
+                tds[i].fadeIn()
             }
             tr.insertBefore($("#new-row-btn-tr"))
             kword_input.focus()
