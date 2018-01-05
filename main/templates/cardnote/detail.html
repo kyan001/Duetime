@@ -41,7 +41,7 @@
                                 <span class="input-group-addon">
                                     《
                                 </span>
-                                <input class="form-control" type="text" name="title" value="{{ card.title }}" placeholder="{{ card.title }}">
+                                <input class="form-control enter-to-save" type="text" name="title" value="{{ card.title }}" placeholder="{{ card.title }}">
                                 <span class="input-group-addon">
                                     》
                                 </span>
@@ -66,16 +66,16 @@
                             {% endfor %}
                         </div>
                         <div class="panel-body">
-                            <table class="table table-condensed table-bordered table-hover">
+                            <table id="main-table" class="table table-condensed table-bordered table-hover">
                                 <tr class="active">
                                     <th class="text-center">
                                         <span class="glyphicon glyphicon-sort-by-order"></span>
                                     </th>
                                     <th>
-                                        <input class="form-control" type="text" name="kcol" value="{{ card.kcol }}" placeholder="{{ card.kcol|default:'Optional' }}">
+                                        <input class="form-control enter-to-save" type="text" name="kcol" value="{{ card.kcol }}" placeholder="{{ card.kcol|default:'Optional' }}">
                                     </th>
                                     <th>
-                                        <input class="form-control" type="text" name="vcol" value="{{ card.vcol }}" placeholder="{{ card.vcol|default:'Optional' }}">
+                                        <input class="form-control enter-to-save" type="text" name="vcol" value="{{ card.vcol }}" placeholder="{{ card.vcol|default:'Optional' }}">
                                     </th>
                                     <th class="text-center">
                                         <span class="glyphicon glyphicon-edit"></span>
@@ -84,13 +84,13 @@
                                 {% for old_item in card.cardnoteitems %}
                                     <tr class="item-row">
                                         <td class="text-center">
-                                            #{{ forloop.counter }}
+                                            <span class="text-muted">#{{ forloop.counter }}</span>
                                         </td>
                                         <td>
                                             <input class="form-control input-sm" type="text" data-name="kword" value="{{ old_item.kword }}" placeholder="{{ old_item.kword }}">
                                         </td>
                                         <td>
-                                            <input class="form-control input-sm" type="text" data-name="val" value="{{ old_item.val }}" placeholder="{{ old_item.val }}">
+                                            <input class="form-control input-sm enter-to-add" type="text" data-name="val" value="{{ old_item.val }}" placeholder="{{ old_item.val }}">
                                         </td>
                                         <td>
                                             <a class="btn btn-link btn-sm hover-turning-container" role="button" onclick="removeItemRow(this)">
@@ -99,9 +99,9 @@
                                         </td>
                                     </tr>
                                 {% endfor %}
-                                <tr id="new-row-btn-tr">
+                                <tr id="new-row-btn-tr" class="success">
                                     <td colspan="4">
-                                        <a class="btn btn-default btn-sm pull-right" onclick="addItemRow()">
+                                        <a id="add-btn" class="btn btn-default btn-sm btn-block" onclick="addItemRow()">
                                             <span class="glyphicon glyphicon-plus"></span>
                                         </a>
                                     </td>
@@ -124,7 +124,7 @@
                                     <span class="glyphicon glyphicon-remove"></span>
                                     <span>Cancel</span>
                                 </a>
-                                <a class="btn btn-success" role="button" onclick="submitForm()">
+                                <a id="save-btn" class="btn btn-success" role="button" onclick="submitForm()">
                                     <span class="glyphicon glyphicon-ok"></span>
                                     <span>Save</span>
                                 </a>
@@ -141,6 +141,18 @@
 {% block js %}
     <script>
         $(function(){
+            $("input.enter-to-save").keydown(function(){
+                if(event.keyCode==13){
+                    $("#save-btn").click()
+                    return false
+                }
+            })
+            $("#main-table").on("keydown", "input.enter-to-add", function(){
+                if(event.keyCode==13){
+                    $("#add-btn").click()
+                    return false
+                }
+            })
         })
         function submitForm(){
             var title = $("input[name='title']").val()
@@ -167,11 +179,12 @@
         }
         function addItemRow(){
             var tr = $("<tr class='item-row'></tr>")
+            var new_span = $("<span class='text-muted'>New</span>")
             var kword_input = $("<input class='form-control input-sm' type='text' data-name='kword' placeholder='（Optional）'>")
-            var val_input = $("<input class='form-control input-sm' type='text' data-name='val' placeholder='（Optional）'>")
+            var val_input = $("<input class='form-control input-sm enter-to-add' type='text' data-name='val' placeholder='（Optional）'>")
             var remove_btn = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='removeItemRow(this)'></a>").append("<span class='glyphicon glyphicon-remove text-danger'></span>")
             var tds = [
-                $("<td></td>").addClass("text-center").text("New"),
+                $("<td></td>").addClass("text-center").append(new_span),
                 $("<td></td>").append(kword_input),
                 $("<td></td>").append(val_input),
                 $("<td></td>").append(remove_btn),

@@ -16,16 +16,17 @@
                     <form id="login-form" method="post" action="{% url 'login' %}">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label id="{{ form.username.id_for_label }}" for="{{ form.username.auto_id }}">{{ form.username.label }}</label>
+                            {{ form.username.label_tag }}
                             <input id="{{ form.username.auto_id }}" class="form-control" type="text" name="{{ form.username.name }}" autocomplete="username">
                         </div>
                         <div class="form-group">
-                            <label id="{{ form.password.id_for_label }}" for="{{ form.password.auto_id }}">{{ form.password.label }}</label>
+                            <!-- <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label> -->
+                            {{ form.password.label_tag }}
                             <input id="{{ form.password.auto_id }}" class="form-control" type="password" name="{{ form.password.name }}" autocomplete="password">
                         </div>
                         <input type="hidden" name="next" value="{{ next }}">
                         <div class="btn-group btn-group-justified">
-                            <a class="btn btn-success" role="button" onclick="$('#login-form').submit()">Log in</a>
+                            <a id="login-btn" class="btn btn-success" role="button" onclick="$('#login-form').submit()">Log in</a>
                             <a class="btn btn-primary" href="/user/signup">Sign up</a>
                         </div>
                     </form>
@@ -42,13 +43,25 @@
         {% if form.errors %}
             $.danger('Wrong username or password')
         {% endif %}
-        {% if next %}{# 如果有跳转地址 #}
-            {% if user.is_authenticated %}{# 如果用户已登陆，但仍旧回到此页面 #}
+        {% if next %}{# if have next url #}
+            {% if user.is_authenticated %}{# if user logged in, but still come back this page #}
                 $.danger('You have no permission to visit')
-            {% else %}{# 如果用户未登陆，由目标页面跳转来这个页面 #}
+            {% else %}{# if user is not login, jump from other pages #}
                 $.warning('Log in to visit')
             {% endif %}
         {% endif %}
+        $("input[name='username']").keydown(function(){
+            if(event.keyCode==13){
+                $("#{{ form.password.id_for_label }}").focus()
+                return false
+            }
+        })
+        $("input[name='password']").keydown(function(){
+            if(event.keyCode==13){
+                $("#login-btn").click()
+                return false
+            }
+        })
     })
 </script>
 {% endblock %}
