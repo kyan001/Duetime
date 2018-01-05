@@ -9,7 +9,7 @@
         </div>
         <table class="table table-condensed table-bordered table-hover text-{{ card.category|default:'default' }}">
             {% if card.kcol or card.vcol %}
-                <tr>
+                <tr class="active">
                     <th class="text-center">
                         {{ card.kcol|default:"···" }}
                     </th>
