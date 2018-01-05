@@ -39,12 +39,9 @@
                         <div class="panel-heading">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    《
+                                    <span class="glyphicon glyphicon-list"></span>
                                 </span>
                                 <input class="form-control enter-to-save" type="text" name="title" value="{{ card.title }}" placeholder="{{ card.title }}">
-                                <span class="input-group-addon">
-                                    》
-                                </span>
                                 <span class="input-group-btn">
                                     <a class="btn btn-danger" onclick="confirmDelete(this)" href="javascript:void(0);" data-href="/cardnote/deletecard?id={{ card.id }}">
                                         <span class="glyphicon glyphicon-remove"></span>
