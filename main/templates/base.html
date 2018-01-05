@@ -31,98 +31,91 @@
         <!-- ############ TOP-BAR ############-->
         {% block topbar %}
             <style>
-                .container,
-                .container-fluid {
+                #master-content-div .container,
+                #master-content-div .container-fluid {
                     padding-top: 50px;
                     font-family: "Hiragino Sans GB", "Source Han Sans SC Regular", "微软雅黑", "Microsoft YaHei", "Helvetica Neue", Helvetica, "Segoe UI", Tahoma, Arial, STHeiti, sans-serif;
                 }
-                #navbar-container {
-                    padding: 0 15px;
+                .navbar {
+                    background-color: rgba(255, 255, 255, 0.7);
                 }
-                .navbar-brand {
-                    padding-top: 9px;
-                    padding-bottom: 9px;
+                .navbar:hover {
+                    background-color: white;
                 }
-                .navbar-brand > img {
-                    height: 100%;
+                .navbar .navbar-nav > li > a:hover,
+                .navbar a.navbar-brand:hover {
+                    background-color: rgba(0, 0, 0, 0.1);
                 }
-                .navbar-default .navbar-nav > li > a:hover {
-                    background-color: rgba(0,0,0,0.1);
+                .navbar .navbar-brand-container .navbar-brand {
+                    font-size: 15px;
+                    margin-left: 0;
                 }
             </style>
             <!-- 首航导航 -->
-            <nav class="navbar navbar-default navbar-fixed-top" id="navbar-container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/" title="Home Page">
-                        <img src="/static/img/logo_black.png">
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>{% block nav-btn %}{% endblock nav-btn %}</li>
-                        <li>{% block function-btn %}{% endblock %}</li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        {% if user.is_authenticated %}
-                            <li><a class="ani-fast" href="/user/signout?next=/" title="Sign out">
-                                <span class="glyphicon glyphicon-user"></span>
-                                <span>{{ user.username }}</span>
+            <nav class="ani-fast ani-fast-container navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/" title="Home Page">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </a>
+                        <span class="navbar-brand-container no-decoration-container">
+                            {% block nav-btn %}{% endblock nav-btn %}
+                        </span>
+                    </div>
+                    <div id="navbar-collapse" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>{% block function-btn %}{% endblock %}</li>
+                        </ul><!--navbar-nav-->
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if user.is_authenticated %}
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        <span>{{ user.username }}</span>
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/user/signout?next=/" title="Sign out">
+                                            <span class="text-danger glyphicon glyphicon-log-out"></span>
+                                            <span class="text-danger">Log Out</span>
+                                        </a></li>
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li><a href="/user/signin">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <span>Log In</span>
+                                </a></li>
+                            {% endif %}
+                        </ul><!--navbar-nav-->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/beijingmore">
+                                <span class="glyphicon glyphicon-bold"></span>
+                                <span>Beijing More</span>
                             </a></li>
-                        {% else %}
-                            <li><a class="ani-fast" href="/user/signin">
-                                <span class="glyphicon glyphicon-user"></span>
-                                <span>Log In</span>
+                            <li><a href="/cardnote/list">
+                                <span class="glyphicon glyphicon-list"></span>
+                                <span>Card Note</span>
                             </a></li>
-                        {% endif %}
-                        <li role="separator" class="divider"></li>
-                        <li><a class="ani-fast" href="/beijingmore">
-                            <span class="glyphicon glyphicon-bold"></span>
-                            <span>Beijing More</span>
-                        </a></li>
-                        <li><a class="ani-fast" href="/cardnote/list">
-                            <span class="glyphicon glyphicon-list"></span>
-                            <span>Card Note</span>
-                        </a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span class="glyphicon glyphicon-send"></span>
-                                <span>Contact Us</span>
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="befast" href="http://lei.duetime.cn">
-                                    <span class="glyphicon glyphicon-link"></span>
-                                    <span>Lei Site</span>
-                                </a></li>
-                                <li><a class="befast" href="mailto:lei@duetime.cn">
-                                    <span class="glyphicon glyphicon-envelope"></span>
-                                    <span>Email Lei</span>
-                                </a></li>
-                                <li><a class="befast" href="mailto:kai@duetime.cn">
-                                    <span class="glyphicon glyphicon-envelope"></span>
-                                    <span>Email Kai</span>
-                                </a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                </div>
+                            <li role="separator" class="divider"></li>
+                        </ul><!--navbar-nav-->
+                    </div>
+                </div><!--.container-fluid-->
             </nav>
         {% endblock topbar %}
         <!-- ############ CONTENT ############-->
-        <div style="height:100%">
+        <div id="master-content-div" style="height:100%">
             {% block content %}{% endblock %}
         </div>
         <!-- ############ FOOTER ############-->
         {% block footer %}
-        <div id='footer-div'>
+        <div id="footer-div">
             <blockquote class="footer hidden-xs blockquote-reverse">
                 <div id="behappy" class="benormal">
                     <i>Creative, Motivated, Enthusiastic, Amazing</i>
@@ -156,10 +149,8 @@
             #footer-div .moveable-area {
                 pointer-events: auto;
             }
-            .container {
-                padding-bottom: 40px;
-            }
-            .container-fluid {
+            #master-content-div .container,
+            #master-content-div .container-fluid {
                 padding-bottom: 40px;
             }
         </style>
