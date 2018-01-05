@@ -51,9 +51,9 @@
                             </div>
                         </div>
 
-                        <div id="categories-group" class="btn-group btn-group-justified" role="group">
+                        <div id="categories-group" class="btn-group-xs btn-group btn-group-justified" role="group">
                             {% for category, display in card.CATEGORIES %}
-                                <a class="btn btn-xs btn-{{ category }} ani-fast {% if card.category == category %}active{% endif %}"
+                                <a class="btn btn-{{ category }} ani-fast {% if card.category == category %}active{% endif %}"
                                   title="{{ display }}"
                                   role="button"
                                   data-category="{{ category }}"
