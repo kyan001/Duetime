@@ -3,6 +3,8 @@ import random
 from django.db import models
 from django.forms.models import model_to_dict
 from django.http import Http404
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 
 
 class BaseManager(models.Manager):
@@ -35,13 +37,14 @@ class BaseModel(models.Model):
 
 class CardnoteCard(BaseModel):
     CATEGORIES = (
-        ('default', '灰色'),
-        ('primary', '蓝色'),
-        ('info', '浅蓝色'),
-        ('success', '绿色'),
-        ('warning', '橙色'),
-        ('danger', '红色'),
+        ('default', 'Default'),
+        ('primary', 'Primary'),
+        ('info', 'Info'),
+        ('success', 'Success'),
+        ('warning', 'Warning'),
+        ('danger', 'Danger'),
     )
+    userid = models.IntegerField(blank=False, null=False)
     title = models.CharField(max_length=30)
     kcol = models.CharField(max_length=30, blank=True)
     vcol = models.CharField(max_length=30, blank=True)
@@ -49,7 +52,7 @@ class CardnoteCard(BaseModel):
     category = models.CharField(max_length=20, blank=True, choices=CATEGORIES, default='default')
 
     def __str__(self):
-        return "{self.id}. {self.title} ({self.kcol} / {self.vcol})".format(self=self)
+        return "{self.id}. {self.title} ({self.kcol} / {self.vcol}) @{self.user.username}".format(self=self)
 
     @property
     def cardnoteitems(self):
@@ -58,6 +61,10 @@ class CardnoteCard(BaseModel):
     @property
     def last_updated(self):
         return self.cardnoteitems.order_by('-modified').get().modified
+
+    @property
+    def user(self):
+        return get_object_or_404(User, id=self.userid)
 
 
 class CardnoteItem(BaseModel):

@@ -1,7 +1,8 @@
-{% extends "base.html" %}
-{% block title %}卡片笔记 - 详情{% endblock %}
+{% extends "cardnote/base.html" %}
+{% block title %}Cardnote - Detail{% endblock %}
 
 {% block css %}
+    {{ block.super }}
     <style>
         .inner-container {
             padding-top: 15px;
@@ -14,6 +15,15 @@
         }
     </style>
 {% endblock %}
+
+{% block function-btn %}
+    <a href="/cardnote/list">
+        <span class="text-primary">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+            <span>Card List</span>
+        </span>
+    </a>
+{% endblock function-btn %}
 
 {% block content %}
 <div class="container">
@@ -38,7 +48,7 @@
                                 <span class="input-group-btn">
                                     <a class="btn btn-danger" href="/cardnote/deletecard?id={{ card.id }}">
                                         <span class="glyphicon glyphicon-remove"></span>
-                                        <span>删除卡片</span>
+                                        <span>Delete!</span>
                                     </a>
                                 </span>
                             </div>
@@ -56,19 +66,19 @@
                             {% endfor %}
                         </div>
                         <div class="panel-body">
-                            <table class="table table-striped table-bordered table-hover">
-                                <tr>
+                            <table class="table table-condensed table-bordered table-hover">
+                                <tr class="active">
                                     <th class="text-center">
-                                        列名
+                                        <span class="glyphicon glyphicon-sort-by-order"></span>
                                     </th>
                                     <th>
-                                        <input class="form-control input-sm" type="text" name="kcol" value="{{ card.kcol }}" placeholder="{{ card.kcol|default:'选填' }}">
+                                        <input class="form-control" type="text" name="kcol" value="{{ card.kcol }}" placeholder="{{ card.kcol|default:'Optional' }}">
                                     </th>
                                     <th>
-                                        <input class="form-control input-sm" type="text" name="vcol" value="{{ card.vcol }}" placeholder="{{ card.vcol|default:'选填' }}">
+                                        <input class="form-control" type="text" name="vcol" value="{{ card.vcol }}" placeholder="{{ card.vcol|default:'Optional' }}">
                                     </th>
                                     <th class="text-center">
-                                        操作
+                                        <span class="glyphicon glyphicon-edit"></span>
                                     </th>
                                 </tr>
                                 {% for old_item in card.cardnoteitems %}
@@ -110,8 +120,14 @@
                         </div><!--.panel-body-->
                         <div class="panel-footer">
                             <div class="btn-group btn-group-justified">
-                                <a class="btn btn-default" href="/cardnote/list">取消</a>
-                                <a class="btn btn-success" role="button" onclick="submitForm()">保存</a>
+                                <a class="btn btn-default" href="/cardnote/list">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    <span>Cancel</span>
+                                </a>
+                                <a class="btn btn-success" role="button" onclick="submitForm()">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span>Save</span>
+                                </a>
                             </div>
                         </div>
                     </div><!--.panel-->
@@ -129,7 +145,7 @@
         function submitForm(){
             var title = $("input[name='title']").val()
             if(!title){
-                $.danger("卡片名称不能为空")
+                $.danger("Card Name cannot be empty")
                 return false
             }
             var item_dicts = []
@@ -151,8 +167,8 @@
         }
         function addItemRow(){
             var tr = $("<tr class='item-row'></tr>")
-            var kword_input = $("<input class='form-control input-sm' type='text' data-name='kword' placeholder='（选填）'>")
-            var val_input = $("<input class='form-control input-sm' type='text' data-name='val' placeholder='（选填）'>")
+            var kword_input = $("<input class='form-control input-sm' type='text' data-name='kword' placeholder='（Optional）'>")
+            var val_input = $("<input class='form-control input-sm' type='text' data-name='val' placeholder='（Optional）'>")
             var remove_btn = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='removeItemRow(this)'></a>").append("<span class='glyphicon glyphicon-remove text-danger'></span>")
             var tds = [
                 $("<td></td>").addClass("text-center").text("New"),
