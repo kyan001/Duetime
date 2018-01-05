@@ -57,6 +57,8 @@
                                   title="{{ display }}"
                                   role="button"
                                   data-category="{{ category }}"
+                                  onmousemove="liveUpdateColor(this, 'update')"
+                                  onmouseout="liveUpdateColor(this, 'reset')"
                                   onclick="liveUpdateCategory(this)">
                                     <span class="glyphicon glyphicon-tint invisible"></span>
                                 </a>
@@ -197,12 +199,20 @@
         function removeItemRow(ele){
             $(ele).parents(".item-row").remove()
         }
-        function liveUpdateCategory(ele){
-            var category = $(ele).data("category")
+        function liveUpdateColor(ele, mode){
+            if(mode == "reset"){
+                var category = $("#categories-group .btn.active").data("category")
+            } else {
+                var category = $(ele).data("category")
+            }
             {% for category, display in  card.CATEGORIES %}
                 $("#main-panel").removeClass("panel-{{ category }}")
             {% endfor %}
             $("#main-panel").addClass('panel-' + category)
+            return category
+        }
+        function liveUpdateCategory(ele){
+            var category = liveUpdateColor(ele, "update")
             $("#categories-group .btn").removeClass('active')
             $(ele).addClass("active")
             $("input[name='category']").val(category)
