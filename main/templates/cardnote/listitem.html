@@ -7,7 +7,7 @@
                 {{ card.cardnoteitems.count }}
             </span>
         </div>
-        <table class="table table-striped table-bordered table-hover">
+        <table class="table table-condensed table-bordered table-hover text-{{ card.category|default:'default' }}">
             {% if card.kcol or card.vcol %}
                 <tr>
                     <th class="text-center">
