@@ -17,10 +17,10 @@
 {% endblock %}
 
 {% block nav-btn %}
-    <a class="navbar-brand" href="/cardnote/list">
+    <a class="navbar-brand" href="javascript:void(0)" onclick="history.back()">
         <span class="text-primary">
             <span class="glyphicon glyphicon-arrow-left"></span>
-            <span>Card List</span>
+            <span>Go Back</span>
         </span>
     </a>
 {% endblock nav-btn %}
@@ -66,7 +66,7 @@
                         </div>
                         <div class="panel-body">
                             <table id="main-table" class="table table-condensed table-bordered table-hover">
-                                <tr class="active">
+                                <tr id="col-name-row" class="active">
                                     <th class="text-center">
                                         <span class="glyphicon glyphicon-sort-by-order"></span>
                                     </th>
@@ -83,13 +83,15 @@
                                 {% for old_item in card.cardnoteitems %}
                                     <tr class="item-row">
                                         <td class="text-center">
-                                            <span class="text-muted">#{{ forloop.counter }}</span>
+                                            <a class="btn btn-link btn-sm hover-turning-container" role="button" onclick="moveToTop(this)">
+                                                <span class="glyphicon glyphicon-triangle-top"></span>
+                                            </a>
                                         </td>
                                         <td>
-                                            <input class="form-control input-sm" type="text" data-name="kword" value="{{ old_item.kword }}" placeholder="{{ old_item.kword }}">
+                                            <input class="form-control input-sm enter-to-save" type="text" data-name="kword" value="{{ old_item.kword }}" placeholder="{{ old_item.kword }}">
                                         </td>
                                         <td>
-                                            <input class="form-control input-sm enter-to-add" type="text" data-name="val" value="{{ old_item.val }}" placeholder="{{ old_item.val }}">
+                                            <input class="form-control input-sm enter-to-save tab-to-add" type="text" data-name="val" value="{{ old_item.val }}" placeholder="{{ old_item.val }}">
                                         </td>
                                         <td>
                                             <a class="btn btn-link btn-sm hover-turning-container" role="button" onclick="removeItemRow(this)">
@@ -147,8 +149,14 @@
                     return false
                 }
             })
-            $("#main-table").on("keydown", "input.enter-to-add", function(){
+            $("#main-table").on("keydown", "input.enter-to-save", function(){
                 if(event.keyCode==13){
+                    $("#save-btn").click()
+                    return false
+                }
+            })
+            $("#main-table").on("keydown", "input.tab-to-add:last", function(){
+                if(event.keyCode==9){
                     $("#add-btn").click()
                     return false
                 }
@@ -179,12 +187,12 @@
         }
         function addItemRow(){
             var tr = $("<tr class='item-row'></tr>")
-            var new_span = $("<span class='text-muted'>New</span>")
-            var kword_input = $("<input class='form-control input-sm' type='text' data-name='kword' placeholder='(Optional)'>")
-            var val_input = $("<input class='form-control input-sm enter-to-add' type='text' data-name='val' placeholder='(Optional)'>")
+            var to_top_span = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='moveToTop(this)'></a>").append("<span class='glyphicon glyphicon-triangle-top'></span>")
+            var kword_input = $("<input class='form-control input-sm enter-to-save' type='text' data-name='kword' placeholder='(Optional)'>")
+            var val_input = $("<input class='form-control input-sm enter-to-save tab-to-add' type='text' data-name='val' placeholder='(Optional)'>")
             var remove_btn = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='removeItemRow(this)'></a>").append("<span class='glyphicon glyphicon-remove text-danger'></span>")
             var tds = [
-                $("<td></td>").addClass("text-center").append(new_span),
+                $("<td></td>").addClass("text-center").append(to_top_span),
                 $("<td></td>").append(kword_input),
                 $("<td></td>").append(val_input),
                 $("<td></td>").append(remove_btn),
@@ -196,6 +204,9 @@
             }
             tr.insertBefore($("#new-row-btn-tr"))
             kword_input.focus()
+        }
+        function moveToTop(ele){
+            $(ele).parents(".item-row").insertAfter("#col-name-row")
         }
         function removeItemRow(ele){
             $(ele).parents(".item-row").remove()
