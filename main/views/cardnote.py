@@ -108,7 +108,8 @@ def cardnoteUpdate(request):
                 tmp_itm.save()
     # render
     messages.success(request, 'Card 《{card.title}》 updated'.format(card=card))
-    return redirect('/cardnote/detail?id={}'.format(card.id))
+    # return redirect('/cardnote/detail?id={}'.format(card.id))
+    return redirect('/cardnote/list')
 
 
 @login_required
