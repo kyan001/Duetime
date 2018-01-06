@@ -1,5 +1,5 @@
 {% extends "cardnote/base.html" %}
-{% block title %}Cardnote - Detail{% endblock %}
+{% block title %}Cardnote Detail{% endblock %}
 
 {% block css %}
     {{ block.super }}
@@ -8,7 +8,7 @@
             padding-top: 15px;
         }
         #categories-group .btn {
-            opacity: 0.5;
+            opacity: 0.40;
         }
         #categories-group .btn.active {
             opacity: 1;
@@ -16,14 +16,14 @@
     </style>
 {% endblock %}
 
-{% block function-btn %}
-    <a href="/cardnote/list">
+{% block nav-btn %}
+    <a class="navbar-brand" href="/cardnote/list">
         <span class="text-primary">
             <span class="glyphicon glyphicon-arrow-left"></span>
             <span>Card List</span>
         </span>
     </a>
-{% endblock function-btn %}
+{% endblock nav-btn %}
 
 {% block content %}
 <div class="container">
@@ -36,15 +36,12 @@
                     <input type="hidden" name="newitems" value="">
                     <input type="hidden" name="category" value="{{ card.category|default:'default'}}">
                     <div id="main-panel" class="panel panel-{{ card.category }}">
-                        <div class="panel-heading">
+                        <div class="panel-heading ani-fast">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    《
+                                    <span class="glyphicon glyphicon-list"></span>
                                 </span>
                                 <input class="form-control enter-to-save" type="text" name="title" value="{{ card.title }}" placeholder="{{ card.title }}">
-                                <span class="input-group-addon">
-                                    》
-                                </span>
                                 <span class="input-group-btn">
                                     <a class="btn btn-danger" onclick="confirmDelete(this)" href="javascript:void(0);" data-href="/cardnote/deletecard?id={{ card.id }}">
                                         <span class="glyphicon glyphicon-remove"></span>
@@ -54,14 +51,16 @@
                             </div>
                         </div>
 
-                        <div id="categories-group" class="btn-group btn-group-justified" role="group">
+                        <div id="categories-group" class="btn-group-xs btn-group btn-group-justified" role="group">
                             {% for category, display in card.CATEGORIES %}
-                                <a class="btn btn-xs btn-{{ category }} ani-fast {% if card.category == category %}active{% endif %}"
+                                <a class="btn btn-{{ category }} ani-fast {% if card.category == category %}active{% endif %}"
                                   title="{{ display }}"
                                   role="button"
                                   data-category="{{ category }}"
+                                  onmousemove="liveUpdateColor(this, 'update')"
+                                  onmouseout="liveUpdateColor(this, 'reset')"
                                   onclick="liveUpdateCategory(this)">
-                                    <span class="glyphicon glyphicon-tint"></span>
+                                    <span class="glyphicon glyphicon-tint invisible"></span>
                                 </a>
                             {% endfor %}
                         </div>
@@ -99,12 +98,14 @@
                                         </td>
                                     </tr>
                                 {% endfor %}
-                                <tr id="new-row-btn-tr" class="success">
-                                    <td colspan="4">
+                                <tr id="new-row-btn-tr" class="">
+                                    <td class="invisible"></td>
+                                    <td class="active" colspan="2">
                                         <a id="add-btn" class="btn btn-default btn-sm btn-block" onclick="addItemRow()">
-                                            <span class="glyphicon glyphicon-plus"></span>
+                                            <span class="text-success glyphicon glyphicon-plus"></span>
                                         </a>
                                     </td>
+                                    <td class="invisible"></td>
                                 </tr>
                             </table>
                             <div class="small">
@@ -119,14 +120,13 @@
                             </div>
                         </div><!--.panel-body-->
                         <div class="panel-footer">
-                            <div class="btn-group btn-group-justified">
-                                <a class="btn btn-default" href="/cardnote/list">
-                                    <span class="glyphicon glyphicon-remove"></span>
-                                    <span>Cancel</span>
-                                </a>
-                                <a id="save-btn" class="btn btn-success" role="button" onclick="submitForm()">
+                            <div class="btn-group btn-group-flex">
+                                <a id="save-btn" class="flex-10 btn btn-success" role="button" onclick="submitForm()">
                                     <span class="glyphicon glyphicon-ok"></span>
                                     <span>Save</span>
+                                </a>
+                                <a class="flex-2 btn btn-default" href="/cardnote/list">
+                                    <span class="glyphicon glyphicon-remove"></span>
                                 </a>
                             </div>
                         </div>
@@ -180,8 +180,8 @@
         function addItemRow(){
             var tr = $("<tr class='item-row'></tr>")
             var new_span = $("<span class='text-muted'>New</span>")
-            var kword_input = $("<input class='form-control input-sm' type='text' data-name='kword' placeholder='（Optional）'>")
-            var val_input = $("<input class='form-control input-sm enter-to-add' type='text' data-name='val' placeholder='（Optional）'>")
+            var kword_input = $("<input class='form-control input-sm' type='text' data-name='kword' placeholder='(Optional)'>")
+            var val_input = $("<input class='form-control input-sm enter-to-add' type='text' data-name='val' placeholder='(Optional)'>")
             var remove_btn = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='removeItemRow(this)'></a>").append("<span class='glyphicon glyphicon-remove text-danger'></span>")
             var tds = [
                 $("<td></td>").addClass("text-center").append(new_span),
@@ -190,20 +190,30 @@
                 $("<td></td>").append(remove_btn),
             ]
             for(i in tds){
+                tds[i].hide()
                 tr.append(tds[i])
+                tds[i].fadeIn()
             }
             tr.insertBefore($("#new-row-btn-tr"))
             kword_input.focus()
         }
         function removeItemRow(ele){
-            $(ele).parents('.item-row').remove()
+            $(ele).parents(".item-row").remove()
         }
-        function liveUpdateCategory(ele){
-            var category = $(ele).data("category")
+        function liveUpdateColor(ele, mode){
+            if(mode == "reset"){
+                var category = $("#categories-group .btn.active").data("category")
+            } else {
+                var category = $(ele).data("category")
+            }
             {% for category, display in  card.CATEGORIES %}
                 $("#main-panel").removeClass("panel-{{ category }}")
             {% endfor %}
             $("#main-panel").addClass('panel-' + category)
+            return category
+        }
+        function liveUpdateCategory(ele){
+            var category = liveUpdateColor(ele, "update")
             $("#categories-group .btn").removeClass('active')
             $(ele).addClass("active")
             $("input[name='category']").val(category)

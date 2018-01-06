@@ -18,7 +18,7 @@ def cardnoteList(request):
     }
     COLUMNS = 3  # how many columns in sm/md/lg
     user = request.user
-    cards = CardnoteCard.objects.filter(userid=user.id)
+    cards = CardnoteCard.objects.filter(userid=user.id).order_by("-modified")
     for cl_i in range(COLUMNS):
         cl_col = [card for i, card in enumerate(cards) if i % COLUMNS == cl_i]
         context.get('cards_cols').append(cl_col)
