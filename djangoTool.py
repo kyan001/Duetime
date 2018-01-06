@@ -13,7 +13,7 @@ import consoleiotools as cit
 from KyanToolKit import KyanToolKit as ktk
 
 
-__version__ = '1.8.0'
+__version__ = '1.8.2'
 DATADUMP = 'datadump.json'
 TESTS_DIR = 'main.tests'
 PIP_REQUIREMENTS = 'requirements.pip'
@@ -83,7 +83,7 @@ def show_menu():
     else:
         stop_key = "CTRL + C" if 'win32' in sys.platform else "CMD + C"
         cit.echo('Select one of these:')
-        cit.echo('({} to exit)'.format(stop_key))
+        cit.warn('({} to exit)'.format(stop_key))
         selection = cit.get_choice(menu)
     return COMMANDS.get(selection)
 
@@ -139,8 +139,8 @@ def requirements_install():
 @cit.as_session
 def runserver_dev():
     """Runserver in development environment, only for localhost debug use"""
-    run_by_py3('manage.py runserver')
     webbrowser.open('http://127.0.0.1:8000/')
+    run_by_py3('manage.py runserver')
 
 
 @register('Runserver (LAN ip:8000)')
