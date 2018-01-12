@@ -1,3 +1,5 @@
+{% load filters_math %}
+
 <a class="no-decoration" href="/cardnote/detail?id={{ card.id }}">
     <div class="ani-fast hover-shadow panel panel-{{ card.category|default:'default' }}">
         <div class="panel-heading">
@@ -31,22 +33,26 @@
                 </tr>
             {% endif %}
             {% for item in card.cardnoteitems %}
-                <tr class="{% if forloop.counter > 5 %}collapse-tr{% endif %}">
-                    <td class="text-center">
-                        {{ item.kword }}
-                    </td>
-                    <td class="text-center">
-                        {{ item.val }}
-                    </td>
-                </tr>
-                {% if forloop.counter > 5 and forloop.last %}
-                    <tr>
-                        <td class="text-center text-muted" colspan="2" onclick="$(this).parents('table').find('.collapse-tr').fadeIn(); $(this).parent().hide(); return false">
-                            <span class="glyphicon glyphicon-resize-full"></span>
-                            More
+                {% with collapse_limit=7 %}
+                    <tr class="{% if forloop.counter > collapse_limit and card.cardnoteitems.count > collapse_limit|add:1 %}collapse-tr{% endif %}">
+                        <td class="text-center">
+                            {{ item.kword }}
+                        </td>
+                        <td class="text-center">
+                            {{ item.val }}
                         </td>
                     </tr>
-                {% endif %}
+                    {% if forloop.counter > collapse_limit and card.cardnoteitems.count > collapse_limit|add:1 and forloop.last %}
+                        <tr class="more-btn-tr">
+                            <td class="text-center text-muted" colspan="2" onclick="$(this).parents('table').find('.collapse-tr').fadeIn(); $(this).parent().hide(); return false">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                {% with card.cardnoteitems.count|sub:collapse_limit as plus_num %}
+                                    +{{ plus_num }}
+                                {% endwith %}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endwith %}
             {% empty %}
                 <tr>
                     <td class="text-center text-muted" colspan="2">
