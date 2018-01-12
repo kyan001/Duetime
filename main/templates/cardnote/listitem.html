@@ -9,21 +9,21 @@
                 {{ card.cardnoteitems.count }}
             </span>
         </div>
-        <table class="table table-condensed table-bordered table-hover text-{{ card.category|default:'default' }}">
-            <tr class="small">
+        <table class="table table-condensed table-bordered table-hover text-{{ card.category|default:'default' }} ">
+            <tr class="{{ card.category|default:'default' }} small">
                 <td colspan="2">
-                    <span class="text-muted">
+                    <span>
                         <span class="glyphicon glyphicon-play"></span>
                         <span>{{ card.created|date:"Y-m-d H:i" }}</span>
                     </span>
-                    <span class="text-muted pull-right">
+                    <span class="pull-right">
                         <span class="glyphicon glyphicon-pause"></span>
                         <span>{{ card.modified|date:"Y-m-d H:i" }}</span>
                     </span>
                 </td>
             </tr>
             {% if card.kcol or card.vcol %}
-                <tr class="active">
+                <tr class="{{ card.category|default:'active' }}">
                     <th class="text-center">
                         {{ card.kcol|default:"···" }}
                     </th>
@@ -34,7 +34,7 @@
             {% endif %}
             {% for item in card.cardnoteitems %}
                 {% with collapse_limit=7 %}
-                    <tr class="{% if forloop.counter > collapse_limit and card.cardnoteitems.count > collapse_limit|add:1 %}collapse-tr{% endif %}">
+                    <tr class="{{ card.category|default:'default' }} {% if forloop.counter > collapse_limit and card.cardnoteitems.count > collapse_limit|add:1 %}collapse-tr{% endif %}">
                         <td class="text-center">
                             {{ item.kword }}
                         </td>
@@ -43,7 +43,7 @@
                         </td>
                     </tr>
                     {% if forloop.counter > collapse_limit and card.cardnoteitems.count > collapse_limit|add:1 and forloop.last %}
-                        <tr class="more-btn-tr">
+                        <tr class="more-btn-tr {{ card.category|default:'default' }}">
                             <td class="text-center text-muted" colspan="2" onclick="$(this).parents('table').find('.collapse-tr').fadeIn(); $(this).parent().hide(); return false">
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                                 {% with card.cardnoteitems.count|sub:collapse_limit as plus_num %}
@@ -54,7 +54,7 @@
                     {% endif %}
                 {% endwith %}
             {% empty %}
-                <tr>
+                <tr class="{{ card.category|default:'default' }}">
                     <td class="text-center text-muted" colspan="2">
                         <span class="glyphicon glyphicon-warning-sign"></span>
                         No Data

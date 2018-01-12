@@ -38,7 +38,6 @@ class BaseModel(models.Model):
 class CardnoteCard(BaseModel):
     CATEGORIES = (
         ('default', 'Default'),
-        ('primary', 'Primary'),
         ('info', 'Info'),
         ('success', 'Success'),
         ('warning', 'Warning'),
