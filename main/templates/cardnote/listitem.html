@@ -8,33 +8,6 @@
             </span>
         </div>
         <table class="table table-condensed table-bordered table-hover text-{{ card.category|default:'default' }}">
-            {% if card.kcol or card.vcol %}
-                <tr class="active">
-                    <th class="text-center">
-                        {{ card.kcol|default:"···" }}
-                    </th>
-                    <th class="text-center">
-                        {{ card.vcol|default:"···" }}
-                    </th>
-                </tr>
-            {% endif %}
-            {% for item in card.cardnoteitems %}
-                <tr>
-                    <td class="text-center">
-                        {{ item.kword }}
-                    </td>
-                    <td class="text-center">
-                        {{ item.val }}
-                    </td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td class="text-center text-muted" colspan="2">
-                        <span class="glyphicon glyphicon-warning-sign"></span>
-                        No Data
-                    </td>
-                </tr>
-            {% endfor %}
             <tr class="small">
                 <td colspan="2">
                     <span class="text-muted">
@@ -47,6 +20,41 @@
                     </span>
                 </td>
             </tr>
+            {% if card.kcol or card.vcol %}
+                <tr class="active">
+                    <th class="text-center">
+                        {{ card.kcol|default:"···" }}
+                    </th>
+                    <th class="text-center">
+                        {{ card.vcol|default:"···" }}
+                    </th>
+                </tr>
+            {% endif %}
+            {% for item in card.cardnoteitems %}
+                <tr class="{% if forloop.counter > 5 %}collapse-tr{% endif %}">
+                    <td class="text-center">
+                        {{ item.kword }}
+                    </td>
+                    <td class="text-center">
+                        {{ item.val }}
+                    </td>
+                </tr>
+                {% if forloop.counter > 5 and forloop.last %}
+                    <tr>
+                        <td class="text-center text-muted" colspan="2" onclick="$(this).parents('table').find('.collapse-tr').fadeIn(); $(this).parent().hide(); return false">
+                            <span class="glyphicon glyphicon-resize-full"></span>
+                            More
+                        </td>
+                    </tr>
+                {% endif %}
+            {% empty %}
+                <tr>
+                    <td class="text-center text-muted" colspan="2">
+                        <span class="glyphicon glyphicon-warning-sign"></span>
+                        No Data
+                    </td>
+                </tr>
+            {% endfor %}
         </table>
     </div><!--.panel-->
 </a>
