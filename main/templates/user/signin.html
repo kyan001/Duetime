@@ -1,5 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Log In{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Log In" %}{% endblock %}
+
 
 {% block css %}
 <style>
@@ -16,7 +19,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-user"></span>
-                    <span>User Login</span>
+                    <span>{% trans "User Login" %}</span>
                 </div>
                 <div class="panel-body">
                     <form id="login-form" method="post" action="{% url 'login' %}">
@@ -34,11 +37,11 @@
                         <div class="btn-group btn-group-flex">
                             <a class="flex-4 btn btn-default" href="/user/signup">
                                 <span class="text-primary glyphicon glyphicon-plus"></span>
-                                <span class="text-primary">Sign up</span>
+                                <span class="text-primary">{% trans "Sign Up" %}</span>
                             </a>
                             <a id="login-btn" class="flex-8 btn btn-success" role="button" onclick="$('#login-form').submit()">
                                 <span class="glyphicon glyphicon-ok"></span>
-                                <span>Log in</span>
+                                <span>{% trans "Log In" %}</span>
                             </a>
                         </div>
                     </form>

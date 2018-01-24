@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-{% block title %}Sign Up{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Sign Up" %}{% endblock %}
 
 {% block css %}
 <style>
@@ -16,30 +18,30 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-user"></span>
-                    <span>User Signup</span>
+                    <span>{% trans "User Signup" %}</span>
                 </div>
                 <div class="panel-body">
                     <form id="signup-form" method="post" action="/user/signup">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="id_username_input">Username:</label>
+                            <label for="id_username_input">{% trans "Username" %}{% trans ":" %}</label>
                             <input id="id_username_input" class="form-control" type="text" name="username" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <label for="id_password_input">Password:</label>
+                            <label for="id_password_input">{% trans "Password" %}{% trans ":" %}</label>
                             <input id="id_password_input" class="form-control" type="password" name="password" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <label for="id_email_input">Email:</label>
+                            <label for="id_email_input">{% trans "Email" %}{% trans ":" %}</label>
                             <input id="id_email_input" class="form-control" type="email" name="email" autocomplete="off">
                         </div>
                         <div class="btn-group btn-group-flex">
                             <a class="flex-8 btn btn-primary" role="button" onclick="$('#signup-form').submit()">
                                 <span class="glyphicon glyphicon-ok"></span>
-                                <span>Sign up</span>
+                                <span>{% trans "Sign Up" %}</span>
                             </a>
                             <a class="flex-4 btn btn-default" href="/user/signin">
-                                <span class="text-success">Log in</span>
+                                <span class="text-success">{% trans "Log In" %}</span>
                                 <span class="text-success glyphicon glyphicon-log-in"></span>
                             </a>
                         </div>

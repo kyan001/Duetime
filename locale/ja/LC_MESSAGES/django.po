@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-24 15:39+0000\n"
+"POT-Creation-Date: 2018-01-25 00:03+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,8 @@ msgstr ""
 msgid "Log Out"
 msgstr ""
 
-#: main/templates/base.html:118
+#: main/templates/base.html:118 main/templates/user/signin.html:4
+#: main/templates/user/signin.html:44 main/templates/user/signup.html:44
 msgid "Log In"
 msgstr ""
 
@@ -85,7 +86,8 @@ msgstr ""
 
 #: main/templates/cardnote/newcard.html:37
 #: main/templates/cardnote/newcard.html:41
-#: main/templates/cardnote/newcard.html:45
+#: main/templates/cardnote/newcard.html:45 main/templates/user/signup.html:27
+#: main/templates/user/signup.html:31 main/templates/user/signup.html:35
 msgid ":"
 msgstr ""
 
@@ -104,6 +106,31 @@ msgstr ""
 #: main/templates/index/index.html:4
 msgid "Welcome"
 msgstr ""
+
+#: main/templates/user/signin.html:22
+msgid "User Login"
+msgstr ""
+
+#: main/templates/user/signin.html:40 main/templates/user/signup.html:4
+#: main/templates/user/signup.html:41
+msgid "Sign Up"
+msgstr ""
+
+#: main/templates/user/signup.html:21
+msgid "User Signup"
+msgstr ""
+
+#: main/templates/user/signup.html:27
+msgid "Username"
+msgstr "ユーザー名"
+
+#: main/templates/user/signup.html:31
+msgid "Password"
+msgstr "パスワード"
+
+#: main/templates/user/signup.html:35
+msgid "Email"
+msgstr "メールアドレス"
 
 #: main/views/cardnote.py:34
 msgid "Adding new card"
@@ -140,4 +167,20 @@ msgstr ""
 #: main/views/cardnote.py:111
 #, python-brace-format
 msgid "Card 《{card.title}》 updated"
+msgstr ""
+
+#: main/views/user.py:16
+msgid "Username / Password cannot be empty"
+msgstr ""
+
+#: main/views/user.py:18
+msgid "The username ({}) is taken"
+msgstr ""
+
+#: main/views/user.py:20
+msgid "The email ({}) is taken"
+msgstr ""
+
+#: main/views/user.py:27
+msgid "Sign up success. Please log in"
 msgstr ""
