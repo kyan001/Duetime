@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-24 22:01+0800\n"
+"POT-Creation-Date: 2018-01-24 15:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: zh <kai@duetime.cn>\n"
@@ -17,127 +17,126 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Duetime/main/templates/base.html:111
+#: main/templates/base.html:111
 msgid "Log Out"
 msgstr "登出"
 
-#: Duetime/main/templates/base.html:118
+#: main/templates/base.html:118
 msgid "Log In"
 msgstr "登入"
 
-#: Duetime/main/templates/base.html:130
+#: main/templates/base.html:130
 msgid "Card Note"
 msgstr "卡片笔记"
 
-#: Duetime/main/templates/base.html:147
+#: main/templates/base.html:147
 msgid "Creative, Motivated, Enthusiastic, Amazing"
 msgstr "创想，前行，热忱，感动"
 
-#: Duetime/main/templates/cardnote/detail.html:29
-#: Duetime/main/templates/cardnote/newcard.html:19
+#: main/templates/cardnote/detail.html:29
+#: main/templates/cardnote/newcard.html:19
 msgid "Go Back"
 msgstr "回到上一页"
 
-#: Duetime/main/templates/cardnote/detail.html:54
+#: main/templates/cardnote/detail.html:54
 msgid "Delete"
 msgstr "删除"
 
-#: Duetime/main/templates/cardnote/detail.html:54
+#: main/templates/cardnote/detail.html:54
 msgid "!"
 msgstr "！"
 
-#: Duetime/main/templates/cardnote/detail.html:79
-#: Duetime/main/templates/cardnote/detail.html:197
-#: Duetime/main/templates/cardnote/newcard.html:42
-#: Duetime/main/templates/cardnote/newcard.html:46
+#: main/templates/cardnote/detail.html:79
+#: main/templates/cardnote/detail.html:197
+#: main/templates/cardnote/newcard.html:42
+#: main/templates/cardnote/newcard.html:46
 msgid "(Optional)"
 msgstr "（选填）"
 
-#: Duetime/main/templates/cardnote/detail.html:139
+#: main/templates/cardnote/detail.html:139
 msgid "Save"
 msgstr "保存"
 
-#: Duetime/main/templates/cardnote/detail.html:176
-#: Duetime/main/views/cardnote.py:45 Duetime/main/views/cardnote.py:87
+#: main/templates/cardnote/detail.html:176 main/views/cardnote.py:45
+#: main/views/cardnote.py:87
 msgid "Card Title cannot be empty"
 msgstr "卡片名称不能为空"
 
-#: Duetime/main/templates/cardnote/detail.html:243
+#: main/templates/cardnote/detail.html:243
 msgid "Are you sure to delete this card?"
 msgstr "确定删除此卡片吗？"
 
-#: Duetime/main/templates/cardnote/detail.html:243
+#: main/templates/cardnote/detail.html:243
 msgid "(Delete cannot be undo)"
 msgstr "（删除后无法还原）"
 
-#: Duetime/main/templates/cardnote/list.html:26
-#: Duetime/main/templates/cardnote/newcard.html:31
+#: main/templates/cardnote/list.html:26 main/templates/cardnote/newcard.html:31
 msgid "New Card"
 msgstr "新增卡片"
 
-#: Duetime/main/templates/cardnote/listitem.html:62
+#: main/templates/cardnote/listitem.html:62
 msgid "No Data"
 msgstr "没有数据"
 
-#: Duetime/main/templates/cardnote/newcard.html:37
+#: main/templates/cardnote/newcard.html:37
 msgid "Card Title"
 msgstr "卡片名称"
 
-#: Duetime/main/templates/cardnote/newcard.html:37
-#: Duetime/main/templates/cardnote/newcard.html:41
-#: Duetime/main/templates/cardnote/newcard.html:45
+#: main/templates/cardnote/newcard.html:37
+#: main/templates/cardnote/newcard.html:41
+#: main/templates/cardnote/newcard.html:45
 msgid ":"
 msgstr "："
 
-#: Duetime/main/templates/cardnote/newcard.html:41
+#: main/templates/cardnote/newcard.html:41
 msgid "1st Column"
 msgstr "第一列"
 
-#: Duetime/main/templates/cardnote/newcard.html:45
+#: main/templates/cardnote/newcard.html:45
 msgid "2nd Column"
 msgstr "第二列"
 
-#: Duetime/main/templates/cardnote/newcard.html:54
+#: main/templates/cardnote/newcard.html:54
 msgid "Create"
 msgstr "新增"
 
-#: Duetime/main/templates/index/index.html:4
+#: main/templates/index/index.html:4
 msgid "Welcome"
 msgstr "欢迎"
 
-#: Duetime/main/views/cardnote.py:34
+#: main/views/cardnote.py:34
 msgid "Adding new card"
 msgstr "添加新卡片"
 
-#: Duetime/main/views/cardnote.py:51
+#: main/views/cardnote.py:51
 #, python-brace-format
 msgid "New card 《{card.title}》 added"
 msgstr "新卡片《{card.title}》已添加"
 
-#: Duetime/main/views/cardnote.py:60 Duetime/main/views/cardnote.py:85
-#: Duetime/main/views/cardnote.py:121
+#: main/views/cardnote.py:60 main/views/cardnote.py:85
+#: main/views/cardnote.py:121
 msgid "Card ID cannot be empty"
 msgstr "卡片 ID 不能为空"
 
-#: Duetime/main/views/cardnote.py:64 Duetime/main/views/cardnote.py:92
-#: Duetime/main/views/cardnote.py:125
+#: main/views/cardnote.py:64 main/views/cardnote.py:92
+#: main/views/cardnote.py:125
 msgid "You are not the owner of this card."
 msgstr "你不是卡片的所有者。"
 
-#: Duetime/main/views/cardnote.py:64
+#: main/views/cardnote.py:64
 msgid "Delete failed"
 msgstr "删除失败"
 
-#: Duetime/main/views/cardnote.py:67
+#: main/views/cardnote.py:67
 #, python-brace-format
 msgid "Card 《{card.title}》 removed"
 msgstr "卡片《{card.title}》已删除"
 
-#: Duetime/main/views/cardnote.py:92
+#: main/views/cardnote.py:92
 msgid "Update failed"
 msgstr "更新失败"
 
-#: Duetime/main/views/cardnote.py:111
+#: main/views/cardnote.py:111
 #, python-brace-format
 msgid "Card 《{card.title}》 updated"
 msgstr "卡片《{card.title}》已更新"
