@@ -13,7 +13,7 @@ Including anot9jher URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include  # Django 1.x
 from django.urls import path, re_path  # Django 2.0
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
@@ -24,6 +24,7 @@ import main.views.user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('i18n/', include('django.conf.urls.i18n')),
     # index
     re_path(r'^$', main.views.index.index, name='index'),
     # user

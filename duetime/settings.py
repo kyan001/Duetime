@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'duetime.urls'
@@ -109,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -131,6 +132,14 @@ STATICFILES_DIRS = (
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# i18n
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale/'),)
+LANGUAGES = (
+    ('en', 'English'),
+    ('zh-hans', 'Chinese'),
+    ('ja', 'Japanese'),
+)
 
 # MESSAGE MIDDLEWARE CONFIG
 MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
