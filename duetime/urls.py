@@ -14,6 +14,7 @@ Including anot9jher URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.urls import path, re_path  # Django 2.0
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 import main.views.beijingmore
@@ -22,9 +23,9 @@ import main.views.cardnote
 import main.views.user
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     # index
-    url(r'^$', main.views.index.index, name='index'),
+    re_path(r'^$', main.views.index.index, name='index'),
     # user
     url(r'^user/signup$', main.views.user.userSignup),  # POST
     url(r'^user/signin$', auth_views.LoginView.as_view(template_name='user/signin.html'), name='login'),  # POST
