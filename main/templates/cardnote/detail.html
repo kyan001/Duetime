@@ -1,4 +1,6 @@
 {% extends "cardnote/base.html" %}
+{% load i18n %}
+
 {% block title %}Cardnote Detail{% endblock %}
 
 {% block css %}
@@ -24,7 +26,7 @@
     <a class="navbar-brand" href="javascript:void(0)" onclick="history.back()">
         <span class="text-primary">
             <span class="glyphicon glyphicon-arrow-left"></span>
-            <span>Go Back</span>
+            <span>{% trans "Go Back" %}</span>
         </span>
     </a>
 {% endblock nav-btn %}
@@ -49,7 +51,7 @@
                                 <span class="input-group-btn">
                                     <a class="btn btn-danger" onclick="confirmDelete(this)" href="javascript:void(0);" data-href="/cardnote/deletecard?id={{ card.id }}">
                                         <span class="glyphicon glyphicon-remove"></span>
-                                        <span>Delete!</span>
+                                        <span>{% trans "Delete" %}{% trans "!" %}</span>
                                     </a>
                                 </span>
                             </div>
@@ -74,11 +76,12 @@
                                     <th class="text-center">
                                         <span class="glyphicon glyphicon-sort-by-order"></span>
                                     </th>
+                                    {% trans '(Optional)' as t_optional %}
                                     <th>
-                                        <input class="form-control enter-to-save" type="text" name="kcol" value="{{ card.kcol }}" placeholder="{{ card.kcol|default:'Optional' }}">
+                                        <input class="form-control enter-to-save" type="text" name="kcol" value="{{ card.kcol }}" placeholder="{{ card.kcol|default:t_optional }}">
                                     </th>
                                     <th>
-                                        <input class="form-control enter-to-save" type="text" name="vcol" value="{{ card.vcol }}" placeholder="{{ card.vcol|default:'Optional' }}">
+                                        <input class="form-control enter-to-save" type="text" name="vcol" value="{{ card.vcol }}" placeholder="{{ card.vcol|default:t_optional }}">
                                     </th>
                                     <th class="text-center">
                                         <span class="glyphicon glyphicon-edit"></span>
@@ -133,7 +136,7 @@
                                 </a>
                                 <a id="save-btn" class="flex-10 btn btn-success" role="button" onclick="submitForm()">
                                     <span class="glyphicon glyphicon-ok"></span>
-                                    <span>Save</span>
+                                    <span>{% trans "Save" %}</span>
                                 </a>
                             </div>
                         </div>
@@ -170,7 +173,7 @@
         function submitForm(){
             var title = $("input[name='title']").val()
             if(!title){
-                $.danger("Card Name cannot be empty")
+                $.danger("{% trans 'Card Title cannot be empty' %}")
                 return false
             }
             var item_dicts = []
@@ -191,10 +194,11 @@
             $("#update-form").submit()
         }
         function addItemRow(){
+            {% trans '(Optional)' as t_optional %}
             var tr = $("<tr class='item-row'></tr>")
             var to_top_span = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='moveToTop(this)'></a>").append("<span class='glyphicon glyphicon-triangle-top'></span>").append("<span class='text-muted'>New</span>")
-            var kword_input = $("<input class='form-control input-sm enter-to-save' type='text' data-name='kword' placeholder='(Optional)'>")
-            var val_input = $("<input class='form-control input-sm enter-to-save tab-to-add' type='text' data-name='val' placeholder='(Optional)'>")
+            var kword_input = $("<input class='form-control input-sm enter-to-save' type='text' data-name='kword' placeholder='" + "{{ t_optional }}" + "'>")
+            var val_input = $("<input class='form-control input-sm enter-to-save tab-to-add' type='text' data-name='val' placeholder='" + "{{ t_optional }}" + "'>")
             var remove_btn = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='removeItemRow(this)'></a>").append("<span class='glyphicon glyphicon-remove text-danger'></span>")
             var tds = [
                 $("<td></td>").addClass("text-center").append(to_top_span),
@@ -236,7 +240,7 @@
         }
         function confirmDelete(ele){
             // 点击删除时，最后确认的框
-            var result = confirm("Are you sure to delete this card?\n(Delete cannot be undo)")
+            var result = confirm("{% trans 'Are you sure to delete this card?' %}\n{% trans '(Delete cannot be undo)' %}")
             if(result){
                 disableAllBtn()
                 window.location = $(ele).data('href')

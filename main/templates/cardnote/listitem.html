@@ -1,5 +1,7 @@
 {% load filters_math %}
 
+{% load i18n %}
+
 <a class="no-decoration" href="/cardnote/detail?id={{ card.id }}">
     <div class="ani-fast hover-shadow panel panel-{{ card.category|default:'default' }}">
         <div class="panel-heading">
@@ -57,7 +59,7 @@
                 <tr class="{{ card.category|default:'default' }}">
                     <td class="text-center text-muted" colspan="2">
                         <span class="glyphicon glyphicon-warning-sign"></span>
-                        No Data
+                        {% trans "No Data" %}
                     </td>
                 </tr>
             {% endfor %}

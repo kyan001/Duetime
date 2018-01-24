@@ -1,5 +1,7 @@
 {% extends "cardnote/base.html" %}
 
+{% load i18n %}
+
 {% block title %}Cardnote List{% endblock %}
 
 {% block css %}
@@ -21,7 +23,7 @@
     <a class="navbar-brand" href="/cardnote/newcard">
         <span class="text-success">
             <span class="glyphicon glyphicon-plus"></span>
-            <span>New Card</span>
+            <span>{% trans "New Card" %}</span>
         </span>
     </a>
 {% endblock nav-btn %}

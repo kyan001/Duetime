@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-24 22:03+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: Duetime/main/templates/base.html:111
+msgid "Log Out"
+msgstr ""
+
+#: Duetime/main/templates/base.html:118
+msgid "Log In"
+msgstr ""
+
+#: Duetime/main/templates/base.html:130
+msgid "Card Note"
+msgstr ""
+
+#: Duetime/main/templates/base.html:147
+msgid "Creative, Motivated, Enthusiastic, Amazing"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/detail.html:29
+#: Duetime/main/templates/cardnote/newcard.html:19
+msgid "Go Back"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/detail.html:54
+msgid "Delete"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/detail.html:54
+msgid "!"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/detail.html:79
+#: Duetime/main/templates/cardnote/detail.html:197
+#: Duetime/main/templates/cardnote/newcard.html:42
+#: Duetime/main/templates/cardnote/newcard.html:46
+msgid "(Optional)"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/detail.html:139
+msgid "Save"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/detail.html:176
+#: Duetime/main/views/cardnote.py:45 Duetime/main/views/cardnote.py:87
+msgid "Card Title cannot be empty"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/detail.html:243
+msgid "Are you sure to delete this card?"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/detail.html:243
+msgid "(Delete cannot be undo)"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/list.html:26
+#: Duetime/main/templates/cardnote/newcard.html:31
+msgid "New Card"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/listitem.html:62
+msgid "No Data"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/newcard.html:37
+msgid "Card Title"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/newcard.html:37
+#: Duetime/main/templates/cardnote/newcard.html:41
+#: Duetime/main/templates/cardnote/newcard.html:45
+msgid ":"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/newcard.html:41
+msgid "1st Column"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/newcard.html:45
+msgid "2nd Column"
+msgstr ""
+
+#: Duetime/main/templates/cardnote/newcard.html:54
+msgid "Create"
+msgstr ""
+
+#: Duetime/main/templates/index/index.html:4
+msgid "Welcome"
+msgstr ""
+
+#: Duetime/main/views/cardnote.py:34
+msgid "Adding new card"
+msgstr ""
+
+#: Duetime/main/views/cardnote.py:51
+#, python-brace-format
+msgid "New card 《{card.title}》 added"
+msgstr ""
+
+#: Duetime/main/views/cardnote.py:60 Duetime/main/views/cardnote.py:85
+#: Duetime/main/views/cardnote.py:121
+msgid "Card ID cannot be empty"
+msgstr ""
+
+#: Duetime/main/views/cardnote.py:64 Duetime/main/views/cardnote.py:92
+#: Duetime/main/views/cardnote.py:125
+msgid "You are not the owner of this card."
+msgstr ""
+
+#: Duetime/main/views/cardnote.py:64
+msgid "Delete failed"
+msgstr ""
+
+#: Duetime/main/views/cardnote.py:67
+#, python-brace-format
+msgid "Card 《{card.title}》 removed"
+msgstr ""
+
+#: Duetime/main/views/cardnote.py:92
+msgid "Update failed"
+msgstr ""
+
+#: Duetime/main/views/cardnote.py:111
+#, python-brace-format
+msgid "Card 《{card.title}》 updated"
+msgstr ""

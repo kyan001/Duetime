@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from django.http import Http404
 from django.contrib import messages
 from django.db import transaction
+from django.utils.translation import gettext as _
 
 from main.models import CardnoteCard, CardnoteItem
 
@@ -30,7 +31,7 @@ def cardnoteList(request):
 @login_required
 def cardnoteNewcard(request):
     """Add new card Page"""
-    messages.info(request, 'Adding new card')  # only for messages testing
+    messages.info(request, _('Adding new card'))  # only for messages testing
     return render(request, 'cardnote/newcard.html')
 
 
@@ -41,13 +42,13 @@ def cardnoteAddcard(request):
     kcol = request.POST.get('kcol')
     vcol = request.POST.get('vcol')
     if not title:
-        raise Http404('Title cannot be empty')
+        raise Http404(_('Card Title cannot be empty'))
     user = request.user
     card = CardnoteCard(title=title, kcol=kcol, vcol=vcol)
     card.userid = user.id
     card.save()
     # render
-    messages.success(request, 'New card 《{card.title}》 added'.format(card=card))
+    messages.success(request, _('New card 《{card.title}》 added'.format(card=card)))
     return redirect('/cardnote/list')
 
 
@@ -56,14 +57,14 @@ def cardnoteDeletecard(request):
     """删除一个卡片"""
     cardnotecardid = request.GET.get('id') or 0
     if not cardnotecardid:
-        raise Http404("Id should not be empty")
+        raise Http404(_("Card ID cannot be empty"))
     user = request.user
     card = CardnoteCard.objects.get_or_404(id=int(cardnotecardid))
     if card.userid != user.id:
-        raise Http404("You are not the owner of this card. Delete failed")
+        raise Http404(_("You are not the owner of this card.") + " " + _("Delete failed"))
     items = card.cardnoteitems
     with transaction.atomic():
-        messages.success(request, "Card 《{card.title}》 removed".format(card=card))
+        messages.success(request, _("Card 《{card.title}》 removed".format(card=card)))
         card.delete()
         items.delete()
     return redirect('/cardnote/list')
@@ -81,14 +82,14 @@ def cardnoteUpdate(request):
     new_items_in_json = request.POST.get('newitems')
     # inputs validation
     if not cardnotecardid:
-        raise Http404("Id should not be empty")
+        raise Http404(_("Card ID cannot be empty"))
     if not title:
-        raise Http404('Title cannot be empty')
+        raise Http404(_("Card Title cannot be empty"))
     # get card and items
     user = request.user
     card = CardnoteCard.objects.get_or_404(id=int(cardnotecardid))
     if card.userid != user.id:
-        raise Http404("You are not the owner of this card. Update failed")
+        raise Http404(_("You are not the owner of this card.") + " " + _("Update failed"))
     new_items = json.loads(new_items_in_json) if new_items_in_json else []
     # update and save and delete
     with transaction.atomic():
@@ -107,7 +108,7 @@ def cardnoteUpdate(request):
                 tmp_itm.val = new_item.get("val")
                 tmp_itm.save()
     # render
-    messages.success(request, 'Card 《{card.title}》 updated'.format(card=card))
+    messages.success(request, _('Card 《{card.title}》 updated'.format(card=card)))
     # return redirect('/cardnote/detail?id={}'.format(card.id))
     return redirect('/cardnote/list')
 
@@ -117,11 +118,11 @@ def cardnoteDetail(request):
     """卡片详情页"""
     cardnotecardid = request.GET.get('id') or 0
     if not cardnotecardid:
-        raise Http404("Id should not be empty")
+        raise Http404(_("Card ID cannot be empty"))
     user = request.user
     card = CardnoteCard.objects.get_or_404(id=int(cardnotecardid))
     if card.userid != user.id:
-        raise Http404("You are not the owner of this card.")
+        raise Http404(_("You are not the owner of this card."))
     context = {
         'card': card
     }

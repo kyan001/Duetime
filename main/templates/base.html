@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8">
@@ -71,7 +72,32 @@
                         <ul class="nav navbar-nav navbar-left">
                             <li>{% block function-btn %}{% endblock %}</li>
                         </ul><!--navbar-nav-->
+
+                        <form id="lang-form" action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input id="lang-code" type="hidden" name="language" value="">
+                        </form>
+
                         <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as langs %}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                                    <span class="glyphicon glyphicon-globe"></span>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for lang in langs %}
+                                        <li>
+                                            <a role="button" onclick="$('#lang-code').val('{{ lang.code }}'); $('#lang-form').submit()">
+                                                <span class="glyphicon glyphicon-globe"></span>
+                                                <span class="{% if lang.code == LANGUAGE_CODE %}text-primary{% endif %}">{{ lang.name_local }}</span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
                             {% if user.is_authenticated %}
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -82,14 +108,14 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="/user/signout?next=/" title="Sign out">
                                             <span class="text-danger glyphicon glyphicon-log-out"></span>
-                                            <span class="text-danger">Log Out</span>
+                                            <span class="text-danger">{% trans "Log Out" %}</span>
                                         </a></li>
                                     </ul>
                                 </li>
                             {% else %}
                                 <li><a href="/user/signin">
                                     <span class="glyphicon glyphicon-user"></span>
-                                    <span>Log In</span>
+                                    <span>{% trans "Log In" %}</span>
                                 </a></li>
                             {% endif %}
                         </ul><!--navbar-nav-->
@@ -101,7 +127,7 @@
                             </a></li>
                             <li><a href="/cardnote/list">
                                 <span class="glyphicon glyphicon-list"></span>
-                                <span>Card Note</span>
+                                <span>{% trans "Card Note" %}</span>
                             </a></li>
                             <li role="separator" class="divider"></li>
                         </ul><!--navbar-nav-->
@@ -118,7 +144,7 @@
         <div id="footer-div">
             <blockquote class="footer hidden-xs blockquote-reverse">
                 <div id="behappy" class="benormal">
-                    <i>Creative, Motivated, Enthusiastic, Amazing</i>
+                    <i>{% trans "Creative, Motivated, Enthusiastic, Amazing" %}</i>
                 </div>
                 <footer>
                     <span class="moveable-area">
