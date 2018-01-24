@@ -64,7 +64,7 @@ def cardnoteDeletecard(request):
         raise Http404(_("You are not the owner of this card.") + " " + _("Delete failed"))
     items = card.cardnoteitems
     with transaction.atomic():
-        messages.success(request, _("Card 《{card.title}》 removed".format(card=card)))
+        messages.success(request, _("Card 《{card.title}》 removed").format(card=card))
         card.delete()
         items.delete()
     return redirect('/cardnote/list')
@@ -108,7 +108,7 @@ def cardnoteUpdate(request):
                 tmp_itm.val = new_item.get("val")
                 tmp_itm.save()
     # render
-    messages.success(request, _('Card 《{card.title}》 updated'.format(card=card)))
+    messages.success(request, _('Card 《{card.title}》 updated').format(card=card))
     # return redirect('/cardnote/detail?id={}'.format(card.id))
     return redirect('/cardnote/list')
 
