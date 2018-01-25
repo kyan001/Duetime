@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 10:58+0800\n"
+"POT-Creation-Date: 2018-01-25 11:01+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Chinese <i18n@duetime.cn>\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #: .\main\models.py:21
 #, python-brace-format
-msgid "您查找的 {t} 并不存在。（查询参数 {a} {k}）"
-msgstr "The {t} you are looking for does not exist. (Request arguments {a} {k})"
+msgid "The {t} you are looking for does not exist. (Request arguments {a} {k})"
+msgstr "您查找的 {t} 并不存在。（查询参数 {a} {k}）"
 
 #: .\main\templates\base.html:111
 msgid "Log Out"

@@ -18,7 +18,7 @@ class BaseManager(models.Manager):
         try:
             return self.get(*args, **kwargs)
         except self.model.DoesNotExist:
-            raise Http404(_('您查找的 {t} 并不存在。（查询参数 {a} {k}）').format(t=self.model.__name__, a=args or '', k=kwargs or ''))
+            raise Http404(_('The {t} you are looking for does not exist. (Request arguments {a} {k})').format(t=self.model.__name__, a=args or '', k=kwargs or ''))
 
 
 class BaseModel(models.Model):
