@@ -2,13 +2,13 @@
 # Copyright (C) 2018 duetime.cn
 # This file is distributed under the same license as the duetime.cn package.
 # Kyan <kai@duetime.cn>, 2018.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 00:03+0800\n"
+"POT-Creation-Date: 2018-01-25 10:58+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Japanese <i18n@duetime.cn>\n"
@@ -18,169 +18,176 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: main/templates/base.html:111
+#: .\main\models.py:21
+#, python-brace-format
+msgid "您查找的 {t} 并不存在。（查询参数 {a} {k}）"
+msgstr ""
+
+#: .\main\templates\base.html:111
 msgid "Log Out"
 msgstr ""
 
-#: main/templates/base.html:118 main/templates/user/signin.html:4
-#: main/templates/user/signin.html:44 main/templates/user/signup.html:44
+#: .\main\templates\base.html:118 .\main\templates\user\signin.html:4
+#: .\main\templates\user\signin.html:44 .\main\templates\user\signup.html:44
 msgid "Log In"
 msgstr ""
 
-#: main/templates/base.html:130
+#: .\main\templates\base.html:130
 msgid "Card Note"
 msgstr ""
 
-#: main/templates/base.html:147
+#: .\main\templates\base.html:147
 msgid "Creative, Motivated, Enthusiastic, Amazing"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:29
-#: main/templates/cardnote/newcard.html:19
+#: .\main\templates\cardnote\detail.html:29
+#: .\main\templates\cardnote\newcard.html:19
 msgid "Go Back"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:54
+#: .\main\templates\cardnote\detail.html:54
 msgid "Delete"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:54
+#: .\main\templates\cardnote\detail.html:54
 msgid "!"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:79
-#: main/templates/cardnote/detail.html:197
-#: main/templates/cardnote/newcard.html:42
-#: main/templates/cardnote/newcard.html:46
+#: .\main\templates\cardnote\detail.html:79
+#: .\main\templates\cardnote\detail.html:197
+#: .\main\templates\cardnote\newcard.html:42
+#: .\main\templates\cardnote\newcard.html:46
 msgid "(Optional)"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:139
+#: .\main\templates\cardnote\detail.html:139
 msgid "Save"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:176 main/views/cardnote.py:45
-#: main/views/cardnote.py:87
+#: .\main\templates\cardnote\detail.html:176 .\main\views\cardnote.py:45
+#: .\main\views\cardnote.py:87
 msgid "Card Title cannot be empty"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:243
+#: .\main\templates\cardnote\detail.html:243
 msgid "Are you sure to delete this card?"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:243
+#: .\main\templates\cardnote\detail.html:243
 msgid "(Delete cannot be undo)"
 msgstr ""
 
-#: main/templates/cardnote/list.html:26 main/templates/cardnote/newcard.html:31
+#: .\main\templates\cardnote\list.html:26
+#: .\main\templates\cardnote\newcard.html:31
 msgid "New Card"
 msgstr ""
 
-#: main/templates/cardnote/listitem.html:62
+#: .\main\templates\cardnote\listitem.html:62
 msgid "No Data"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:37
+#: .\main\templates\cardnote\newcard.html:37
 msgid "Card Title"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:37
-#: main/templates/cardnote/newcard.html:41
-#: main/templates/cardnote/newcard.html:45 main/templates/user/signup.html:27
-#: main/templates/user/signup.html:31 main/templates/user/signup.html:35
+#: .\main\templates\cardnote\newcard.html:37
+#: .\main\templates\cardnote\newcard.html:41
+#: .\main\templates\cardnote\newcard.html:45
+#: .\main\templates\user\signup.html:27 .\main\templates\user\signup.html:31
+#: .\main\templates\user\signup.html:35
 msgid ":"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:41
+#: .\main\templates\cardnote\newcard.html:41
 msgid "1st Column"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:45
+#: .\main\templates\cardnote\newcard.html:45
 msgid "2nd Column"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:54
+#: .\main\templates\cardnote\newcard.html:54
 msgid "Create"
 msgstr ""
 
-#: main/templates/index/index.html:4
+#: .\main\templates\index\index.html:4
 msgid "Welcome"
 msgstr ""
 
-#: main/templates/user/signin.html:22
+#: .\main\templates\user\signin.html:22
 msgid "User Login"
 msgstr ""
 
-#: main/templates/user/signin.html:40 main/templates/user/signup.html:4
-#: main/templates/user/signup.html:41
+#: .\main\templates\user\signin.html:40 .\main\templates\user\signup.html:4
+#: .\main\templates\user\signup.html:41
 msgid "Sign Up"
 msgstr ""
 
-#: main/templates/user/signup.html:21
+#: .\main\templates\user\signup.html:21
 msgid "User Signup"
 msgstr ""
 
-#: main/templates/user/signup.html:27
+#: .\main\templates\user\signup.html:27
 msgid "Username"
 msgstr "ユーザー名"
 
-#: main/templates/user/signup.html:31
+#: .\main\templates\user\signup.html:31
 msgid "Password"
 msgstr "パスワード"
 
-#: main/templates/user/signup.html:35
+#: .\main\templates\user\signup.html:35
 msgid "Email"
 msgstr "メールアドレス"
 
-#: main/views/cardnote.py:34
+#: .\main\views\cardnote.py:34
 msgid "Adding new card"
 msgstr ""
 
-#: main/views/cardnote.py:51
+#: .\main\views\cardnote.py:51
 #, python-brace-format
 msgid "New card 《{card.title}》 added"
 msgstr ""
 
-#: main/views/cardnote.py:60 main/views/cardnote.py:85
-#: main/views/cardnote.py:121
+#: .\main\views\cardnote.py:60 .\main\views\cardnote.py:85
+#: .\main\views\cardnote.py:121
 msgid "Card ID cannot be empty"
 msgstr ""
 
-#: main/views/cardnote.py:64 main/views/cardnote.py:92
-#: main/views/cardnote.py:125
+#: .\main\views\cardnote.py:64 .\main\views\cardnote.py:92
+#: .\main\views\cardnote.py:125
 msgid "You are not the owner of this card."
 msgstr ""
 
-#: main/views/cardnote.py:64
+#: .\main\views\cardnote.py:64
 msgid "Delete failed"
 msgstr ""
 
-#: main/views/cardnote.py:67
+#: .\main\views\cardnote.py:67
 #, python-brace-format
 msgid "Card 《{card.title}》 removed"
 msgstr ""
 
-#: main/views/cardnote.py:92
+#: .\main\views\cardnote.py:92
 msgid "Update failed"
 msgstr ""
 
-#: main/views/cardnote.py:111
+#: .\main\views\cardnote.py:111
 #, python-brace-format
 msgid "Card 《{card.title}》 updated"
 msgstr ""
 
-#: main/views/user.py:16
+#: .\main\views\user.py:16
 msgid "Username / Password cannot be empty"
 msgstr ""
 
-#: main/views/user.py:18
+#: .\main\views\user.py:18
 msgid "The username ({}) is taken"
 msgstr ""
 
-#: main/views/user.py:20
+#: .\main\views\user.py:20
 msgid "The email ({}) is taken"
 msgstr ""
 
-#: main/views/user.py:27
+#: .\main\views\user.py:27
 msgid "Sign up success. Please log in"
 msgstr ""

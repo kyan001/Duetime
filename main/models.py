@@ -5,7 +5,7 @@ from django.forms.models import model_to_dict
 from django.http import Http404
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
-
+from django.utils.translation import gettext_lazy as _
 
 class BaseManager(models.Manager):
     def get_or_none(self, *args, **kwargs):
@@ -18,7 +18,7 @@ class BaseManager(models.Manager):
         try:
             return self.get(*args, **kwargs)
         except self.model.DoesNotExist:
-            raise Http404('您查找的 {t} 并不存在。（查询参数 {a} {k}）'.format(t=self.model.__name__, a=args or '', k=kwargs or ''))
+            raise Http404(_('您查找的 {t} 并不存在。（查询参数 {a} {k}）').format(t=self.model.__name__, a=args or '', k=kwargs or ''))
 
 
 class BaseModel(models.Model):
