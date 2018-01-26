@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 11:01+0800\n"
+"POT-Creation-Date: 2018-01-26 14:23+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Chinese <i18n@duetime.cn>\n"
@@ -17,176 +17,203 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\main\models.py:21
+#: main/models.py:21
 #, python-brace-format
 msgid "The {t} you are looking for does not exist. (Request arguments {a} {k})"
 msgstr "您查找的 {t} 并不存在。（查询参数 {a} {k}）"
 
-#: .\main\templates\base.html:111
+#: main/templates/base.html:111
 msgid "Log Out"
 msgstr "登出"
 
-#: .\main\templates\base.html:118 .\main\templates\user\signin.html:4
-#: .\main\templates\user\signin.html:44 .\main\templates\user\signup.html:44
+#: main/templates/base.html:118 main/templates/user/signin.html:4
+#: main/templates/user/signin.html:44 main/templates/user/signup.html:44
 msgid "Log In"
 msgstr "登入"
 
-#: .\main\templates\base.html:130
+#: main/templates/base.html:130
 msgid "Card Note"
 msgstr "卡片笔记"
 
-#: .\main\templates\base.html:147
+#: main/templates/base.html:147
 msgid "Creative, Motivated, Enthusiastic, Amazing"
 msgstr "创想，前行，热忱，感动"
 
-#: .\main\templates\cardnote\detail.html:29
-#: .\main\templates\cardnote\newcard.html:19
+#: main/templates/cardnote/detail.html:4
+msgid "Cardnote Detail"
+msgstr "卡片笔记详情"
+
+#: main/templates/cardnote/detail.html:29
+#: main/templates/cardnote/newcard.html:19
 msgid "Go Back"
 msgstr "回到上一页"
 
-#: .\main\templates\cardnote\detail.html:54
+#: main/templates/cardnote/detail.html:54
+#: main/templates/cardnote/itemrow.html:32
 msgid "Delete"
 msgstr "删除"
 
-#: .\main\templates\cardnote\detail.html:54
+#: main/templates/cardnote/detail.html:54
 msgid "!"
 msgstr "！"
 
-#: .\main\templates\cardnote\detail.html:79
-#: .\main\templates\cardnote\detail.html:197
-#: .\main\templates\cardnote\newcard.html:42
-#: .\main\templates\cardnote\newcard.html:46
+#: main/templates/cardnote/detail.html:79
+msgid "Sequence"
+msgstr "顺序"
+
+#: main/templates/cardnote/detail.html:81
+#: main/templates/cardnote/newcard.html:42
+#: main/templates/cardnote/newcard.html:46
 msgid "(Optional)"
 msgstr "（选填）"
 
-#: .\main\templates\cardnote\detail.html:139
+#: main/templates/cardnote/detail.html:90
+msgid "Operation"
+msgstr "操作"
+
+#: main/templates/cardnote/detail.html:98
+#: main/templates/cardnote/detail.html:191
+msgid "New"
+msgstr "新"
+
+#: main/templates/cardnote/detail.html:106
+msgid "Add Data"
+msgstr "新增数据"
+
+#: main/templates/cardnote/detail.html:131
 msgid "Save"
 msgstr "保存"
 
-#: .\main\templates\cardnote\detail.html:176 .\main\views\cardnote.py:45
-#: .\main\views\cardnote.py:87
+#: main/templates/cardnote/detail.html:168 main/views/cardnote.py:45
+#: main/views/cardnote.py:87
 msgid "Card Title cannot be empty"
 msgstr "卡片名称不能为空"
 
-#: .\main\templates\cardnote\detail.html:243
+#: main/templates/cardnote/detail.html:228
 msgid "Are you sure to delete this card?"
 msgstr "确定删除此卡片吗？"
 
-#: .\main\templates\cardnote\detail.html:243
+#: main/templates/cardnote/detail.html:228
 msgid "(Delete cannot be undo)"
 msgstr "（删除后无法还原）"
 
-#: .\main\templates\cardnote\list.html:26
-#: .\main\templates\cardnote\newcard.html:31
+#: main/templates/cardnote/list.html:5
+msgid "Cardnote List"
+msgstr "卡片笔记列表"
+
+#: main/templates/cardnote/list.html:26 main/templates/cardnote/newcard.html:31
 msgid "New Card"
 msgstr "新增卡片"
 
-#: .\main\templates\cardnote\listitem.html:62
+#: main/templates/cardnote/listitem.html:62
 msgid "No Data"
 msgstr "没有数据"
 
-#: .\main\templates\cardnote\newcard.html:37
+#: main/templates/cardnote/newcard.html:2
+msgid "New Cardnote"
+msgstr "新增卡片笔记"
+
+#: main/templates/cardnote/newcard.html:37
 msgid "Card Title"
 msgstr "卡片名称"
 
-#: .\main\templates\cardnote\newcard.html:37
-#: .\main\templates\cardnote\newcard.html:41
-#: .\main\templates\cardnote\newcard.html:45
-#: .\main\templates\user\signup.html:27 .\main\templates\user\signup.html:31
-#: .\main\templates\user\signup.html:35
+#: main/templates/cardnote/newcard.html:37
+#: main/templates/cardnote/newcard.html:41
+#: main/templates/cardnote/newcard.html:45 main/templates/user/signup.html:27
+#: main/templates/user/signup.html:31 main/templates/user/signup.html:35
 msgid ":"
 msgstr "："
 
-#: .\main\templates\cardnote\newcard.html:41
-msgid "1st Column"
-msgstr "第一列"
+#: main/templates/cardnote/newcard.html:41
+msgid "1st Column Name"
+msgstr "第一列列名"
 
-#: .\main\templates\cardnote\newcard.html:45
-msgid "2nd Column"
-msgstr "第二列"
+#: main/templates/cardnote/newcard.html:45
+msgid "2nd Column Name"
+msgstr "第二列列名"
 
-#: .\main\templates\cardnote\newcard.html:54
+#: main/templates/cardnote/newcard.html:54
 msgid "Create"
 msgstr "新增"
 
-#: .\main\templates\index\index.html:4
+#: main/templates/index/index.html:4
 msgid "Welcome"
 msgstr "欢迎"
 
-#: .\main\templates\user\signin.html:22
+#: main/templates/user/signin.html:22
 msgid "User Login"
 msgstr "用户登入"
 
-#: .\main\templates\user\signin.html:40 .\main\templates\user\signup.html:4
-#: .\main\templates\user\signup.html:41
+#: main/templates/user/signin.html:40 main/templates/user/signup.html:4
+#: main/templates/user/signup.html:41
 msgid "Sign Up"
 msgstr "注册"
 
-#: .\main\templates\user\signup.html:21
+#: main/templates/user/signup.html:21
 msgid "User Signup"
 msgstr "用户注册"
 
-#: .\main\templates\user\signup.html:27
+#: main/templates/user/signup.html:27
 msgid "Username"
 msgstr "用户名"
 
-#: .\main\templates\user\signup.html:31
+#: main/templates/user/signup.html:31
 msgid "Password"
 msgstr "密码"
 
-#: .\main\templates\user\signup.html:35
+#: main/templates/user/signup.html:35
 msgid "Email"
 msgstr "邮箱"
 
-#: .\main\views\cardnote.py:34
+#: main/views/cardnote.py:34
 msgid "Adding new card"
 msgstr "添加新卡片"
 
-#: .\main\views\cardnote.py:51
+#: main/views/cardnote.py:51
 #, python-brace-format
 msgid "New card 《{card.title}》 added"
 msgstr "新卡片《{card.title}》已添加"
 
-#: .\main\views\cardnote.py:60 .\main\views\cardnote.py:85
-#: .\main\views\cardnote.py:121
+#: main/views/cardnote.py:60 main/views/cardnote.py:85
+#: main/views/cardnote.py:121
 msgid "Card ID cannot be empty"
 msgstr "卡片 ID 不能为空"
 
-#: .\main\views\cardnote.py:64 .\main\views\cardnote.py:92
-#: .\main\views\cardnote.py:125
+#: main/views/cardnote.py:64 main/views/cardnote.py:92
+#: main/views/cardnote.py:125
 msgid "You are not the owner of this card."
 msgstr "你不是卡片的所有者。"
 
-#: .\main\views\cardnote.py:64
+#: main/views/cardnote.py:64
 msgid "Delete failed"
 msgstr "删除失败"
 
-#: .\main\views\cardnote.py:67
+#: main/views/cardnote.py:67
 #, python-brace-format
 msgid "Card 《{card.title}》 removed"
 msgstr "卡片《{card.title}》已删除"
 
-#: .\main\views\cardnote.py:92
+#: main/views/cardnote.py:92
 msgid "Update failed"
 msgstr "更新失败"
 
-#: .\main\views\cardnote.py:111
+#: main/views/cardnote.py:111
 #, python-brace-format
 msgid "Card 《{card.title}》 updated"
 msgstr "卡片《{card.title}》已更新"
 
-#: .\main\views\user.py:16
+#: main/views/user.py:16
 msgid "Username / Password cannot be empty"
 msgstr "用户名/密码不能为空"
 
-#: .\main\views\user.py:18
+#: main/views/user.py:18
 msgid "The username ({}) is taken"
 msgstr "用户名（{}）已被占用"
 
-#: .\main\views\user.py:20
+#: main/views/user.py:20
 msgid "The email ({}) is taken"
 msgstr "邮箱（{}）已被占用"
 
-#: .\main\views\user.py:27
+#: main/views/user.py:27
 msgid "Sign up success. Please log in"
 msgstr "注册成功，请登入"
