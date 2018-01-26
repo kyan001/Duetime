@@ -72,51 +72,43 @@
                         </div>
                         <div class="panel-body">
                             <table id="main-table" class="table table-condensed table-bordered table-hover">
-                                <tr id="col-name-row" class="active">
-                                    <th class="text-center">
-                                        <span class="glyphicon glyphicon-sort-by-order"></span>
-                                    </th>
-                                    {% trans '(Optional)' as t_optional %}
-                                    <th>
-                                        <input class="form-control enter-to-save" type="text" name="kcol" value="{{ card.kcol }}" placeholder="{{ card.kcol|default:t_optional }}">
-                                    </th>
-                                    <th>
-                                        <input class="form-control enter-to-save" type="text" name="vcol" value="{{ card.vcol }}" placeholder="{{ card.vcol|default:t_optional }}">
-                                    </th>
-                                    <th class="text-center">
-                                        <span class="glyphicon glyphicon-edit"></span>
-                                    </th>
-                                </tr>
-                                {% for old_item in card.cardnoteitems %}
-                                    <tr class="item-row">
+                                <thead>
+                                    <tr id="col-name-row" class="active">
                                         <td class="text-center">
-                                            <a class="btn btn-link btn-sm hover-turning-container no-decoration" role="button" onclick="moveToTop(this)">
-                                                <span class="glyphicon glyphicon-triangle-top"></span>
-                                                <span class="text-muted">{{forloop.counter}}</span>
-                                            </a>
+                                            <span class="glyphicon glyphicon-sort-by-order"></span>
+                                            {% trans "Sequence" %}
                                         </td>
-                                        <td>
-                                            <input class="form-control input-sm enter-to-save" type="text" data-name="kword" value="{{ old_item.kword }}" placeholder="{{ old_item.kword }}">
-                                        </td>
-                                        <td>
-                                            <input class="form-control input-sm enter-to-save tab-to-add" type="text" data-name="val" value="{{ old_item.val }}" placeholder="{{ old_item.val }}">
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-link btn-sm hover-turning-container" role="button" onclick="removeItemRow(this)">
-                                                <span class="glyphicon glyphicon-remove text-danger"></span>
-                                            </a>
+                                        {% trans '(Optional)' as t_optional %}
+                                        <th>
+                                            <input class="form-control enter-to-save" type="text" name="kcol" value="{{ card.kcol }}" placeholder="{{ card.kcol|default:t_optional }}">
+                                        </th>
+                                        <th>
+                                            <input class="form-control enter-to-save" type="text" name="vcol" value="{{ card.vcol }}" placeholder="{{ card.vcol|default:t_optional }}">
+                                        </th>
+                                        <td class="text-center">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                            {% trans "Operation" %}
                                         </td>
                                     </tr>
-                                {% endfor %}
-                                <tr id="new-row-btn-tr" class="">
-                                    <td class="invisible"></td>
-                                    <td class="active" colspan="2">
-                                        <a id="add-btn" class="btn btn-default btn-sm btn-block" onclick="addItemRow()">
-                                            <span class="text-success glyphicon glyphicon-plus"></span>
-                                        </a>
-                                    </td>
-                                    <td class="invisible"></td>
-                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for old_item in card.cardnoteitems %}
+                                        {% include "cardnote/itemrow.html" with cntr=forloop.counter item=old_item %}
+                                    {% empty %}
+                                        {% trans "New" as t_new %}
+                                        {% include "cardnote/itemrow.html" with cntr=t_new %}
+                                    {% endfor %}
+                                    <tr id="new-row-btn-tr" class="">
+                                        <td class="invisible"></td>
+                                        <td class="active" colspan="2">
+                                            <a id="add-btn" class="btn btn-default btn-sm btn-block" onclick="addItemRow()">
+                                                <span class="text-success glyphicon glyphicon-plus"></span>
+                                                {% trans "Add Data" %}
+                                            </a>
+                                        </td>
+                                        <td class="invisible"></td>
+                                    </tr>
+                                </tbody>
                             </table>
                             <div class="small">
                                 <span class="text-muted">
@@ -194,31 +186,24 @@
             $("#update-form").submit()
         }
         function addItemRow(){
-            {% trans '(Optional)' as t_optional %}
-            var tr = $("<tr class='item-row'></tr>")
-            var to_top_span = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='moveToTop(this)'></a>").append("<span class='glyphicon glyphicon-triangle-top'></span>").append("<span class='text-muted'>New</span>")
-            var kword_input = $("<input class='form-control input-sm enter-to-save' type='text' data-name='kword' placeholder='" + "{{ t_optional }}" + "'>")
-            var val_input = $("<input class='form-control input-sm enter-to-save tab-to-add' type='text' data-name='val' placeholder='" + "{{ t_optional }}" + "'>")
-            var remove_btn = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='removeItemRow(this)'></a>").append("<span class='glyphicon glyphicon-remove text-danger'></span>")
-            var tds = [
-                $("<td></td>").addClass("text-center").append(to_top_span),
-                $("<td></td>").append(kword_input),
-                $("<td></td>").append(val_input),
-                $("<td></td>").append(remove_btn),
-            ]
-            for(i in tds){
-                tds[i].hide()
-                tr.append(tds[i])
-                tds[i].fadeIn()
-            }
-            tr.insertBefore($("#new-row-btn-tr"))
-            kword_input.focus()
+            // clone and modify
+            var new_ele = $(".item-row:first").clone()
+            new_ele.find(".forloop-counter").text("{% trans 'New' %}")
+            new_ele.find("input[data-name='kword']").val("").attr("placeholder", "")
+            new_ele.find("input[data-name='val']").val("").attr("placeholder", "")
+            // insert into html
+            new_ele.hide()
+            new_ele.insertBefore($("#new-row-btn-tr"))
+            new_ele.fadeIn()
+            new_ele.find("input[data-name='kword']").focus()
         }
         function moveToTop(ele){
             $(ele).parents(".item-row").insertAfter("#col-name-row")
         }
         function removeItemRow(ele){
-            $(ele).parents(".item-row").remove()
+            $(ele).parents(".item-row").fadeOut('fast', function(){
+                $(ele).parents(".item-row").remove()
+            })
         }
         function liveUpdateColor(ele, mode){
             if(mode == "reset"){
