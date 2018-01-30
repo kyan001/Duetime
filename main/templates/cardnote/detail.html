@@ -13,6 +13,10 @@
         #categories-group .btn.active {
             opacity: 1;
         }
+        .panel-body {
+            overflow-y: auto;
+            max-height: 69vh;
+        }
     </style>
 {% endblock %}
 
@@ -29,7 +33,7 @@
 <div class="container">
     <div class="inner-container">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                 <form id="update-form" action="/cardnote/update" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{ card.id }}">
@@ -83,8 +87,9 @@
                                 {% for old_item in card.cardnoteitems %}
                                     <tr class="item-row">
                                         <td class="text-center">
-                                            <a class="btn btn-link btn-sm hover-turning-container" role="button" onclick="moveToTop(this)">
+                                            <a class="btn btn-link btn-sm hover-turning-container no-decoration" role="button" onclick="moveToTop(this)">
                                                 <span class="glyphicon glyphicon-triangle-top"></span>
+                                                <span class="text-muted">{{forloop.counter}}</span>
                                             </a>
                                         </td>
                                         <td>
@@ -123,7 +128,7 @@
                         </div><!--.panel-body-->
                         <div class="panel-footer">
                             <div class="btn-group btn-group-flex">
-                                <a class="flex-2 btn btn-default" href="/cardnote/list">
+                                <a class="flex-2 btn btn-default" href="/cardnote/detail?id={{ card.id }}">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </a>
                                 <a id="save-btn" class="flex-10 btn btn-success" role="button" onclick="submitForm()">
@@ -187,7 +192,7 @@
         }
         function addItemRow(){
             var tr = $("<tr class='item-row'></tr>")
-            var to_top_span = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='moveToTop(this)'></a>").append("<span class='glyphicon glyphicon-triangle-top'></span>")
+            var to_top_span = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='moveToTop(this)'></a>").append("<span class='glyphicon glyphicon-triangle-top'></span>").append("<span class='text-muted'>New</span>")
             var kword_input = $("<input class='form-control input-sm enter-to-save' type='text' data-name='kword' placeholder='(Optional)'>")
             var val_input = $("<input class='form-control input-sm enter-to-save tab-to-add' type='text' data-name='val' placeholder='(Optional)'>")
             var remove_btn = $("<a class='btn btn-link btn-sm hover-turning-container' role='button' onclick='removeItemRow(this)'></a>").append("<span class='glyphicon glyphicon-remove text-danger'></span>")
