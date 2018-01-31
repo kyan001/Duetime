@@ -79,25 +79,6 @@
                         </form>
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                {% get_current_language as LANGUAGE_CODE %}
-                                {% get_available_languages as LANGUAGES %}
-                                {% get_language_info_list for LANGUAGES as langs %}
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                                    <span class="glyphicon glyphicon-globe"></span>
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    {% for lang in langs %}
-                                        <li>
-                                            <a role="button" onclick="$('#lang-code').val('{{ lang.code }}'); $('#lang-form').submit()">
-                                                <span class="glyphicon glyphicon-globe"></span>
-                                                <span class="{% if lang.code == LANGUAGE_CODE %}text-primary{% endif %}">{{ lang.name_local }}</span>
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
                             {% if user.is_authenticated %}
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -118,6 +99,25 @@
                                     <span>{% trans "Log In" %}</span>
                                 </a></li>
                             {% endif %}
+                            <li class="dropdown">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as langs %}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                                    <span class="glyphicon glyphicon-globe"></span>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for lang in langs %}
+                                        <li>
+                                            <a role="button" onclick="$('#lang-code').val('{{ lang.code }}'); $('#lang-form').submit()">
+                                                <span class="glyphicon glyphicon-globe"></span>
+                                                <span class="{% if lang.code == LANGUAGE_CODE %}text-primary{% endif %}">{{ lang.name_local }}</span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
                         </ul><!--navbar-nav-->
                         <ul class="nav navbar-nav navbar-right">
                             <li role="separator" class="divider"></li>

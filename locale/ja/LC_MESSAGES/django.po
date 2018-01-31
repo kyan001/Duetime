@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-26 14:23+0800\n"
+"POT-Creation-Date: 2018-01-31 16:01+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Japanese <i18n@duetime.cn>\n"
@@ -23,11 +23,11 @@ msgstr ""
 msgid "The {t} you are looking for does not exist. (Request arguments {a} {k})"
 msgstr ""
 
-#: main/templates/base.html:111
+#: main/templates/base.html:92
 msgid "Log Out"
 msgstr ""
 
-#: main/templates/base.html:118 main/templates/user/signin.html:4
+#: main/templates/base.html:99 main/templates/user/signin.html:4
 #: main/templates/user/signin.html:44 main/templates/user/signup.html:44
 msgid "Log In"
 msgstr ""
@@ -44,97 +44,107 @@ msgstr ""
 msgid "Cardnote Detail"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:29
-#: main/templates/cardnote/newcard.html:19
+#: main/templates/cardnote/detail.html:32
+#: main/templates/cardnote/newcard.html:24
 msgid "Go Back"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:54
+#: main/templates/cardnote/detail.html:70
 #: main/templates/cardnote/itemrow.html:32
 msgid "Delete"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:54
+#: main/templates/cardnote/detail.html:70
 msgid "!"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:79
+#: main/templates/cardnote/detail.html:74
+msgid "Description"
+msgstr ""
+
+#: main/templates/cardnote/detail.html:83
 msgid "Sequence"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:81
-#: main/templates/cardnote/newcard.html:42
-#: main/templates/cardnote/newcard.html:46
+#: main/templates/cardnote/detail.html:85
+#: main/templates/cardnote/newcard.html:51
+#: main/templates/cardnote/newcard.html:56
+#: main/templates/cardnote/newcard.html:60
 msgid "(Optional)"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:90
+#: main/templates/cardnote/detail.html:94
 msgid "Operation"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:98
-#: main/templates/cardnote/detail.html:191
+#: main/templates/cardnote/detail.html:102
+#: main/templates/cardnote/detail.html:196
 msgid "New"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:106
+#: main/templates/cardnote/detail.html:110
 msgid "Add Data"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:131
+#: main/templates/cardnote/detail.html:136
 msgid "Save"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:168 main/views/cardnote.py:45
+#: main/templates/cardnote/detail.html:173 main/views/cardnote.py:45
 #: main/views/cardnote.py:87
 msgid "Card Title cannot be empty"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:228
+#: main/templates/cardnote/detail.html:233
 msgid "Are you sure to delete this card?"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:228
+#: main/templates/cardnote/detail.html:233
 msgid "(Delete cannot be undo)"
 msgstr ""
 
-#: main/templates/cardnote/list.html:5
+#: main/templates/cardnote/list.html:4
 msgid "Cardnote List"
 msgstr ""
 
-#: main/templates/cardnote/list.html:26 main/templates/cardnote/newcard.html:31
+#: main/templates/cardnote/list.html:25 main/templates/cardnote/newcard.html:36
 msgid "New Card"
 msgstr ""
 
-#: main/templates/cardnote/listitem.html:62
+#: main/templates/cardnote/listitem.html:61
 msgid "No Data"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:2
+#: main/templates/cardnote/newcard.html:4
 msgid "New Cardnote"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:37
+#: main/templates/cardnote/newcard.html:43
 msgid "Card Title"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:37
-#: main/templates/cardnote/newcard.html:41
-#: main/templates/cardnote/newcard.html:45 main/templates/user/signup.html:27
+#: main/templates/cardnote/newcard.html:43
+#: main/templates/cardnote/newcard.html:49
+#: main/templates/cardnote/newcard.html:55
+#: main/templates/cardnote/newcard.html:59 main/templates/user/signup.html:27
 #: main/templates/user/signup.html:31 main/templates/user/signup.html:35
 msgid ":"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:41
+#: main/templates/cardnote/newcard.html:49
+msgid "Card Description"
+msgstr ""
+
+#: main/templates/cardnote/newcard.html:55
 msgid "1st Column Name"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:45
+#: main/templates/cardnote/newcard.html:59
 msgid "2nd Column Name"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:54
-msgid "Create"
+#: main/templates/cardnote/newcard.html:67
+msgid "Next"
 msgstr ""
 
 #: main/templates/index/index.html:4

@@ -9,6 +9,7 @@
             <span class="pull-right badge">
                 {{ card.cardnoteitems.count }}
             </span>
+            <div class="small text-muted">{{ card.description }}</div>
         </div>
         <table class="table table-condensed table-bordered table-hover text-{{ card.category|default:'default' }} ">
             <tr class="{{ card.category|default:'default' }} small">

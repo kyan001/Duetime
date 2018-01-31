@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-26 14:23+0800\n"
+"POT-Creation-Date: 2018-01-31 16:01+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Chinese <i18n@duetime.cn>\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "The {t} you are looking for does not exist. (Request arguments {a} {k})"
 msgstr "您查找的 {t} 并不存在。（查询参数 {a} {k}）"
 
-#: main/templates/base.html:111
+#: main/templates/base.html:92
 msgid "Log Out"
 msgstr "登出"
 
-#: main/templates/base.html:118 main/templates/user/signin.html:4
+#: main/templates/base.html:99 main/templates/user/signin.html:4
 #: main/templates/user/signin.html:44 main/templates/user/signup.html:44
 msgid "Log In"
 msgstr "登入"
@@ -43,98 +43,108 @@ msgstr "创想，前行，热忱，感动"
 msgid "Cardnote Detail"
 msgstr "卡片笔记详情"
 
-#: main/templates/cardnote/detail.html:29
-#: main/templates/cardnote/newcard.html:19
+#: main/templates/cardnote/detail.html:32
+#: main/templates/cardnote/newcard.html:24
 msgid "Go Back"
 msgstr "回到上一页"
 
-#: main/templates/cardnote/detail.html:54
+#: main/templates/cardnote/detail.html:70
 #: main/templates/cardnote/itemrow.html:32
 msgid "Delete"
 msgstr "删除"
 
-#: main/templates/cardnote/detail.html:54
+#: main/templates/cardnote/detail.html:70
 msgid "!"
 msgstr "！"
 
-#: main/templates/cardnote/detail.html:79
+#: main/templates/cardnote/detail.html:74
+msgid "Description"
+msgstr "说明"
+
+#: main/templates/cardnote/detail.html:83
 msgid "Sequence"
 msgstr "顺序"
 
-#: main/templates/cardnote/detail.html:81
-#: main/templates/cardnote/newcard.html:42
-#: main/templates/cardnote/newcard.html:46
+#: main/templates/cardnote/detail.html:85
+#: main/templates/cardnote/newcard.html:51
+#: main/templates/cardnote/newcard.html:56
+#: main/templates/cardnote/newcard.html:60
 msgid "(Optional)"
 msgstr "（选填）"
 
-#: main/templates/cardnote/detail.html:90
+#: main/templates/cardnote/detail.html:94
 msgid "Operation"
 msgstr "操作"
 
-#: main/templates/cardnote/detail.html:98
-#: main/templates/cardnote/detail.html:191
+#: main/templates/cardnote/detail.html:102
+#: main/templates/cardnote/detail.html:196
 msgid "New"
 msgstr "新"
 
-#: main/templates/cardnote/detail.html:106
+#: main/templates/cardnote/detail.html:110
 msgid "Add Data"
 msgstr "新增数据"
 
-#: main/templates/cardnote/detail.html:131
+#: main/templates/cardnote/detail.html:136
 msgid "Save"
 msgstr "保存"
 
-#: main/templates/cardnote/detail.html:168 main/views/cardnote.py:45
+#: main/templates/cardnote/detail.html:173 main/views/cardnote.py:45
 #: main/views/cardnote.py:87
 msgid "Card Title cannot be empty"
 msgstr "卡片名称不能为空"
 
-#: main/templates/cardnote/detail.html:228
+#: main/templates/cardnote/detail.html:233
 msgid "Are you sure to delete this card?"
 msgstr "确定删除此卡片吗？"
 
-#: main/templates/cardnote/detail.html:228
+#: main/templates/cardnote/detail.html:233
 msgid "(Delete cannot be undo)"
 msgstr "（删除后无法还原）"
 
-#: main/templates/cardnote/list.html:5
+#: main/templates/cardnote/list.html:4
 msgid "Cardnote List"
 msgstr "卡片笔记列表"
 
-#: main/templates/cardnote/list.html:26 main/templates/cardnote/newcard.html:31
+#: main/templates/cardnote/list.html:25 main/templates/cardnote/newcard.html:36
 msgid "New Card"
 msgstr "新增卡片"
 
-#: main/templates/cardnote/listitem.html:62
+#: main/templates/cardnote/listitem.html:61
 msgid "No Data"
 msgstr "没有数据"
 
-#: main/templates/cardnote/newcard.html:2
+#: main/templates/cardnote/newcard.html:4
 msgid "New Cardnote"
 msgstr "新增卡片笔记"
 
-#: main/templates/cardnote/newcard.html:37
+#: main/templates/cardnote/newcard.html:43
 msgid "Card Title"
 msgstr "卡片名称"
 
-#: main/templates/cardnote/newcard.html:37
-#: main/templates/cardnote/newcard.html:41
-#: main/templates/cardnote/newcard.html:45 main/templates/user/signup.html:27
+#: main/templates/cardnote/newcard.html:43
+#: main/templates/cardnote/newcard.html:49
+#: main/templates/cardnote/newcard.html:55
+#: main/templates/cardnote/newcard.html:59 main/templates/user/signup.html:27
 #: main/templates/user/signup.html:31 main/templates/user/signup.html:35
 msgid ":"
 msgstr "："
 
-#: main/templates/cardnote/newcard.html:41
+#: main/templates/cardnote/newcard.html:49
+msgid "Card Description"
+msgstr "卡片说明"
+
+#: main/templates/cardnote/newcard.html:55
 msgid "1st Column Name"
 msgstr "第一列列名"
 
-#: main/templates/cardnote/newcard.html:45
+#: main/templates/cardnote/newcard.html:59
 msgid "2nd Column Name"
 msgstr "第二列列名"
 
-#: main/templates/cardnote/newcard.html:54
-msgid "Create"
-msgstr "新增"
+#: main/templates/cardnote/newcard.html:67
+msgid "Next"
+msgstr "下一步"
 
 #: main/templates/index/index.html:4
 msgid "Welcome"
@@ -217,3 +227,6 @@ msgstr "邮箱（{}）已被占用"
 #: main/views/user.py:27
 msgid "Sign up success. Please log in"
 msgstr "注册成功，请登入"
+
+#~ msgid "Create"
+#~ msgstr "新增"
