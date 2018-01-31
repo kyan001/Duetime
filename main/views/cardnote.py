@@ -49,7 +49,7 @@ def cardnoteAddcard(request):
     card.save()
     # render
     messages.success(request, _('New card 《{card.title}》 added'.format(card=card)))
-    return redirect('/cardnote/list')
+    return redirect('/cardnote/detail?id={}'.format(card.id))
 
 
 @login_required
