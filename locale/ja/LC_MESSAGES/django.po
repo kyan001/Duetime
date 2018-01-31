@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-31 16:01+0800\n"
+"POT-Creation-Date: 2018-01-31 16:24+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Japanese <i18n@duetime.cn>\n"
@@ -62,44 +62,44 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:83
+#: main/templates/cardnote/detail.html:81
 msgid "Sequence"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:85
+#: main/templates/cardnote/detail.html:83
 #: main/templates/cardnote/newcard.html:51
-#: main/templates/cardnote/newcard.html:56
-#: main/templates/cardnote/newcard.html:60
+#: main/templates/cardnote/newcard.html:55
+#: main/templates/cardnote/newcard.html:59
 msgid "(Optional)"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:94
+#: main/templates/cardnote/detail.html:92
 msgid "Operation"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:102
-#: main/templates/cardnote/detail.html:196
+#: main/templates/cardnote/detail.html:100
+#: main/templates/cardnote/detail.html:197
 msgid "New"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:110
+#: main/templates/cardnote/detail.html:108
 msgid "Add Data"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:136
+#: main/templates/cardnote/detail.html:134
 msgid "Save"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:173 main/views/cardnote.py:45
+#: main/templates/cardnote/detail.html:174 main/views/cardnote.py:45
 #: main/views/cardnote.py:87
 msgid "Card Title cannot be empty"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:233
+#: main/templates/cardnote/detail.html:234
 msgid "Are you sure to delete this card?"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:233
+#: main/templates/cardnote/detail.html:234
 msgid "(Delete cannot be undo)"
 msgstr ""
 
@@ -111,7 +111,7 @@ msgstr ""
 msgid "New Card"
 msgstr ""
 
-#: main/templates/cardnote/listitem.html:61
+#: main/templates/cardnote/listitem.html:62
 msgid "No Data"
 msgstr ""
 
@@ -125,8 +125,8 @@ msgstr ""
 
 #: main/templates/cardnote/newcard.html:43
 #: main/templates/cardnote/newcard.html:49
-#: main/templates/cardnote/newcard.html:55
-#: main/templates/cardnote/newcard.html:59 main/templates/user/signup.html:27
+#: main/templates/cardnote/newcard.html:54
+#: main/templates/cardnote/newcard.html:58 main/templates/user/signup.html:27
 #: main/templates/user/signup.html:31 main/templates/user/signup.html:35
 msgid ":"
 msgstr ""
@@ -135,15 +135,15 @@ msgstr ""
 msgid "Card Description"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:55
+#: main/templates/cardnote/newcard.html:54
 msgid "1st Column Name"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:59
+#: main/templates/cardnote/newcard.html:58
 msgid "2nd Column Name"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:67
+#: main/templates/cardnote/newcard.html:66
 msgid "Next"
 msgstr ""
 
