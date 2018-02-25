@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-31 16:24+0800\n"
+"POT-Creation-Date: 2018-02-25 19:26+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Japanese <i18n@duetime.cn>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: main/models.py:21
+#: main/models.py:22
 #, python-brace-format
 msgid "The {t} you are looking for does not exist. (Request arguments {a} {k})"
 msgstr ""
@@ -32,11 +32,20 @@ msgstr ""
 msgid "Log In"
 msgstr ""
 
-#: main/templates/base.html:130
+#: main/templates/base.html:130 main/templates/shorturl/add.html:4
+#: main/templates/shorturl/add.html:22 main/templates/shorturl/detail.html:4
+#: main/templates/shorturl/detail.html:10
+#: main/templates/shorturl/detail.html:30
+#: main/templates/shorturl/detail.html:57 main/templates/shorturl/list.html:4
+#: main/templates/shorturl/list.html:31 main/templates/shorturl/list.html:40
+msgid "ShortURL"
+msgstr ""
+
+#: main/templates/base.html:134
 msgid "Card Note"
 msgstr ""
 
-#: main/templates/base.html:147
+#: main/templates/base.html:151
 msgid "Creative, Motivated, Enthusiastic, Amazing"
 msgstr ""
 
@@ -51,10 +60,12 @@ msgstr ""
 
 #: main/templates/cardnote/detail.html:70
 #: main/templates/cardnote/itemrow.html:32
+#: main/templates/shorturl/detail.html:83
 msgid "Delete"
 msgstr ""
 
 #: main/templates/cardnote/detail.html:70
+#: main/templates/shorturl/detail.html:83
 msgid "!"
 msgstr ""
 
@@ -73,7 +84,7 @@ msgstr ""
 msgid "(Optional)"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:92
+#: main/templates/cardnote/detail.html:92 main/templates/shorturl/list.html:36
 msgid "Operation"
 msgstr ""
 
@@ -86,7 +97,7 @@ msgstr ""
 msgid "Add Data"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:134
+#: main/templates/cardnote/detail.html:134 main/templates/shorturl/add.html:37
 msgid "Save"
 msgstr ""
 
@@ -151,6 +162,52 @@ msgstr ""
 msgid "Welcome"
 msgstr ""
 
+#: main/templates/shorturl/add.html:4 main/templates/shorturl/add.html:22
+msgid "Add"
+msgstr ""
+
+#: main/templates/shorturl/add.html:28 main/templates/shorturl/detail.html:48
+#: main/templates/shorturl/list.html:38
+msgid "URL"
+msgstr ""
+
+#: main/templates/shorturl/add.html:32 main/templates/shorturl/detail.html:43
+#: main/templates/shorturl/list.html:37
+msgid "Name"
+msgstr ""
+
+#: main/templates/shorturl/detail.html:4 main/templates/shorturl/detail.html:30
+#: main/templates/shorturl/list.html:53
+msgid "Detail"
+msgstr ""
+
+#: main/templates/shorturl/detail.html:10 main/templates/shorturl/list.html:4
+#: main/templates/shorturl/list.html:31
+msgid "List"
+msgstr ""
+
+#: main/templates/shorturl/detail.html:39
+#, fuzzy
+#| msgid "Username"
+msgid "User"
+msgstr "ユーザー名"
+
+#: main/templates/shorturl/detail.html:69 main/templates/shorturl/list.html:43
+msgid "Page View"
+msgstr ""
+
+#: main/templates/shorturl/detail.html:73
+msgid "Modified"
+msgstr ""
+
+#: main/templates/shorturl/detail.html:77 main/templates/shorturl/list.html:44
+msgid "Created"
+msgstr ""
+
+#: main/templates/shorturl/list.html:11
+msgid "New ShortURL"
+msgstr ""
+
 #: main/templates/user/signin.html:22
 msgid "User Login"
 msgstr ""
@@ -158,6 +215,18 @@ msgstr ""
 #: main/templates/user/signin.html:40 main/templates/user/signup.html:4
 #: main/templates/user/signup.html:41
 msgid "Sign Up"
+msgstr ""
+
+#: main/templates/user/signin.html:59
+msgid "Wrong username or password"
+msgstr ""
+
+#: main/templates/user/signin.html:63
+msgid "You have no permission to visit"
+msgstr ""
+
+#: main/templates/user/signin.html:65
+msgid "Log in to visit"
 msgstr ""
 
 #: main/templates/user/signup.html:21
@@ -195,7 +264,7 @@ msgstr ""
 msgid "You are not the owner of this card."
 msgstr ""
 
-#: main/views/cardnote.py:64
+#: main/views/cardnote.py:64 main/views/shorturl.py:77
 msgid "Delete failed"
 msgstr ""
 
@@ -213,6 +282,22 @@ msgstr ""
 msgid "Card 《{card.title}》 updated"
 msgstr ""
 
+#: main/views/shorturl.py:27
+msgid "Argument URL cannot be empty"
+msgstr ""
+
+#: main/views/shorturl.py:42 main/views/shorturl.py:69
+msgid "ShortURL ID cannot be empty"
+msgstr ""
+
+#: main/views/shorturl.py:45 main/views/shorturl.py:72
+msgid "You are not the owner of this shorturl"
+msgstr ""
+
+#: main/views/shorturl.py:75
+msgid "Shorturl removed!"
+msgstr ""
+
 #: main/views/user.py:16
 msgid "Username / Password cannot be empty"
 msgstr ""
@@ -228,3 +313,8 @@ msgstr ""
 #: main/views/user.py:27
 msgid "Sign up success. Please log in"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Username"
+#~ msgid "name"
+#~ msgstr "ユーザー名"

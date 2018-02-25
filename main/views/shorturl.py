@@ -24,7 +24,7 @@ def shorturlAdd(request):
     user = request.user
     if request.POST:
         if not url:
-            messages.error(request, _("Argument url cannot be empty"))
+            messages.error(request, _("Argument URL cannot be empty"))
         else:
             with transaction.atomic():
                 shorturl = ShortUrl(name=name, url=url, userid=user.id)
@@ -74,4 +74,4 @@ def shorturlDelete(request):
         shorturl.delete()
         messages.success(request, _("Shorturl removed!"))
         return redirect("/shorturl/list")
-    raise Http404(_("ShortURL delete failed"))
+    raise Http404(_("Delete failed"))

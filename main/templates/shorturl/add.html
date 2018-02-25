@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Add ShortURL" %}{% endblock %}
+{% block title %}{% trans "Add" %} {% trans "ShortURL" %}{% endblock %}
 
 
 {% block css %}
@@ -19,17 +19,17 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-user"></span>
-                    <span>{% trans "Add ShortURL" %}</span>
+                    <span>{% trans "Add" %} {% trans "ShortURL" %}</span>
                 </div>
                 <div class="panel-body">
                     <form id="shorturl-form" method="post" action="/shorturl/add">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="url-input">{% trans "url" %}</label>
+                            <label for="url-input">{% trans "URL" %}</label>
                             <input id="url-input" class="form-control" type="text" name="url" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <label for="name-input">{% trans "name" %}</label>
+                            <label for="name-input">{% trans "Name" %}</label>
                             <input id="name-input" class="form-control" type="text" name="name" autocomplete="off">
                         </div>
                         <a id="save" class="btn btn-success btn-block" role="button" onclick="$('#shorturl-form').submit()">

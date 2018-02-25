@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-31 16:24+0800\n"
+"POT-Creation-Date: 2018-02-25 19:26+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Chinese <i18n@duetime.cn>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main/models.py:21
+#: main/models.py:22
 #, python-brace-format
 msgid "The {t} you are looking for does not exist. (Request arguments {a} {k})"
 msgstr "您查找的 {t} 并不存在。（查询参数 {a} {k}）"
@@ -31,11 +31,20 @@ msgstr "登出"
 msgid "Log In"
 msgstr "登入"
 
-#: main/templates/base.html:130
+#: main/templates/base.html:130 main/templates/shorturl/add.html:4
+#: main/templates/shorturl/add.html:22 main/templates/shorturl/detail.html:4
+#: main/templates/shorturl/detail.html:10
+#: main/templates/shorturl/detail.html:30
+#: main/templates/shorturl/detail.html:57 main/templates/shorturl/list.html:4
+#: main/templates/shorturl/list.html:31 main/templates/shorturl/list.html:40
+msgid "ShortURL"
+msgstr "短链接"
+
+#: main/templates/base.html:134
 msgid "Card Note"
 msgstr "卡片笔记"
 
-#: main/templates/base.html:147
+#: main/templates/base.html:151
 msgid "Creative, Motivated, Enthusiastic, Amazing"
 msgstr "创想，前行，热忱，感动"
 
@@ -50,10 +59,12 @@ msgstr "回到上一页"
 
 #: main/templates/cardnote/detail.html:70
 #: main/templates/cardnote/itemrow.html:32
+#: main/templates/shorturl/detail.html:83
 msgid "Delete"
 msgstr "删除"
 
 #: main/templates/cardnote/detail.html:70
+#: main/templates/shorturl/detail.html:83
 msgid "!"
 msgstr "！"
 
@@ -72,7 +83,7 @@ msgstr "顺序"
 msgid "(Optional)"
 msgstr "（选填）"
 
-#: main/templates/cardnote/detail.html:92
+#: main/templates/cardnote/detail.html:92 main/templates/shorturl/list.html:36
 msgid "Operation"
 msgstr "操作"
 
@@ -85,7 +96,7 @@ msgstr "新"
 msgid "Add Data"
 msgstr "新增数据"
 
-#: main/templates/cardnote/detail.html:134
+#: main/templates/cardnote/detail.html:134 main/templates/shorturl/add.html:37
 msgid "Save"
 msgstr "保存"
 
@@ -150,6 +161,50 @@ msgstr "下一步"
 msgid "Welcome"
 msgstr "欢迎"
 
+#: main/templates/shorturl/add.html:4 main/templates/shorturl/add.html:22
+msgid "Add"
+msgstr "新增"
+
+#: main/templates/shorturl/add.html:28 main/templates/shorturl/detail.html:48
+#: main/templates/shorturl/list.html:38
+msgid "URL"
+msgstr "链接"
+
+#: main/templates/shorturl/add.html:32 main/templates/shorturl/detail.html:43
+#: main/templates/shorturl/list.html:37
+msgid "Name"
+msgstr "名称"
+
+#: main/templates/shorturl/detail.html:4 main/templates/shorturl/detail.html:30
+#: main/templates/shorturl/list.html:53
+msgid "Detail"
+msgstr "详情"
+
+#: main/templates/shorturl/detail.html:10 main/templates/shorturl/list.html:4
+#: main/templates/shorturl/list.html:31
+msgid "List"
+msgstr "列表"
+
+#: main/templates/shorturl/detail.html:39
+msgid "User"
+msgstr "用户"
+
+#: main/templates/shorturl/detail.html:69 main/templates/shorturl/list.html:43
+msgid "Page View"
+msgstr "访问量"
+
+#: main/templates/shorturl/detail.html:73
+msgid "Modified"
+msgstr "修改时间"
+
+#: main/templates/shorturl/detail.html:77 main/templates/shorturl/list.html:44
+msgid "Created"
+msgstr "创建时间"
+
+#: main/templates/shorturl/list.html:11
+msgid "New ShortURL"
+msgstr "新短链接"
+
 #: main/templates/user/signin.html:22
 msgid "User Login"
 msgstr "用户登入"
@@ -158,6 +213,18 @@ msgstr "用户登入"
 #: main/templates/user/signup.html:41
 msgid "Sign Up"
 msgstr "注册"
+
+#: main/templates/user/signin.html:59
+msgid "Wrong username or password"
+msgstr "错误的用户名或密码"
+
+#: main/templates/user/signin.html:63
+msgid "You have no permission to visit"
+msgstr "您没有访问权限"
+
+#: main/templates/user/signin.html:65
+msgid "Log in to visit"
+msgstr "登入以访问"
 
 #: main/templates/user/signup.html:21
 msgid "User Signup"
@@ -194,7 +261,7 @@ msgstr "卡片 ID 不能为空"
 msgid "You are not the owner of this card."
 msgstr "你不是卡片的所有者。"
 
-#: main/views/cardnote.py:64
+#: main/views/cardnote.py:64 main/views/shorturl.py:77
 msgid "Delete failed"
 msgstr "删除失败"
 
@@ -212,6 +279,22 @@ msgstr "更新失败"
 msgid "Card 《{card.title}》 updated"
 msgstr "卡片《{card.title}》已更新"
 
+#: main/views/shorturl.py:27
+msgid "Argument URL cannot be empty"
+msgstr "参数 URL 不能为空"
+
+#: main/views/shorturl.py:42 main/views/shorturl.py:69
+msgid "ShortURL ID cannot be empty"
+msgstr "短链接 ID 不能为空"
+
+#: main/views/shorturl.py:45 main/views/shorturl.py:72
+msgid "You are not the owner of this shorturl"
+msgstr "你不是短链接的所有者。"
+
+#: main/views/shorturl.py:75
+msgid "Shorturl removed!"
+msgstr "短链接已删除！"
+
 #: main/views/user.py:16
 msgid "Username / Password cannot be empty"
 msgstr "用户名/密码不能为空"
@@ -227,6 +310,3 @@ msgstr "邮箱（{}）已被占用"
 #: main/views/user.py:27
 msgid "Sign up success. Please log in"
 msgstr "注册成功，请登入"
-
-#~ msgid "Create"
-#~ msgstr "新增"
