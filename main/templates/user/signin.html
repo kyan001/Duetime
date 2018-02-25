@@ -56,13 +56,13 @@
 <script type="text/javascript">
     $(function(){
         {% if form.errors %}
-            $.danger('Wrong username or password')
+            $.danger("{% trans 'Wrong username or password' %}")
         {% endif %}
         {% if next %}{# if have next url #}
             {% if user.is_authenticated %}{# if user logged in, but still come back this page #}
-                $.danger('You have no permission to visit')
+                $.danger("{% trans 'You have no permission to visit' %}")
             {% else %}{# if user is not login, jump from other pages #}
-                $.warning('Log in to visit')
+                $.warning("{% trans 'Log in to visit' %}")
             {% endif %}
         {% endif %}
         $("input[name='username']").keydown(function(){

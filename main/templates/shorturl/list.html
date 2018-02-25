@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "ShortURL" %} {% trans "List" %}{% endblock %}
+
+
+{% block nav-btn %}
+    <a class="btn btn-success navbar-btn" href="/shorturl/add">
+        <span class="">
+            <span class="glyphicon glyphicon-plus"></span>
+            <span>{% trans "New ShortURL" %}</span>
+        </span>
+    </a>
+{% endblock nav-btn %}
+
+
+{% block css %}
+    <style>
+        .well-url {
+            margin-bottom: 0;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-list"></span>
+                {% trans "ShortURL" %} {% trans "List" %}
+            </div>
+            <table class="table table-striped table-hover table-bordered"><!--table class-->
+                <thead>
+                    <tr>
+                        <th>{% trans "Operation" %}</th>
+                        <th>{% trans "Name" %}</th>
+                        <th>{% trans "URL" %}</th>
+                        <th>
+                            {% trans "ShortURL" %}
+                            <span class="glyphicon glyphicon-magnet"></span>
+                        </th>
+                        <th>{% trans "Page View" %}</th>
+                        <th>{% trans "Created" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for shorturl in shorturls %}
+                        <tr>
+                            <td>
+                                <a class="btn btn-block btn-info btn-sm" href="/shorturl/detail?id={{ shorturl.id }}">
+                                    <div class="badge pull-left">#{{ shorturl.id }}</div>
+                                    {% trans "Detail" %}
+                                </a>
+                            </td>
+                            <td>
+
+                                {{ shorturl.name }}
+                            </td>
+                            <td><a href="{{ shorturl.url }}">{{ shorturl.url }}</a></td>
+                            <td><a href="{{ shorturl.short }}">{{ shorturl.short }}</a></td>
+                            <td>{{ shorturl.pv }}</td>
+                            <td>{{ shorturl.created }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

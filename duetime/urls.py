@@ -21,6 +21,7 @@ import main.views.beijingmore
 import main.views.index
 import main.views.cardnote
 import main.views.user
+import main.views.shorturl
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,4 +42,10 @@ urlpatterns = [
     url(r'^cardnote/deletecard$', main.views.cardnote.cardnoteDeletecard),  # GET
     url(r'^cardnote/update$', main.views.cardnote.cardnoteUpdate),  # POST
     url(r'^cardnote/detail$', main.views.cardnote.cardnoteDetail),  # GET
+    # shorturl
+    path('su/<int:id>', main.views.shorturl.shorturlJump),  # Django-GET
+    url(r'^shorturl/add$', main.views.shorturl.shorturlAdd),  # POST
+    url(r'^shorturl/detail$', main.views.shorturl.shorturlDetail),  # GET
+    url(r'^shorturl/list$', main.views.shorturl.shorturlList),
+    url(r'^shorturl/delete$', main.views.shorturl.shorturlDelete),  # GET
 ]

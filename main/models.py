@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
 
+
 class BaseManager(models.Manager):
     def get_or_none(self, *args, **kwargs):
         try:
@@ -72,3 +73,27 @@ class CardnoteItem(BaseModel):
     def cardnotecard(self):
         card = CardnoteCard.objects.get(id=self.cardnotecardid)
         return card
+
+
+class ShortUrl(BaseModel):
+    userid = models.IntegerField()
+    name = models.CharField(max_length=200, blank=True, default="")
+    url = models.URLField(null=False, blank=False)
+    pv = models.IntegerField(default=0)
+
+    @property
+    def user(self):
+        return get_object_or_404(User, id=self.userid)
+
+    @property
+    def uri(self):
+        return "/su/{}".format(self.id)
+
+    @property
+    def short(self):
+        host = "http://duetime.cn"
+        return host + self.uri
+
+    def add_pv(self):
+        self.pv = self.pv + 1
+        self.save()

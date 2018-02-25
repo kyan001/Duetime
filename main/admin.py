@@ -17,3 +17,12 @@ class CardnoteItemAdmin(admin.ModelAdmin):
     list_display = ('id', 'cardnotecardid', 'kword', 'val', 'created', 'modified')
     search_fields = ('kword', 'val')
     date_hierarchy = 'modified'
+
+
+# admin.site.register(ShortUrl)
+@admin.register(ShortUrl)
+class ShortUrlAdmin(admin.ModelAdmin):
+    list_display = ('id', 'userid', 'name', 'url', 'created', 'modified')
+    search_fields = ('name', 'url')
+    list_filter = ('userid',)
+    date_hierarchy = 'modified'
