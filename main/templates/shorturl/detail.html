@@ -49,7 +49,7 @@
                             <span class="glyphicon glyphicon-link"></span>
                         </th>
                         <td>
-                            <a href="{{ shorturl.url }}">{{ shorturl.url }}</a>
+                            <a href="{{ shorturl.url }}">{{ shorturl.url|truncatechars: 29 }}</a>
                         </td>
                     </tr>
                     <tr>

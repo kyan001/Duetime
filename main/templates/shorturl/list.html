@@ -57,8 +57,16 @@
 
                                 {{ shorturl.name }}
                             </td>
-                            <td><a href="{{ shorturl.url }}">{{ shorturl.url }}</a></td>
-                            <td><a href="{{ shorturl.short }}">{{ shorturl.short }}</a></td>
+                            <td>
+                                <a href="{{ shorturl.url }}">
+                                    {{ shorturl.url|truncatechars:29 }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ shorturl.short }}">
+                                    {{ shorturl.short }}
+                                </a>
+                            </td>
                             <td>{{ shorturl.pv }}</td>
                             <td>{{ shorturl.created }}</td>
                         </tr>
