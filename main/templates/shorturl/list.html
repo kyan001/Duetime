@@ -53,13 +53,13 @@
                                     {% trans "Detail" %}
                                 </a>
                             </td>
-                            <td>
-
-                                {{ shorturl.name }}
-                            </td>
+                            <td>{{ shorturl.name }}</td>
                             <td>
                                 <a href="{{ shorturl.url }}">
-                                    {{ shorturl.url|truncatechars:29 }}
+                                    <span class="hidden-xs">{{ shorturl.url|truncatechars:29 }}</span>
+                                    <span class="visible-xs-block">
+                                        <span class="glyphicon glyphicon-link"></span>
+                                    </span>
                                 </a>
                             </td>
                             <td>
@@ -68,7 +68,7 @@
                                 </a>
                             </td>
                             <td>{{ shorturl.pv }}</td>
-                            <td>{{ shorturl.created }}</td>
+                            <td class="hidden-xs">{{ shorturl.created }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
