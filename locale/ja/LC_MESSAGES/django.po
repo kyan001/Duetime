@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-25 19:26+0800\n"
+"POT-Creation-Date: 2018-02-25 19:28+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Japanese <i18n@duetime.cn>\n"
@@ -80,7 +80,7 @@ msgstr ""
 #: main/templates/cardnote/detail.html:83
 #: main/templates/cardnote/newcard.html:51
 #: main/templates/cardnote/newcard.html:55
-#: main/templates/cardnote/newcard.html:59
+#: main/templates/cardnote/newcard.html:59 main/templates/shorturl/add.html:28
 msgid "(Optional)"
 msgstr ""
 
@@ -166,14 +166,14 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: main/templates/shorturl/add.html:28 main/templates/shorturl/detail.html:48
-#: main/templates/shorturl/list.html:38
-msgid "URL"
-msgstr ""
-
-#: main/templates/shorturl/add.html:32 main/templates/shorturl/detail.html:43
+#: main/templates/shorturl/add.html:28 main/templates/shorturl/detail.html:43
 #: main/templates/shorturl/list.html:37
 msgid "Name"
+msgstr ""
+
+#: main/templates/shorturl/add.html:32 main/templates/shorturl/detail.html:48
+#: main/templates/shorturl/list.html:38
+msgid "URL"
 msgstr ""
 
 #: main/templates/shorturl/detail.html:4 main/templates/shorturl/detail.html:30
