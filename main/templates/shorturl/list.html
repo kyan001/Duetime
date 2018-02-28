@@ -25,54 +25,45 @@
 
 {% block content %}
     <div class="container">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <span class="glyphicon glyphicon-list"></span>
-                {% trans "ShortURL" %} {% trans "List" %}
-            </div>
-            <table class="table table-striped table-hover table-bordered"><!--table class-->
-                <thead>
-                    <tr>
-                        <th>{% trans "Operation" %}</th>
-                        <th>{% trans "Name" %}</th>
-                        <th>{% trans "URL" %}</th>
-                        <th>
-                            {% trans "ShortURL" %}
-                            <span class="glyphicon glyphicon-magnet"></span>
-                        </th>
-                        <th>{% trans "Page View" %}</th>
-                        <th class="hidden-xs">{% trans "Created" %}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for shorturl in shorturls %}
-                        <tr>
-                            <td>
-                                <a class="btn btn-block btn-info btn-sm" href="/shorturl/detail?id={{ shorturl.id }}">
-                                    <div class="hidden-xs badge pull-left">#{{ shorturl.id }}</div>
-                                    {% trans "Detail" %}
-                                </a>
-                            </td>
-                            <td>{{ shorturl.name }}</td>
-                            <td>
-                                <a href="{{ shorturl.url }}">
-                                    <span class="hidden-xs">{{ shorturl.url|truncatechars:29 }}</span>
-                                    <span class="visible-xs-block">
-                                        <span class="glyphicon glyphicon-link"></span>
-                                    </span>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ shorturl.short }}">
-                                    {{ shorturl.short }}
-                                </a>
-                            </td>
-                            <td>{{ shorturl.pv }}</td>
-                            <td class="hidden-xs">{{ shorturl.created }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
+        <div class="invisible">*******</div>
+        <div class="row">
+            {% for shorturl in shorturls  %}
+                <div class="col-xs-12 col-sm-4">
+                    <a class="no-decoration" href="/shorturl/detail?id={{ shorturl.id }}">
+                        <div class="ani-fast hover-shadow panel panel-primary">
+                            <div class="panel-heading">
+                                <span class="glyphicon glyphicon-magnet"></span>
+                                <span>{{ shorturl.name }}</span>
+                                <span class="badge pull-right">#{{ shorturl.id }}</span>
+                            </div>
+                            <table class="table table-striped table-condensed table-hover table-bordered">
+                                <tr class="small text-muted">
+                                    <td>{% trans "Created" %}</td>
+                                    <td>{{ shorturl.created }}</td>
+                                </tr>
+                                <tr class="small text-muted">
+                                    <td>{% trans "URL" %}</td>
+                                    <td>{{ shorturl.url|truncatechars:29 }}</td>
+                                </tr>
+                                <tr class="text-info">
+                                    <td>
+                                        <span class="glyphicon glyphicon-magnet"></span>
+                                        {% trans "ShortURL" %}
+                                    </td>
+                                    <td>{{ shorturl.short }}</td>
+                                </tr>
+                                <tr class="text-info">
+                                    <td>
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                        {% trans "Page View" %}
+                                    </td>
+                                    <td>{{ shorturl.pv }}</td>
+                                </tr>
+                            </table>
+                        </div><!--.panel-->
+                    </a>
+                </div><!--.col-->
+            {% endfor %}
+        </div><!--.row-->
+    </div><!--.container-->
 {% endblock %}

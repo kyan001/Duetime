@@ -32,49 +32,48 @@
             <div class="panel-body">
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>ID</th>
+                        <td>ID</td>
                         <td>{{ shorturl.id }}</td>
                     </tr>
                     <tr>
-                        <th>{% trans "User" %}</th>
+                        <td>{% trans "User" %}</td>
                         <td>@{{ shorturl.user.username }}</td>
                     </tr>
                     <tr>
-                        <th>{% trans "Name" %}</th>
+                        <td>{% trans "Name" %}</td>
                         <td>{{ shorturl.name }}</td>
                     </tr>
                     <tr>
-                        <th>
-                            {% trans "URL" %}
-                            <span class="glyphicon glyphicon-link"></span>
-                        </th>
+                        <td>{% trans "URL" %}</td>
                         <td>
                             <a href="{{ shorturl.url }}">{{ shorturl.url|truncatechars:29 }}</a>
                         </td>
                     </tr>
                     <tr>
-                        <th>
-                            {% trans "ShortURL" %}
-                            <span class="glyphicon glyphicon-magnet"></span>
-                        </th>
                         <td>
-                            <div class="well well-sm well-url">
-                                <a href="{{ shorturl.short }}">
-                                    {{ shorturl.short }}
-                                </a>
-                            </div>
+                            <span class="glyphicon glyphicon-magnet"></span>
+                            {% trans "ShortURL" %}
+                        </td>
+                        <td>
+                            <a class="btn btn-link" href="{{ shorturl.short }}" target="_blank">
+                                <span class="glyphicon glyphicon-link"></span>
+                                {{ shorturl.short }}
+                            </a>
                         </td>
                     </tr>
                     <tr>
-                        <th>{% trans "Page View" %}</th>
+                        <td>
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            {% trans "Page View" %}
+                        </td>
                         <td>{{ shorturl.pv }}</td>
                     </tr>
                     <tr>
-                        <th>{% trans "Modified" %}</th>
+                        <td>{% trans "Modified" %}</td>
                         <td>{{ shorturl.modified }}</td>
                     </tr>
                     <tr>
-                        <th>{% trans "Created" %}</th>
+                        <td>{% trans "Created" %}</td>
                         <td>{{ shorturl.created }}</td>
                     </tr>
                 </table>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-25 19:28+0800\n"
+"POT-Creation-Date: 2018-03-01 00:31+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Japanese <i18n@duetime.cn>\n"
@@ -36,8 +36,8 @@ msgstr ""
 #: main/templates/shorturl/add.html:22 main/templates/shorturl/detail.html:4
 #: main/templates/shorturl/detail.html:10
 #: main/templates/shorturl/detail.html:30
-#: main/templates/shorturl/detail.html:57 main/templates/shorturl/list.html:4
-#: main/templates/shorturl/list.html:31 main/templates/shorturl/list.html:40
+#: main/templates/shorturl/detail.html:55 main/templates/shorturl/list.html:4
+#: main/templates/shorturl/list.html:51
 msgid "ShortURL"
 msgstr ""
 
@@ -60,12 +60,12 @@ msgstr ""
 
 #: main/templates/cardnote/detail.html:70
 #: main/templates/cardnote/itemrow.html:32
-#: main/templates/shorturl/detail.html:83
+#: main/templates/shorturl/detail.html:82
 msgid "Delete"
 msgstr ""
 
 #: main/templates/cardnote/detail.html:70
-#: main/templates/shorturl/detail.html:83
+#: main/templates/shorturl/detail.html:82
 msgid "!"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgstr ""
 msgid "(Optional)"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:92 main/templates/shorturl/list.html:36
+#: main/templates/cardnote/detail.html:92
 msgid "Operation"
 msgstr ""
 
@@ -167,22 +167,19 @@ msgid "Add"
 msgstr ""
 
 #: main/templates/shorturl/add.html:28 main/templates/shorturl/detail.html:43
-#: main/templates/shorturl/list.html:37
 msgid "Name"
 msgstr ""
 
-#: main/templates/shorturl/add.html:32 main/templates/shorturl/detail.html:48
-#: main/templates/shorturl/list.html:38
+#: main/templates/shorturl/add.html:32 main/templates/shorturl/detail.html:47
+#: main/templates/shorturl/list.html:45
 msgid "URL"
 msgstr ""
 
 #: main/templates/shorturl/detail.html:4 main/templates/shorturl/detail.html:30
-#: main/templates/shorturl/list.html:53
 msgid "Detail"
 msgstr ""
 
 #: main/templates/shorturl/detail.html:10 main/templates/shorturl/list.html:4
-#: main/templates/shorturl/list.html:31
 msgid "List"
 msgstr ""
 
@@ -192,15 +189,15 @@ msgstr ""
 msgid "User"
 msgstr "ユーザー名"
 
-#: main/templates/shorturl/detail.html:69 main/templates/shorturl/list.html:43
+#: main/templates/shorturl/detail.html:67 main/templates/shorturl/list.html:58
 msgid "Page View"
 msgstr ""
 
-#: main/templates/shorturl/detail.html:73
+#: main/templates/shorturl/detail.html:72
 msgid "Modified"
 msgstr ""
 
-#: main/templates/shorturl/detail.html:77 main/templates/shorturl/list.html:44
+#: main/templates/shorturl/detail.html:76 main/templates/shorturl/list.html:41
 msgid "Created"
 msgstr ""
 
