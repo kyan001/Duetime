@@ -32,32 +32,44 @@
                     <a class="no-decoration" href="/shorturl/detail?id={{ shorturl.id }}">
                         <div class="ani-fast hover-shadow panel panel-primary">
                             <div class="panel-heading">
-                                <span class="glyphicon glyphicon-magnet"></span>
-                                <span>{{ shorturl.name }}</span>
-                                <span class="badge pull-right">#{{ shorturl.id }}</span>
-                            </div>
+                                {% if shorturl.name %}
+                                    <span class="glyphicon glyphicon-asterisk"></span>
+                                    {{ shorturl.name|truncatechars:21 }}
+                                {% else %}
+                                    {% trans "ShortURL" %}
+                                {% endif %}
+                                <span class="badge pull-right">
+                                    #{{ shorturl.id }}
+                                </span>
+                            </div><!--.panel-heading-->
                             <table class="table table-striped table-condensed table-hover table-bordered">
-                                <tr class="small text-muted">
-                                    <td>{% trans "Created" %}</td>
-                                    <td>{{ shorturl.created }}</td>
-                                </tr>
-                                <tr class="small text-muted">
-                                    <td>{% trans "URL" %}</td>
-                                    <td>{{ shorturl.url|truncatechars:29 }}</td>
-                                </tr>
                                 <tr class="text-info">
                                     <td>
                                         <span class="glyphicon glyphicon-magnet"></span>
-                                        {% trans "ShortURL" %}
+                                        {{ shorturl.short }}
+                                        <span class="pull-right">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                            {{ shorturl.pv }}
+                                        </span>
                                     </td>
-                                    <td>{{ shorturl.short }}</td>
                                 </tr>
-                                <tr class="text-info">
+                                <tr class="small text-muted">
                                     <td>
-                                        <span class="glyphicon glyphicon-eye-open"></span>
-                                        {% trans "Page View" %}
+                                        <span class="glyphicon glyphicon-asterisk"></span>
+                                        {{ shorturl.name }}
                                     </td>
-                                    <td>{{ shorturl.pv }}</td>
+                                </tr>
+                                <tr class="small text-muted">
+                                    <td>
+                                        <span class="glyphicon glyphicon-link"></span>
+                                        {{ shorturl.url|truncatechars:51 }}
+                                    </td>
+                                </tr>
+                                <tr class="small text-muted">
+                                    <td>
+                                        <span class="glyphicon glyphicon-time"></span>
+                                        {{ shorturl.created }}
+                                    </td>
                                 </tr>
                             </table>
                         </div><!--.panel-->

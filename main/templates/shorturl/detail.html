@@ -15,8 +15,11 @@
 
 {% block css %}
     <style>
-        .well-url {
-            margin-bottom: 0;
+        .word-break-url {
+            word-break: break-all;
+        }
+        td {
+            min-width: 8em;
         }
     </style>
 {% endblock %}
@@ -26,58 +29,79 @@
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-list"></span>
+                <span class="glyphicon glyphicon-magnet"></span>
                 {% trans "ShortURL" %} {% trans "Detail" %}
             </div>
             <div class="panel-body">
-                <table class="table table-hover table-bordered">
-                    <tr>
-                        <td>ID</td>
-                        <td>{{ shorturl.id }}</td>
-                    </tr>
-                    <tr>
-                        <td>{% trans "User" %}</td>
-                        <td>@{{ shorturl.user.username }}</td>
-                    </tr>
-                    <tr>
-                        <td>{% trans "Name" %}</td>
-                        <td>{{ shorturl.name }}</td>
-                    </tr>
-                    <tr>
-                        <td>{% trans "URL" %}</td>
-                        <td>
-                            <a href="{{ shorturl.url }}">{{ shorturl.url|truncatechars:29 }}</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="glyphicon glyphicon-magnet"></span>
-                            {% trans "ShortURL" %}
-                        </td>
-                        <td>
-                            <a class="btn btn-link" href="{{ shorturl.short }}" target="_blank">
-                                <span class="glyphicon glyphicon-link"></span>
-                                {{ shorturl.short }}
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="glyphicon glyphicon-eye-open"></span>
-                            {% trans "Page View" %}
-                        </td>
-                        <td>{{ shorturl.pv }}</td>
-                    </tr>
-                    <tr>
-                        <td>{% trans "Modified" %}</td>
-                        <td>{{ shorturl.modified }}</td>
-                    </tr>
-                    <tr>
-                        <td>{% trans "Created" %}</td>
-                        <td>{{ shorturl.created }}</td>
-                    </tr>
-                </table>
+                <a class="btn btn-block btn-lg btn-info" href="{{ shorturl.short }}" target="_blank">
+                    <span class="glyphicon glyphicon-magnet"></span>
+                    {{ shorturl.short }}
+                </a>
             </div>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-sort-by-order"></span>
+                        ID
+                    </td>
+                    <td>{{ shorturl.id }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-user"></span>
+                        {% trans "User" %}
+                    </td>
+                    <td>@{{ shorturl.user.username }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-asterisk"></span>
+                        {% trans "Name" %}
+                    </td>
+                    <td>{{ shorturl.name }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-link"></span>
+                        {% trans "URL" %}
+                    </td>
+                    <td class="word-break-url">
+                        <a href="{{ shorturl.url }}">{{ shorturl.url }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-magnet"></span>
+                        {% trans "ShortURL" %}
+                    </td>
+                    <td>
+                        <a href="{{ shorturl.short }}" target="_blank">
+                            {{ shorturl.short }}
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        {% trans "Page View" %}
+                    </td>
+                    <td>{{ shorturl.pv }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-time"></span>
+                        {% trans "Modified" %}
+                    </td>
+                    <td>{{ shorturl.modified }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-time"></span>
+                        {% trans "Created" %}
+                    </td>
+                    <td>{{ shorturl.created }}</td>
+                </tr>
+            </table>
             <div class="panel-footer">
                 <a class="btn btn-danger" href="/shorturl/delete?id={{ shorturl.id }}">{% trans "Delete" %}{% trans "!" %}</a>
             </div>
