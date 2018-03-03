@@ -16,15 +16,13 @@
 
 {% block css %}
     <style>
-        .word-break-url {
-            word-break: break-all;
-        }
     </style>
 {% endblock %}
 
 
 {% block content %}
     <div class="container">
+        <div class="invisible">*******</div>
         <div class="row">
             {% for shorturl in shorturls  %}
                 <div class="col-xs-12 col-sm-4">
@@ -59,9 +57,9 @@
                                     </td>
                                 </tr>
                                 <tr class="small text-muted">
-                                    <td class="word-break-url">
+                                    <td>
                                         <span class="glyphicon glyphicon-link"></span>
-                                        {{ shorturl.url|truncatechars:51 }}
+                                        {{ shorturl.url|truncatechars:29 }}
                                     </td>
                                 </tr>
                                 <tr class="small text-muted">
