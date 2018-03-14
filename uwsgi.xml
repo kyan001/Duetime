@@ -8,6 +8,6 @@
     <pythonpath>/home/kyan001/src/duetime</pythonpath>
     <module>duetime.wsgi:application</module>
     <master/>
-    <processes>4</processes>
+    <processes>32</processes>
     <plugins>python35</plugins>
 </uwsgi>
