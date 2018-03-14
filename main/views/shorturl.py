@@ -75,3 +75,27 @@ def shorturlDelete(request):
         messages.success(request, _("Shorturl removed!"))
         return redirect("/shorturl/list")
     raise Http404(_("Delete failed"))
+
+
+@login_required
+def shorturlUpdate(request):
+    """shorturl/update"""
+    # get inputs
+    shorturlid = request.POST.get('id')
+    name = request.POST.get('name') or ""
+    url = request.POST.get('url') or None
+    user = request.user
+    if not shorturlid:
+        raise Http404(_("ShortURL ID cannot be empty"))
+    shorturl = ShortUrl.objects.get_or_404(id=int(shorturlid))
+    if shorturl.userid != user.id:
+        raise Http404(_("You are not the owner of this shorturl"))
+    if not url:
+        raise Http404(_("Argument URL cannot be empty"))
+    with transaction.atomic():
+        shorturl.name = name
+        shorturl.url = url
+        shorturl.save()
+        messages.success(request, _("Shorturl Updated!"))
+        return redirect("/shorturl/detail?id={}".format(shorturl.id))
+    raise Http404(_("Update failed"))

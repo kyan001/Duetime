@@ -48,4 +48,5 @@ urlpatterns = [
     url(r'^shorturl/detail$', main.views.shorturl.shorturlDetail),  # GET
     url(r'^shorturl/list$', main.views.shorturl.shorturlList),
     url(r'^shorturl/delete$', main.views.shorturl.shorturlDelete),  # GET
+    path("shorturl/update", main.views.shorturl.shorturlUpdate),  # POST
 ]
