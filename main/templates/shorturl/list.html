@@ -27,42 +27,37 @@
             {% for shorturl in shorturls  %}
                 <div class="col-xs-12 col-sm-4">
                     <a class="no-decoration" href="/shorturl/detail?id={{ shorturl.id }}">
-                        <div class="ani-fast hover-shadow panel panel-primary">
+                        <div class="ani-fast hover-shadow panel panel-{{ shorturl.category|default:'default' }}">
                             <div class="panel-heading">
-                                {% if shorturl.name %}
+                                <span>
                                     <span class="glyphicon glyphicon-asterisk"></span>
                                     {{ shorturl.name|truncatechars:21 }}
-                                {% else %}
-                                    {% trans "ShortURL" %}
-                                {% endif %}
+                                </span>
                                 <span class="badge pull-right">
-                                    #{{ shorturl.id }}
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    {{ shorturl.pv }}
                                 </span>
                             </div><!--.panel-heading-->
-                            <table class="table table-striped table-condensed table-hover table-bordered">
-                                <tr class="text-info">
+                            <table class="table table-striped table-condensed table-hover table-bordered text-{{ shorturl.category|default:'default' }}">
+                                <tr class="{{ shorturl.category|default:'default' }}">
                                     <td>
                                         <span class="glyphicon glyphicon-magnet"></span>
                                         {{ shorturl.short }}
-                                        <span class="pull-right">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                            {{ shorturl.pv }}
-                                        </span>
                                     </td>
                                 </tr>
-                                <tr class="small text-muted">
+                                <tr class="{{ shorturl.category|default:'default' }} small">
                                     <td>
                                         <span class="glyphicon glyphicon-asterisk"></span>
                                         {{ shorturl.name }}
                                     </td>
                                 </tr>
-                                <tr class="small text-muted">
+                                <tr class="{{ shorturl.category|default:'default' }} small">
                                     <td>
                                         <span class="glyphicon glyphicon-link"></span>
                                         {{ shorturl.url|truncatechars:29 }}
                                     </td>
                                 </tr>
-                                <tr class="small text-muted">
+                                <tr class="text-muted {{ shorturl.category|default:'default' }} small">
                                     <td>
                                         <span class="glyphicon glyphicon-time"></span>
                                         {{ shorturl.created }}
@@ -75,4 +70,12 @@
             {% endfor %}
         </div><!--.row-->
     </div><!--.container-->
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function(){
+            console.debug("{{ toptags }}")
+        })
+    </script>
 {% endblock %}
