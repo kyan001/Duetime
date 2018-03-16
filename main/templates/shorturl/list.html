@@ -22,7 +22,13 @@
 
 {% block content %}
     <div class="container">
-        <div class="invisible">*******</div>
+        <div class="row">
+            <div class="col-xs-12 well well-sm">
+                {% for tag, cate in tagcate %}
+                    <span class="label label-{{ cate }}">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        <div>
         <div class="row">
             {% for shorturl in shorturls  %}
                 <div class="col-xs-12 col-sm-4">
@@ -38,7 +44,7 @@
                                     {{ shorturl.pv }}
                                 </span>
                             </div><!--.panel-heading-->
-                            <table class="table table-striped table-condensed table-hover table-bordered text-{{ shorturl.category|default:'default' }}">
+                            <table class="table table-condensed text-{{ shorturl.category|default:'default' }}">
                                 <tr class="{{ shorturl.category|default:'default' }}">
                                     <td>
                                         <span class="glyphicon glyphicon-magnet"></span>
@@ -74,8 +80,5 @@
 
 {% block js %}
     <script>
-        $(function(){
-            console.debug("{{ toptags }}")
-        })
     </script>
 {% endblock %}

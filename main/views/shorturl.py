@@ -59,21 +59,21 @@ def shorturlDetail(request):
 def shorturlList(request):
     """shorturl/list"""
     user = request.user
-    shorturls = ShortUrl.objects.filter(userid=user.id).order_by('-modified')
+    shorturls = ShortUrl.objects.filter(userid=user.id).order_by('-created')
     names = "".join([shorturl.name for shorturl in shorturls if shorturl.name])
     top_tags = jieba.analyse.extract_tags(names, topK=5, withWeight=False)
     CATEGORIES = ['info', 'success', 'warning', 'danger']
     for shorturl in shorturls:
         if shorturl.name:
-            for i in range(min(len(top_tags), len(CATEGORIES))):
-                if top_tags[i] in shorturl.name:
-                    shorturl.category = CATEGORIES[i]
+            for tag, cate in zip(top_tags, CATEGORIES):
+                if tag in shorturl.name:
+                    shorturl.category = cate
                     break
         else:
             shorturl.category = "primary"
     context = {
         "shorturls": shorturls,
-        "toptags": top_tags,
+        "tagcate": zip(top_tags, CATEGORIES),
     }
     return render(request, 'shorturl/list.html', context)
 
