@@ -43,6 +43,7 @@ urlpatterns = [
     url(r'^cardnote/update$', main.views.cardnote.cardnoteUpdate),  # POST
     url(r'^cardnote/detail$', main.views.cardnote.cardnoteDetail),  # GET
     # shorturl
+    path('su', main.views.shorturl.shorturlIndex),
     path('su/<int:id>', main.views.shorturl.shorturlJump),  # Django-GET
     url(r'^shorturl/add$', main.views.shorturl.shorturlAdd),  # POST
     url(r'^shorturl/detail$', main.views.shorturl.shorturlDetail),  # GET

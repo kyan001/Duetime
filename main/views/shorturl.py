@@ -10,6 +10,11 @@ import jieba.analyse
 from main.models import ShortUrl
 
 
+def shorturlIndex(request):
+    """/su"""
+    return redirect("/shorturl/list")
+
+
 def shorturlJump(request, id):
     """su/<int:id>"""
     shorturl = ShortUrl.objects.get_or_404(id=id)
