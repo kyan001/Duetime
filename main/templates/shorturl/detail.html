@@ -117,8 +117,14 @@
                 </form>
             </div>
             <div class="panel-footer">
-                <a class="btn btn-danger" href="/shorturl/delete?id={{ shorturl.id }}">{% trans "Delete" %}{% trans "!" %}</a>
-                <a class="btn btn-success pull-right" role="button" onclick="$('#update-form').submit()">{% trans "Save" %}</a>
+                <a class="btn btn-danger" href="/shorturl/delete?id={{ shorturl.id }}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    {% trans "Delete" %}{% trans "!" %}
+                </a>
+                <a class="btn btn-success pull-right" role="button" onclick="$('#update-form').submit()">
+                    <span class="glyphicon glyphicon-ok"></span>
+                    {% trans "Save" %}
+                </a>
             </div>
         </div>
     </div>
