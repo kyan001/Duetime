@@ -1,6 +1,7 @@
 django
 consoleiotools
 KyanToolKit
-django_cleanup
+django-cleanup
 pymysql
 jieba
+django-redis
