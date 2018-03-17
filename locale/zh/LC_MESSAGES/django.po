@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-14 13:14+0800\n"
+"POT-Creation-Date: 2018-03-17 14:04+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Chinese <i18n@duetime.cn>\n"
@@ -31,20 +31,19 @@ msgstr "登出"
 msgid "Log In"
 msgstr "登入"
 
-#: main/templates/base.html:130 main/templates/shorturl/add.html:4
+#: main/templates/base.html:126 main/templates/shorturl/add.html:4
 #: main/templates/shorturl/add.html:22 main/templates/shorturl/detail.html:4
 #: main/templates/shorturl/detail.html:10
 #: main/templates/shorturl/detail.html:38
 #: main/templates/shorturl/detail.html:77 main/templates/shorturl/list.html:4
-#: main/templates/shorturl/list.html:36
 msgid "ShortURL"
 msgstr "短链接"
 
-#: main/templates/base.html:134
+#: main/templates/base.html:130
 msgid "Card Note"
 msgstr "卡片笔记"
 
-#: main/templates/base.html:151
+#: main/templates/base.html:147
 msgid "Creative, Motivated, Enthusiastic, Amazing"
 msgstr "创想，前行，热忱，感动"
 
@@ -59,12 +58,12 @@ msgstr "回到上一页"
 
 #: main/templates/cardnote/detail.html:70
 #: main/templates/cardnote/itemrow.html:32
-#: main/templates/shorturl/detail.html:120
+#: main/templates/shorturl/detail.html:122
 msgid "Delete"
 msgstr "删除"
 
 #: main/templates/cardnote/detail.html:70
-#: main/templates/shorturl/detail.html:120
+#: main/templates/shorturl/detail.html:122
 msgid "!"
 msgstr "！"
 
@@ -97,7 +96,7 @@ msgid "Add Data"
 msgstr "新增数据"
 
 #: main/templates/cardnote/detail.html:134 main/templates/shorturl/add.html:37
-#: main/templates/shorturl/detail.html:121
+#: main/templates/shorturl/detail.html:126
 msgid "Save"
 msgstr "保存"
 
@@ -204,6 +203,10 @@ msgstr "修改时间"
 msgid "New ShortURL"
 msgstr "新短链接"
 
+#: main/templates/shorturl/list.html:49
+msgid "ETC"
+msgstr "其他"
+
 #: main/templates/user/signin.html:22
 msgid "User Login"
 msgstr "用户登入"
@@ -260,7 +263,7 @@ msgstr "卡片 ID 不能为空"
 msgid "You are not the owner of this card."
 msgstr "你不是卡片的所有者。"
 
-#: main/views/cardnote.py:64 main/views/shorturl.py:77
+#: main/views/cardnote.py:64 main/views/shorturl.py:104
 msgid "Delete failed"
 msgstr "删除失败"
 
@@ -269,7 +272,7 @@ msgstr "删除失败"
 msgid "Card 《{card.title}》 removed"
 msgstr "卡片《{card.title}》已删除"
 
-#: main/views/cardnote.py:92 main/views/shorturl.py:101
+#: main/views/cardnote.py:92 main/views/shorturl.py:128
 msgid "Update failed"
 msgstr "更新失败"
 
@@ -278,26 +281,25 @@ msgstr "更新失败"
 msgid "Card 《{card.title}》 updated"
 msgstr "卡片《{card.title}》已更新"
 
-#: main/views/shorturl.py:27 main/views/shorturl.py:94
+#: main/views/shorturl.py:34 main/views/shorturl.py:121
 msgid "Argument URL cannot be empty"
 msgstr "参数 URL 不能为空"
 
-#: main/views/shorturl.py:42 main/views/shorturl.py:69
-#: main/views/shorturl.py:89
+#: main/views/shorturl.py:49 main/views/shorturl.py:96
+#: main/views/shorturl.py:116
 msgid "ShortURL ID cannot be empty"
 msgstr "短链接 ID 不能为空"
 
-#: main/views/shorturl.py:45 main/views/shorturl.py:72
-#: main/views/shorturl.py:92
+#: main/views/shorturl.py:52 main/views/shorturl.py:99
+#: main/views/shorturl.py:119
 msgid "You are not the owner of this shorturl"
 msgstr "你不是短链接的所有者。"
 
-#: main/views/shorturl.py:75
+#: main/views/shorturl.py:102
 msgid "Shorturl removed!"
 msgstr "短链接已删除！"
 
-#: main/views/shorturl.py:99
-#| msgid "Shorturl removed!"
+#: main/views/shorturl.py:126
 msgid "Shorturl Updated!"
 msgstr "短链接已更新！"
 
