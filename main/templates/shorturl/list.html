@@ -16,6 +16,16 @@
 
 {% block css %}
     <style>
+        .label {
+            display: inline-block;
+        }
+        .single-lined {
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        #show-all-btn {
+            display: none;
+        }
     </style>
 {% endblock %}
 
@@ -24,28 +34,42 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 well well-sm">
-                {% for tag, cate in tagcate %}
-                    <span class="label label-{{ cate }}">{{ tag }}</span>
-                {% endfor %}
+                <div class="single-lined">
+                    <a id="show-all-btn" class="btn btn-xs btn-link" role="button" onclick="show_all()">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                    {% for tag, cate in tagcate %}
+                        <a class="filter-btn btn btn-xs btn-{{ cate }}" role="button" onclick="show_only('{{ cate }}')">
+                            <span class="glyphicon glyphicon-filter"></span>
+                            {{ tag }}
+                        </a>
+                    {% endfor %}
+                    <a class="filter-btn btn btn-xs btn-default" role="button" onclick="show_only('default')">
+                        <span class="glyphicon glyphicon-filter"></span>
+                        {% trans "ETC" %}
+                    </a>
+                </div>
             </div>
-        <div>
+        </div>
         <div class="row">
             {% for shorturl in shorturls  %}
-                <div class="col-xs-12 col-sm-4">
+                <div class="col-xs-12 col-sm-4 shorturl-div category-{{ shorturl.category|default:'default' }}">
                     <a class="no-decoration" href="/shorturl/detail?id={{ shorturl.id }}">
                         <div class="ani-fast hover-shadow panel panel-{{ shorturl.category|default:'default' }}">
                             <div class="panel-heading">
-                                <span>
-                                    <span class="glyphicon glyphicon-asterisk"></span>
-                                    {{ shorturl.name|truncatechars:21 }}
-                                </span>
+                                {% if shorturl.name %}
+                                    <strong>{{ shorturl.name|truncatechars:21 }}</strong>
+                                {% else %}
+                                    <span class="glyphicon glyphicon-magnet"></span>
+
+                                {% endif %}
                                 <span class="badge pull-right">
                                     <span class="glyphicon glyphicon-eye-open"></span>
                                     {{ shorturl.pv }}
                                 </span>
                             </div><!--.panel-heading-->
                             <table class="table table-condensed text-{{ shorturl.category|default:'default' }}">
-                                <tr class="{{ shorturl.category|default:'default' }}">
+                                <tr class="{{ shorturl.category|default:'default' }} small">
                                     <td>
                                         <span class="glyphicon glyphicon-magnet"></span>
                                         {{ shorturl.short }}
@@ -80,5 +104,20 @@
 
 {% block js %}
     <script>
+        $(function(){
+            console.debug("Cached Tags: {{ tagcache }}")
+        })
+        function show_only(cate){
+            $(".shorturl-div").hide()
+            $(".shorturl-div.category-" + cate).fadeIn()
+            $(".filter-btn").css("opacity", "0.5").removeClass("active")
+            $(".filter-btn.btn-" + cate).css("opacity", "1").addClass("active")
+            $("#show-all-btn").show()
+        }
+        function show_all(){
+            $(".shorturl-div").fadeIn()
+            $("#show-all-btn").hide()
+            $(".filter-btn").css("opacity", "1").removeClass("active")
+        }
     </script>
 {% endblock %}

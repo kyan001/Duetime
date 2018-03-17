@@ -66,12 +66,10 @@ def shorturlList(request):
     cached_tags = cache.get(CACHE_KEY)
     if cached_tags:
         top_tags = cached_tags
-        cached = True
     else:
         top_tags = jieba.analyse.extract_tags(names, topK=5, withWeight=False)
         CACHE_TIMEOUT = 60 * 60 * 24 * 30 * 3  # 3 month
         cache.set(CACHE_KEY, top_tags, CACHE_TIMEOUT)
-        cached = False
     CATEGORIES = ['info', 'success', 'warning', 'danger']
     for shorturl in shorturls:
         if shorturl.name:
@@ -84,7 +82,7 @@ def shorturlList(request):
     context = {
         "shorturls": shorturls,
         "tagcate": zip(top_tags, CATEGORIES),
-        "cached": cached,
+        "tagcache": "{}:{}".format(CACHE_KEY, cached_tags)
     }
     return render(request, 'shorturl/list.html', context)
 
