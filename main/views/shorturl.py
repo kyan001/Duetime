@@ -5,6 +5,7 @@ from django.http import Http404
 from django.db import transaction
 from django.contrib import messages
 from django.utils.translation import gettext as _
+from django.core.cache import cache
 import jieba.analyse
 
 from main.models import ShortUrl
@@ -60,8 +61,17 @@ def shorturlList(request):
     """shorturl/list"""
     user = request.user
     shorturls = ShortUrl.objects.filter(userid=user.id).order_by('-created')
-    names = "".join([shorturl.name for shorturl in shorturls if shorturl.name])
-    top_tags = jieba.analyse.extract_tags(names, topK=5, withWeight=False)
+    names = " ".join([shorturl.name for shorturl in shorturls if shorturl.name])
+    CACHE_KEY = "names:{}:tags".format(names)
+    cached_tags = cache.get(CACHE_KEY)
+    if cached_tags:
+        top_tags = cached_tags
+        cached = True
+    else:
+        top_tags = jieba.analyse.extract_tags(names, topK=5, withWeight=False)
+        CACHE_TIMEOUT = 60 * 60 * 24 * 30 * 3  # 3 month
+        cache.set(CACHE_KEY, top_tags, CACHE_TIMEOUT)
+        cached = False
     CATEGORIES = ['info', 'success', 'warning', 'danger']
     for shorturl in shorturls:
         if shorturl.name:
@@ -70,10 +80,11 @@ def shorturlList(request):
                     shorturl.category = cate
                     break
         else:
-            shorturl.category = "primary"
+            shorturl.category = "default"
     context = {
         "shorturls": shorturls,
         "tagcate": zip(top_tags, CATEGORIES),
+        "cached": cached,
     }
     return render(request, 'shorturl/list.html', context)
 
