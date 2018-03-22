@@ -25,12 +25,13 @@
                     <form id="shorturl-form" method="post" action="/shorturl/add">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="name-input">{% trans "Name" %} {% trans "(Optional)" %}</label>
-                            <input id="name-input" class="form-control" type="text" name="name" autocomplete="off">
+                            <label for="url-input">{% trans "URL" %}</label>
+                            <input id="url-input" class="enter-to-save form-control" type="text" name="url" autocomplete="off" autofocus required>
+                            <span class="hidden-xs text-muted">{% trans "Press Enter to Save" %}</span>
                         </div>
                         <div class="form-group">
-                            <label for="url-input">{% trans "URL" %}</label>
-                            <input id="url-input" class="form-control" type="text" name="url" autocomplete="off">
+                            <label for="name-input">{% trans "Name" %} {% trans "(Optional)" %}</label>
+                            <input id="name-input" class="enter-to-save form-control" type="text" name="name" autocomplete="off">
                         </div>
                         <a id="save-btn" class="btn btn-success btn-block" role="button" onclick="$('#shorturl-form').submit()">
                             <span class="glyphicon glyphicon-ok"></span>
@@ -47,13 +48,7 @@
 {% block js %}
     <script type="text/javascript">
         $(function(){
-            $("input[name='name']").keydown(function(){
-                if(event.keyCode==13){
-                    $("#url-input").focus()
-                    return false
-                }
-            })
-            $("input[name='url']").keydown(function(){
+            $("input.enter-to-save").keydown(function(){
                 if(event.keyCode==13){
                     $("#save-btn").click()
                     return false

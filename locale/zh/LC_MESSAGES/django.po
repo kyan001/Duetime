@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-17 14:04+0800\n"
+"POT-Creation-Date: 2018-03-22 10:22+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Chinese <i18n@duetime.cn>\n"
@@ -58,12 +58,12 @@ msgstr "回到上一页"
 
 #: main/templates/cardnote/detail.html:70
 #: main/templates/cardnote/itemrow.html:32
-#: main/templates/shorturl/detail.html:122
+#: main/templates/shorturl/detail.html:127
 msgid "Delete"
 msgstr "删除"
 
 #: main/templates/cardnote/detail.html:70
-#: main/templates/shorturl/detail.html:122
+#: main/templates/shorturl/detail.html:127
 msgid "!"
 msgstr "！"
 
@@ -78,7 +78,7 @@ msgstr "顺序"
 #: main/templates/cardnote/detail.html:83
 #: main/templates/cardnote/newcard.html:51
 #: main/templates/cardnote/newcard.html:55
-#: main/templates/cardnote/newcard.html:59 main/templates/shorturl/add.html:28
+#: main/templates/cardnote/newcard.html:59 main/templates/shorturl/add.html:33
 msgid "(Optional)"
 msgstr "（选填）"
 
@@ -95,8 +95,8 @@ msgstr "新"
 msgid "Add Data"
 msgstr "新增数据"
 
-#: main/templates/cardnote/detail.html:134 main/templates/shorturl/add.html:37
-#: main/templates/shorturl/detail.html:126
+#: main/templates/cardnote/detail.html:134 main/templates/shorturl/add.html:38
+#: main/templates/shorturl/detail.html:131
 msgid "Save"
 msgstr "保存"
 
@@ -167,13 +167,17 @@ msgstr "欢迎"
 msgid "Add"
 msgstr "新增"
 
-#: main/templates/shorturl/add.html:28 main/templates/shorturl/detail.html:56
-msgid "Name"
-msgstr "名称"
-
-#: main/templates/shorturl/add.html:32 main/templates/shorturl/detail.html:63
+#: main/templates/shorturl/add.html:28 main/templates/shorturl/detail.html:63
 msgid "URL"
 msgstr "链接"
+
+#: main/templates/shorturl/add.html:30
+msgid "Press Enter to Save"
+msgstr "按回车键保存"
+
+#: main/templates/shorturl/add.html:33 main/templates/shorturl/detail.html:56
+msgid "Name"
+msgstr "名称"
 
 #: main/templates/shorturl/detail.html:4 main/templates/shorturl/detail.html:38
 msgid "Detail"
