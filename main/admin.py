@@ -22,7 +22,7 @@ class CardnoteItemAdmin(admin.ModelAdmin):
 # admin.site.register(ShortUrl)
 @admin.register(ShortUrl)
 class ShortUrlAdmin(admin.ModelAdmin):
-    list_display = ('id', 'userid', 'name', 'url', 'created', 'modified')
-    search_fields = ('name', 'url')
+    list_display = ('id', 'userid', 'user', 'pv', 'name', 'url', 'created', 'modified')
+    search_fields = ('name', 'url', 'user')
     list_filter = ('userid',)
-    date_hierarchy = 'modified'
+    date_hierarchy = 'created'
