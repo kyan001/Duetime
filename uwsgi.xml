@@ -9,6 +9,6 @@
     <module>duetime.wsgi:application</module>
     <master/>
     <listen>1024</listen>
-    <processes>32</processes>
+    <processes>8</processes>
     <plugins>python35</plugins>
 </uwsgi>
