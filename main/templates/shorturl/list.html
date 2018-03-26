@@ -53,7 +53,7 @@
         </div>
         <div class="row">
             {% for shorturl in shorturls  %}
-                <div class="col-xs-12 col-sm-4 shorturl-div category-{{ shorturl.category|default:'default' }}">
+                <div class="col-xs-12 col-sm-6 col-md-4 shorturl-div category-{{ shorturl.category|default:'default' }}">
                     <a class="no-decoration" href="/shorturl/detail?id={{ shorturl.id }}">
                         <div class="ani-fast hover-shadow panel panel-{{ shorturl.category|default:'default' }}">
                             <div class="panel-heading">
