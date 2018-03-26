@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.core.cache import cache
 import jieba.analyse
+jieba.initialize()
 
 from main.models import ShortUrl
 
