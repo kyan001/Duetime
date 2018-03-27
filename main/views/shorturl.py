@@ -1,3 +1,5 @@
+from collections import Counter
+
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -6,9 +8,8 @@ from django.db import transaction
 from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.core.cache import cache
-# import jieba.analyse
 import jieba
-from collections import Counter
+jieba.initialize()
 
 from main.models import ShortUrl
 
@@ -69,8 +70,8 @@ def shorturlList(request):
     if cached_tags == "123":
         top_tags = cached_tags
     else:
-        # top_tags = jieba.analyse.extract_tags(names, topK=5, withWeight=False)
-        tags = [tag for tag in jieba.cut(names, cut_all=False) if tag.strip()]
+        tags = [tag for tag in jieba.cut(names) if tag.strip()]
+        print(jieba.lcut(names, HMM=True))
         top_tags = [word for word, count in Counter(tags).most_common(5)]
         CACHE_TIMEOUT = 60 * 60 * 24 * 30 * 3  # 3 month
         cache.set(CACHE_KEY, top_tags, CACHE_TIMEOUT)
