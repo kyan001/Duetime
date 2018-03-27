@@ -6,8 +6,9 @@ from django.db import transaction
 from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.core.cache import cache
-import jieba.analyse
-jieba.initialize()
+# import jieba.analyse
+import jieba
+from collections import Counter
 
 from main.models import ShortUrl
 
@@ -65,10 +66,12 @@ def shorturlList(request):
     names = " ".join([shorturl.name for shorturl in shorturls if shorturl.name])
     CACHE_KEY = "names:{}:tags".format(names)
     cached_tags = cache.get(CACHE_KEY)
-    if cached_tags:
+    if cached_tags == "123":
         top_tags = cached_tags
     else:
-        top_tags = jieba.analyse.extract_tags(names, topK=5, withWeight=False)
+        # top_tags = jieba.analyse.extract_tags(names, topK=5, withWeight=False)
+        tags = [tag for tag in jieba.cut(names, cut_all=False) if tag.strip()]
+        top_tags = [word for word, count in Counter(tags).most_common(5)]
         CACHE_TIMEOUT = 60 * 60 * 24 * 30 * 3  # 3 month
         cache.set(CACHE_KEY, top_tags, CACHE_TIMEOUT)
     CATEGORIES = ['info', 'success', 'warning', 'danger']
