@@ -8,7 +8,7 @@
     <pythonpath>/home/kyan001/src/duetime</pythonpath>
     <module>duetime.wsgi:application</module>
     <master/>
-    <listen>1024</listen>
+    <listen>128</listen>
     <processes>8</processes>
     <plugins>python35</plugins>
 </uwsgi>
