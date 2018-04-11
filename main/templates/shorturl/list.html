@@ -26,6 +26,12 @@
         #show-all-btn {
             display: none;
         }
+        .overflow-x-hidden {
+            overflow-x: hidden;
+        }
+        .overflow-x-auto {
+            overflow-x: auto;
+        }
     </style>
 {% endblock %}
 
@@ -57,43 +63,27 @@
                     <a class="no-decoration" href="/shorturl/detail?id={{ shorturl.id }}">
                         <div class="ani-fast hover-shadow panel panel-{{ shorturl.category|default:'default' }}">
                             <div class="panel-heading">
-                                {% if shorturl.name %}
-                                    <strong>{{ shorturl.name|truncatechars:21 }}</strong>
-                                {% else %}
-                                    <span class="glyphicon glyphicon-magnet"></span>
-
-                                {% endif %}
-                                <span class="badge pull-right">
-                                    <span class="glyphicon glyphicon-eye-open"></span>
-                                    {{ shorturl.pv }}
-                                </span>
+                                <div class="text-nowrap overflow-x-auto">
+                                    <span class="small text-muted">#{{ shorturl.id }}</span>
+                                    <strong>{{ shorturl.name }}</strong>
+                                </div>
                             </div><!--.panel-heading-->
-                            <table class="table table-condensed text-{{ shorturl.category|default:'default' }}">
-                                <tr class="{{ shorturl.category|default:'default' }} small">
-                                    <td>
-                                        <span class="glyphicon glyphicon-magnet"></span>
-                                        {{ shorturl.short }}
-                                    </td>
-                                </tr>
-                                <tr class="{{ shorturl.category|default:'default' }} small">
-                                    <td>
-                                        <span class="glyphicon glyphicon-asterisk"></span>
-                                        {{ shorturl.name }}
-                                    </td>
-                                </tr>
-                                <tr class="{{ shorturl.category|default:'default' }} small">
-                                    <td>
-                                        <span class="glyphicon glyphicon-link"></span>
-                                        {{ shorturl.url|truncatechars:29 }}
-                                    </td>
-                                </tr>
-                                <tr class="text-muted {{ shorturl.category|default:'default' }} small">
-                                    <td>
+                            <div class="panel-body bg-{{ shorturl.category|default:'default' }} text-{{ shorturl.category|default:'default' }}">
+                                <div class="text-nowrap overflow-x-hidden">
+                                    <span class="glyphicon glyphicon-link"></span>
+                                    {{ shorturl.url }}
+                                </div>
+                                <div class="text-nowrap">
+                                    <span class="text-muted">
                                         <span class="glyphicon glyphicon-time"></span>
                                         {{ shorturl.created }}
-                                    </td>
-                                </tr>
-                            </table>
+                                    </span>
+                                    <span class="text-muted pull-right">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                        <strong>{{ shorturl.pv }}</strong>
+                                    </span>
+                                </div>
+                            </div>
                         </div><!--.panel-->
                     </a>
                 </div><!--.col-->
