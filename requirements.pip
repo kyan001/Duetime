@@ -3,5 +3,6 @@ consoleiotools
 KyanToolKit
 django-cleanup
 pymysql
+Pillow
 jieba
 django-redis
