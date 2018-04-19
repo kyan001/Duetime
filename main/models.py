@@ -91,7 +91,7 @@ class ShortUrl(BaseModel):
 
     @property
     def short(self):
-        host = "http://duetime.cn"
+        host = "https://duetime.cn"
         return host + self.uri
 
     def add_pv(self):
