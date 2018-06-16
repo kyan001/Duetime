@@ -41,16 +41,16 @@
         <div class="row">
             <div class="col-xs-12 well well-sm">
                 <div class="single-lined">
-                    <a id="show-all-btn" class="btn btn-xs btn-link" role="button" onclick="show_all()">
+                    <a id="show-all-btn" class="btn btn-sm btn-link" role="button" onclick="show_all()">
                         <span class="glyphicon glyphicon-remove"></span>
                     </a>
                     {% for tag, cate in tagcate %}
-                        <a class="filter-btn btn btn-xs btn-{{ cate }}" role="button" onclick="show_only('{{ cate }}')">
+                        <a class="filter-btn btn btn-sm btn-{{ cate }}" role="button" onclick="show_only('{{ cate }}')">
                             <span class="glyphicon glyphicon-filter"></span>
                             {{ tag }}
                         </a>
                     {% endfor %}
-                    <a class="filter-btn btn btn-xs btn-default" role="button" onclick="show_only('default')">
+                    <a class="filter-btn btn btn-sm btn-default" role="button" onclick="show_only('default')">
                         <span class="glyphicon glyphicon-filter"></span>
                         {% trans "ETC" %}
                     </a>
@@ -100,14 +100,14 @@
         function show_only(cate){
             $(".shorturl-div").hide()
             $(".shorturl-div.category-" + cate).fadeIn()
-            $(".filter-btn").css("opacity", "0.5").removeClass("active")
-            $(".filter-btn.btn-" + cate).css("opacity", "1").addClass("active")
+            $(".filter-btn").css("opacity", "0.5").find(".glyphicon-filter").hide()
+            $(".filter-btn.btn-" + cate).css("opacity", "1").find(".glyphicon-filter").slideDown()
             $("#show-all-btn").show()
         }
         function show_all(){
             $(".shorturl-div").fadeIn()
             $("#show-all-btn").hide()
-            $(".filter-btn").css("opacity", "1").removeClass("active")
+            $(".filter-btn").css("opacity", "1").find(".glyphicon-filter").slideDown()
         }
     </script>
 {% endblock %}
