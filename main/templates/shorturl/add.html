@@ -3,6 +3,14 @@
 
 {% block title %}{% trans "Add" %} {% trans "ShortURL" %}{% endblock %}
 
+{% block nav-btn %}
+    <a class="btn btn-default navbar-btn" href="/shorturl/list">
+        <span class="text-primary">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+            <span>{% trans "ShortURL" %} {% trans "List" %}</span>
+        </span>
+    </a>
+{% endblock nav-btn %}
 
 {% block css %}
 <style>
@@ -24,31 +32,27 @@
                 <div class="panel-body">
                     <form id="shorturl-form" method="post" action="/shorturl/add">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <label class="sr-only" for="url-input">
-                                {% trans "URL" %}
-                            </label>
+                        <div class="form-group has-success has-feedback">
+                            <label class="sr-only" for="url-input">{% trans "URL" %}</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-link"></span>
                                     {% trans "URL" %}
                                 </span>
-                                <input id="url-input" class="enter-to-save form-control" type="text" name="url" autocomplete="off" autofocus required>
+                                <input id="url-input" class="enter-to-save form-control" type="text" name="url" placeholder="http://" autocomplete="off" autofocus required>
+                                <span class="form-control-feedback glyphicon">↩</span>
                             </div>
-                            <span class="hidden-xs text-muted">{% trans "Press Enter to Save" %}</span>
+                            <span class="hidden-xs help-block">{% trans "Press Enter to Save" %}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="name-input">
-                                {% trans "Name" %} {% trans "(Optional)" %}
-                            </label>
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="name-input">{% trans "Name" %} {% trans "(Optional)" %}</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-asterisk"></span>
                                     {% trans "Name" %}
                                 </span>
-                                <input id="name-input" class="enter-to-save form-control" type="text" name="name" autocomplete="off">
+                                <input id="name-input" class="enter-to-save form-control" type="text" name="name" placeholder="{% trans '(Optional)' %}" autocomplete="off">
+                                <span class="form-control-feedback glyphicon">⇥</span>
                             </div>
-                            <span class="text-muted">{% trans "(Optional)" %}</span>
                         </div>
                         <a id="save-btn" class="btn btn-success btn-block" role="button" onclick="$('#shorturl-form').submit()">
                             <span class="glyphicon glyphicon-ok"></span>
