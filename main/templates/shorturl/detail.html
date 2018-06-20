@@ -26,6 +26,9 @@
                 float: right;
             }
         }
+        #copy-result {
+            display: none;
+        }
     </style>
 {% endblock %}
 
@@ -76,10 +79,11 @@
                                     <span class="glyphicon glyphicon-magnet"></span>
                                     {% trans "ShortURL" %}
                                 </span>
-                                <input class="form-control" type="text" value="{{ shorturl.short }}" readonly>
+                                <input id="shorturl-input" class="form-control" type="text" value="{{ shorturl.short }}" readonly>
                                 <span class="input-group-btn">
-                                    <a class="btn btn-default" href="{{ shorturl.short }}">
-                                        <span class="glyphicon glyphicon-new-window"></span>
+                                    <a class="btn btn-default" role="button" onclick="copy_to_board($('input#shorturl-input'))">
+                                        <span id="copy-btn" class="glyphicon glyphicon-copy"></span>
+                                        <span id="copy-result" class="glyphicon glyphicon-ok text-success"></span>
                                     </a>
                                 </span>
                             </div><!--.form-group.input-group-->
@@ -140,7 +144,14 @@
 <script>
     function copy_to_board(ele){
         $(ele).select()
-        document.execCommand("copy")
+        if(document.execCommand("copy")){
+            $('#copy-btn').hide()
+            $('#copy-result').show().delay(777).fadeOut(function(){
+                $('#copy-btn').show()
+            })
+        } else {
+            alert("Not supported")
+        }
     }
 </script>
 {% endblock %}
