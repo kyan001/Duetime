@@ -134,3 +134,13 @@
         </div>
     </div>
 {% endblock %}
+
+
+{% block js %}
+<script>
+    function copy_to_board(ele){
+        $(ele).select()
+        document.execCommand("copy")
+    }
+</script>
+{% endblock %}
