@@ -32,6 +32,9 @@
         .overflow-x-auto {
             overflow-x: auto;
         }
+        .no-bottom-border {
+            border-bottom: 0 !important;
+        }
     </style>
 {% endblock %}
 
@@ -62,7 +65,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-4 shorturl-div category-{{ shorturl.category|default:'default' }}">
                     <a class="no-decoration" href="/shorturl/detail?id={{ shorturl.id }}">
                         <div class="ani-fast hover-shadow panel panel-{{ shorturl.category|default:'default' }}">
-                            <div class="panel-heading">
+                            <div class="panel-heading no-bottom-border">
                                 <div class="text-nowrap overflow-x-auto">
                                     <span class="small text-muted">#{{ shorturl.id }}</span>
                                     <strong>{{ shorturl.name }}</strong>
