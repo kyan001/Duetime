@@ -11,4 +11,5 @@
     <listen>128</listen>
     <processes>8</processes>
     <plugins>python35</plugins>
+    <reload-on-rss>128</reload-on-rss>
 </uwsgi>
