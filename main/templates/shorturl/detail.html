@@ -35,108 +35,112 @@
 
 {% block content %}
     <div class="container">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <span class="glyphicon glyphicon-magnet"></span>
-                {% trans "ShortURL" %} {% trans "Detail" %}
-            </div>
-            <div class="panel-body">
-                <form id="update-form" action="/shorturl/update" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="id" value="{{ shorturl.id }}">
-                    <div class="row form-group">
-                        <div class="col-xs-12">
-                            <span class="badge" title="ID"># {{ shorturl.id }}</span>
-                            <span class="pull-right" title="{% trans 'User' %}">
-                                <span class="glyphicon glyphicon-user"></span>
-                                @{{ shorturl.user.username }}
-                            </span>
-                        </div>
-                    </div><!--.row.form-group-->
-                    <div class="form-group input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-record"></span>
-                            {% trans "Name" %}
-                        </span>
-                        <input class="form-control" name="name" type="text" value="{{ shorturl.name }}">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-magnet"></span>
+                        {% trans "ShortURL" %} {% trans "Detail" %}
                     </div>
-                    <div class="form-group input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-link"></span>
-                            {% trans "URL" %}
-                        </span>
-                        <input class="form-control" name="url" type="url" value="{{ shorturl.url }}">
-                        <span class="input-group-btn">
-                            <a class="btn btn-default" href="{{ shorturl.url }}">
-                                <span class="glyphicon glyphicon-new-window"></span>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6">
+                    <div class="panel-body">
+                        <form id="update-form" action="/shorturl/update" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{ shorturl.id }}">
+                            <div class="row form-group">
+                                <div class="col-xs-12">
+                                    <span class="badge" title="ID"># {{ shorturl.id }}</span>
+                                    <span class="pull-right" title="{% trans 'User' %}">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        @{{ shorturl.user.username }}
+                                    </span>
+                                </div>
+                            </div><!--.row.form-group-->
                             <div class="form-group input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-magnet"></span>
-                                    {% trans "ShortURL" %}
+                                    <span class="glyphicon glyphicon-record"></span>
+                                    {% trans "Name" %}
                                 </span>
-                                <input id="shorturl-input" class="form-control" type="text" value="{{ shorturl.short }}" readonly>
+                                <input class="form-control" name="name" type="text" value="{{ shorturl.name }}">
+                            </div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-link"></span>
+                                    {% trans "URL" %}
+                                </span>
+                                <input class="form-control" name="url" type="url" value="{{ shorturl.url }}">
                                 <span class="input-group-btn">
-                                    <a class="btn btn-default" role="button" onclick="copy_to_board($('input#shorturl-input'))">
-                                        <span id="copy-btn" class="glyphicon glyphicon-copy"></span>
-                                        <span id="copy-result" class="glyphicon glyphicon-ok text-success"></span>
+                                    <a class="btn btn-default" href="{{ shorturl.url }}">
+                                        <span class="glyphicon glyphicon-new-window"></span>
                                     </a>
                                 </span>
-                            </div><!--.form-group.input-group-->
-                        </div><!--.col-->
-                        <div class="col-xs-12 col-sm-6">
-                            <div class="form-group input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-eye-open"></span>
-                                    {% trans "Page View" %}
-                                </span>
-                                <input class="form-control" type="text" value="{{ shorturl.pv }}" readonly>
-                            </div><!--.form-group.input-group-->
-                        </div><!--.col-->
-                    </div><!--.row-->
-                    <div class="row form-group">
-                        <div class="col-xs-12 col-sm-6">
-                            <span class="">
-                                <span class="glyphicon glyphicon-play"></span>
-                                {% trans "Created" %}{% trans ":" %}
-                                {{ shorturl.created }}
-                            </span>
-                        </div><!--.col-->
-                        <div class="col-xs-12 col-sm-6">
-                            <span class="pull-right-not-xs">
-                                <span class="glyphicon glyphicon-pause"></span>
-                                {% trans "Modified" %}{% trans ":" %}
-                                {{ shorturl.modified }}
-                            </span>
-                        </div>
-                    </div><!--.row.form-group-->
-                    <a class="btn btn-block btn-lg btn-link" href="{{ shorturl.short }}" target="_blank">
-                        <span class="glyphicon glyphicon-magnet"></span>
-                        {{ shorturl.short }}
-                    </a>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <img class="img-responsive center-block" src="https://api.qrserver.com/v1/create-qr-code/?data={{ shorturl.short }}&size=150x150">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="panel-footer">
-                <a class="btn btn-danger" href="/shorturl/delete?id={{ shorturl.id }}">
-                    <span class="glyphicon glyphicon-trash"></span>
-                    {% trans "Delete" %}{% trans "!" %}
-                </a>
-                <a class="btn btn-success pull-right" role="button" onclick="$('#update-form').submit()">
-                    <span class="glyphicon glyphicon-ok"></span>
-                    {% trans "Save" %}
-                </a>
-            </div>
-        </div>
-    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-magnet"></span>
+                                            {% trans "ShortURL" %}
+                                        </span>
+                                        <input id="shorturl-input" class="form-control" type="text" value="{{ shorturl.short }}" readonly>
+                                        <span class="input-group-btn">
+                                            <a class="btn btn-default" role="button" onclick="copy_to_board($('input#shorturl-input'))">
+                                                <span id="copy-btn" class="glyphicon glyphicon-copy"></span>
+                                                <span id="copy-result" class="glyphicon glyphicon-ok text-success"></span>
+                                            </a>
+                                        </span>
+                                    </div><!--.form-group.input-group-->
+                                </div><!--.col-->
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                            {% trans "Page View" %}
+                                        </span>
+                                        <input class="form-control" type="text" value="{{ shorturl.pv }}" readonly>
+                                    </div><!--.form-group.input-group-->
+                                </div><!--.col-->
+                            </div><!--.row-->
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6">
+                                    <span class="">
+                                        <span class="glyphicon glyphicon-play"></span>
+                                        {% trans "Created" %}{% trans ":" %}
+                                        {{ shorturl.created }}
+                                    </span>
+                                </div><!--.col-->
+                                <div class="col-xs-12 col-sm-6">
+                                    <span class="pull-right-not-xs">
+                                        <span class="glyphicon glyphicon-pause"></span>
+                                        {% trans "Modified" %}{% trans ":" %}
+                                        {{ shorturl.modified }}
+                                    </span>
+                                </div>
+                            </div><!--.row.form-group-->
+                            <a class="btn btn-block btn-lg btn-link" href="{{ shorturl.short }}" target="_blank">
+                                <span class="glyphicon glyphicon-magnet"></span>
+                                {{ shorturl.short }}
+                            </a>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <img class="img-responsive center-block" src="https://api.qrserver.com/v1/create-qr-code/?data={{ shorturl.short }}&size=150x150">
+                                </div>
+                            </div>
+                        </form>
+                    </div><!--.panel-body-->
+                    <div class="panel-footer">
+                        <a class="btn btn-danger" href="/shorturl/delete?id={{ shorturl.id }}">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            {% trans "Delete" %}{% trans "!" %}
+                        </a>
+                        <a class="btn btn-success pull-right" role="button" onclick="$('#update-form').submit()">
+                            <span class="glyphicon glyphicon-ok"></span>
+                            {% trans "Save" %}
+                        </a>
+                    </div><!--.panel-footer-->
+                </div><!--.panel-->
+            </div><!--.col-->
+        </div><!--.row-->
+    </div><!--.container-->
 {% endblock %}
 
 
