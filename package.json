@@ -1,0 +1,13 @@
+{
+    "name": "Duetime",
+    "author": "Kyan",
+    "description": "Website for duetime.cn",
+    "dependencies": {
+        "bootstrap": ">=3.0.0",
+        "jquery": "latest",
+        "jquery-lazyload": "latest",
+        "swiper": "latest",
+        "fontawesome": "latest",
+        "loaders.css": "latest",
+    }
+}
