@@ -2,8 +2,7 @@ from django.contrib import admin
 from main.models import *
 
 
-# admin.site.register(CardnoteCard)
-@admin.register(CardnoteCard)
+@admin.register(CardnoteCard)  # admin.site.register(CardnoteCard)
 class CardnoteCardAdmin(admin.ModelAdmin):
     list_display = ('id', 'userid', 'user', 'title', 'kcol', 'vcol', 'category', 'created', 'modified')
     search_fields = ('title', 'kcol', 'vcol')
@@ -11,16 +10,14 @@ class CardnoteCardAdmin(admin.ModelAdmin):
     date_hierarchy = 'modified'
 
 
-# admin.site.register(CardnoteItem)
-@admin.register(CardnoteItem)
+@admin.register(CardnoteItem)  # admin.site.register(CardnoteItem)
 class CardnoteItemAdmin(admin.ModelAdmin):
     list_display = ('id', 'cardnotecardid', 'kword', 'val', 'created', 'modified')
     search_fields = ('kword', 'val')
     date_hierarchy = 'modified'
 
 
-# admin.site.register(ShortUrl)
-@admin.register(ShortUrl)
+@admin.register(ShortUrl)  # admin.site.register(ShortUrl)
 class ShortUrlAdmin(admin.ModelAdmin):
     list_display = ('id', 'userid', 'user', 'pv', 'name', 'url', 'created', 'modified')
     search_fields = ('name', 'url', 'user')
