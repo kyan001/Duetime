@@ -80,6 +80,7 @@ class ShortUrl(BaseModel):
     name = models.CharField(max_length=200, blank=True, default="")
     url = models.URLField(null=False, blank=False)
     pv = models.IntegerField(default=0)
+    legal = models.NullBooleanField(default=None, null=True)
 
     @property
     def user(self):

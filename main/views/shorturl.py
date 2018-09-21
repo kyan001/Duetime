@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
+from django.core.exceptions import PermissionDenied
 from django.db import transaction
 from django.contrib import messages
 from django.utils.translation import gettext as _
@@ -19,6 +20,10 @@ def shorturlIndex(request):
 def shorturlJump(request, id):
     """su/<int:id>"""
     shorturl = ShortUrl.objects.get_or_404(id=id)
+    if shorturl.legal is False:
+        raise PermissionDenied
+    if shorturl.legal is None and shorturl.pv > 50:
+        raise PermissionDenied
     shorturl.add_pv()
     return redirect(shorturl.url)
 

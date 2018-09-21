@@ -18,12 +18,26 @@ class CardnoteItemAdmin(admin.ModelAdmin):
     date_hierarchy = 'modified'
 
 
+def make_legal(modeladmin, request, queryset):
+    queryset.update(legal=True)
+
+
+def make_illegal(modeladmin, request, queryset):
+    queryset.update(legal=False)
+
+
+def make_uncensored(modeladmin, request, queryset):
+    queryset.update(legal=None)
+
+
 @admin.register(ShortUrl)  # admin.site.register(ShortUrl)
 class ShortUrlAdmin(admin.ModelAdmin):
     def url_purified(self, obj):
         url_show = obj.url[:80] + " ..." if len(obj.url) > 80 else obj.url
         return format_html("<a href='{}' title='{}' target='_blank'>{}</a>", obj.url, obj.url, url_show)
-    list_display = ('id', 'userid', 'user', 'pv', 'name', 'url_purified', 'created', 'modified')
+
+    list_display = ('id', 'userid', 'user', 'pv', 'name', 'url_purified', 'legal', 'created', 'modified')
     search_fields = ('name', 'url', 'user')
-    list_filter = ('userid',)
+    list_filter = ('userid', 'legal')
     date_hierarchy = 'created'
+    actions = [make_legal, make_illegal, make_uncensored]
