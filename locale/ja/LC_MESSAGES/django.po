@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-22 10:22+0800\n"
+"POT-Creation-Date: 2018-09-24 16:17+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Japanese <i18n@duetime.cn>\n"
@@ -23,28 +23,28 @@ msgstr ""
 msgid "The {t} you are looking for does not exist. (Request arguments {a} {k})"
 msgstr ""
 
-#: main/templates/base.html:92
+#: main/templates/base.html:108
 msgid "Log Out"
 msgstr ""
 
-#: main/templates/base.html:99 main/templates/user/signin.html:4
-#: main/templates/user/signin.html:44 main/templates/user/signup.html:44
+#: main/templates/base.html:115 main/templates/user/signin.html:4
+#: main/templates/user/signin.html:46 main/templates/user/signup.html:47
 msgid "Log In"
 msgstr ""
 
-#: main/templates/base.html:126 main/templates/shorturl/add.html:4
-#: main/templates/shorturl/add.html:22 main/templates/shorturl/detail.html:4
-#: main/templates/shorturl/detail.html:10
-#: main/templates/shorturl/detail.html:38
-#: main/templates/shorturl/detail.html:77 main/templates/shorturl/list.html:4
+#: main/templates/base.html:142 main/templates/shorturl/add.html:4
+#: main/templates/shorturl/add.html:10 main/templates/shorturl/add.html:30
+#: main/templates/shorturl/detail.html:4 main/templates/shorturl/detail.html:10
+#: main/templates/shorturl/detail.html:43
+#: main/templates/shorturl/detail.html:91 main/templates/shorturl/list.html:4
 msgid "ShortURL"
 msgstr ""
 
-#: main/templates/base.html:130
+#: main/templates/base.html:146
 msgid "Card Note"
 msgstr ""
 
-#: main/templates/base.html:147
+#: main/templates/base.html:163
 msgid "Creative, Motivated, Enthusiastic, Amazing"
 msgstr ""
 
@@ -59,12 +59,12 @@ msgstr ""
 
 #: main/templates/cardnote/detail.html:70
 #: main/templates/cardnote/itemrow.html:32
-#: main/templates/shorturl/detail.html:127
+#: main/templates/shorturl/detail.html:142
 msgid "Delete"
 msgstr ""
 
 #: main/templates/cardnote/detail.html:70
-#: main/templates/shorturl/detail.html:127
+#: main/templates/shorturl/detail.html:142
 msgid "!"
 msgstr ""
 
@@ -79,7 +79,8 @@ msgstr ""
 #: main/templates/cardnote/detail.html:83
 #: main/templates/cardnote/newcard.html:51
 #: main/templates/cardnote/newcard.html:55
-#: main/templates/cardnote/newcard.html:59 main/templates/shorturl/add.html:33
+#: main/templates/cardnote/newcard.html:59 main/templates/shorturl/add.html:48
+#: main/templates/shorturl/add.html:53
 msgid "(Optional)"
 msgstr ""
 
@@ -96,8 +97,8 @@ msgstr ""
 msgid "Add Data"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:134 main/templates/shorturl/add.html:38
-#: main/templates/shorturl/detail.html:131
+#: main/templates/cardnote/detail.html:134 main/templates/shorturl/add.html:59
+#: main/templates/shorturl/detail.html:146
 msgid "Save"
 msgstr ""
 
@@ -138,9 +139,9 @@ msgstr ""
 #: main/templates/cardnote/newcard.html:49
 #: main/templates/cardnote/newcard.html:54
 #: main/templates/cardnote/newcard.html:58
-#: main/templates/shorturl/detail.html:101
-#: main/templates/shorturl/detail.html:108 main/templates/user/signup.html:27
-#: main/templates/user/signup.html:31 main/templates/user/signup.html:35
+#: main/templates/shorturl/detail.html:116
+#: main/templates/shorturl/detail.html:123 main/templates/user/signup.html:28
+#: main/templates/user/signup.html:33 main/templates/user/signup.html:38
 msgid ":"
 msgstr ""
 
@@ -164,45 +165,60 @@ msgstr ""
 msgid "Welcome"
 msgstr ""
 
-#: main/templates/shorturl/add.html:4 main/templates/shorturl/add.html:22
+#: main/templates/shorturl/add.html:4 main/templates/shorturl/add.html:30
 msgid "Add"
 msgstr ""
 
-#: main/templates/shorturl/add.html:28 main/templates/shorturl/detail.html:63
-msgid "URL"
-msgstr ""
-
-#: main/templates/shorturl/add.html:30
-msgid "Press Enter to Save"
-msgstr ""
-
-#: main/templates/shorturl/add.html:33 main/templates/shorturl/detail.html:56
-msgid "Name"
-msgstr ""
-
-#: main/templates/shorturl/detail.html:4 main/templates/shorturl/detail.html:38
-msgid "Detail"
-msgstr ""
-
-#: main/templates/shorturl/detail.html:10 main/templates/shorturl/list.html:4
+#: main/templates/shorturl/add.html:10 main/templates/shorturl/detail.html:10
+#: main/templates/shorturl/list.html:4
 msgid "List"
 msgstr ""
 
-#: main/templates/shorturl/detail.html:47
+#: main/templates/shorturl/add.html:36 main/templates/shorturl/add.html:40
+#: main/templates/shorturl/detail.html:77
+msgid "URL"
+msgstr ""
+
+#: main/templates/shorturl/add.html:45
+msgid "Press Enter to Save"
+msgstr ""
+
+#: main/templates/shorturl/add.html:48 main/templates/shorturl/add.html:51
+#: main/templates/shorturl/detail.html:70
+msgid "Name"
+msgstr ""
+
+#: main/templates/shorturl/detail.html:4 main/templates/shorturl/detail.html:43
+msgid "Detail"
+msgstr ""
+
+#: main/templates/shorturl/detail.html:46
+msgid "Legal"
+msgstr ""
+
+#: main/templates/shorturl/detail.html:48
+msgid "Illegal"
+msgstr ""
+
+#: main/templates/shorturl/detail.html:50
+msgid "Uncensored"
+msgstr ""
+
+#: main/templates/shorturl/detail.html:61
 #, fuzzy
 #| msgid "Username"
 msgid "User"
 msgstr "ユーザー名"
 
-#: main/templates/shorturl/detail.html:91
+#: main/templates/shorturl/detail.html:106
 msgid "Page View"
 msgstr ""
 
-#: main/templates/shorturl/detail.html:101
+#: main/templates/shorturl/detail.html:116
 msgid "Created"
 msgstr ""
 
-#: main/templates/shorturl/detail.html:108
+#: main/templates/shorturl/detail.html:123
 msgid "Modified"
 msgstr ""
 
@@ -210,7 +226,7 @@ msgstr ""
 msgid "New ShortURL"
 msgstr ""
 
-#: main/templates/shorturl/list.html:49
+#: main/templates/shorturl/list.html:58
 msgid "ETC"
 msgstr ""
 
@@ -218,20 +234,20 @@ msgstr ""
 msgid "User Login"
 msgstr ""
 
-#: main/templates/user/signin.html:40 main/templates/user/signup.html:4
-#: main/templates/user/signup.html:41
+#: main/templates/user/signin.html:42 main/templates/user/signup.html:4
+#: main/templates/user/signup.html:44
 msgid "Sign Up"
 msgstr ""
 
-#: main/templates/user/signin.html:59
+#: main/templates/user/signin.html:61
 msgid "Wrong username or password"
 msgstr ""
 
-#: main/templates/user/signin.html:63
+#: main/templates/user/signin.html:65
 msgid "You have no permission to visit"
 msgstr ""
 
-#: main/templates/user/signin.html:65
+#: main/templates/user/signin.html:67
 msgid "Log in to visit"
 msgstr ""
 
@@ -239,15 +255,15 @@ msgstr ""
 msgid "User Signup"
 msgstr ""
 
-#: main/templates/user/signup.html:27
+#: main/templates/user/signup.html:28
 msgid "Username"
 msgstr "ユーザー名"
 
-#: main/templates/user/signup.html:31
+#: main/templates/user/signup.html:33
 msgid "Password"
 msgstr "パスワード"
 
-#: main/templates/user/signup.html:35
+#: main/templates/user/signup.html:38
 msgid "Email"
 msgstr "メールアドレス"
 
@@ -270,7 +286,7 @@ msgstr ""
 msgid "You are not the owner of this card."
 msgstr ""
 
-#: main/views/cardnote.py:64 main/views/shorturl.py:104
+#: main/views/cardnote.py:64 main/views/shorturl.py:109
 msgid "Delete failed"
 msgstr ""
 
@@ -279,7 +295,7 @@ msgstr ""
 msgid "Card 《{card.title}》 removed"
 msgstr ""
 
-#: main/views/cardnote.py:92 main/views/shorturl.py:128
+#: main/views/cardnote.py:92 main/views/shorturl.py:135
 msgid "Update failed"
 msgstr ""
 
@@ -288,25 +304,25 @@ msgstr ""
 msgid "Card 《{card.title}》 updated"
 msgstr ""
 
-#: main/views/shorturl.py:34 main/views/shorturl.py:121
+#: main/views/shorturl.py:39 main/views/shorturl.py:126
 msgid "Argument URL cannot be empty"
 msgstr ""
 
-#: main/views/shorturl.py:49 main/views/shorturl.py:96
-#: main/views/shorturl.py:116
+#: main/views/shorturl.py:54 main/views/shorturl.py:101
+#: main/views/shorturl.py:121
 msgid "ShortURL ID cannot be empty"
 msgstr ""
 
-#: main/views/shorturl.py:52 main/views/shorturl.py:99
-#: main/views/shorturl.py:119
+#: main/views/shorturl.py:57 main/views/shorturl.py:104
+#: main/views/shorturl.py:124
 msgid "You are not the owner of this shorturl"
 msgstr ""
 
-#: main/views/shorturl.py:102
+#: main/views/shorturl.py:107
 msgid "Shorturl removed!"
 msgstr ""
 
-#: main/views/shorturl.py:126
+#: main/views/shorturl.py:133
 msgid "Shorturl Updated!"
 msgstr ""
 
