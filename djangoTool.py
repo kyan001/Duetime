@@ -13,7 +13,7 @@ import consoleiotools as cit
 from KyanToolKit import KyanToolKit as ktk
 
 
-__version__ = '1.12.0'
+__version__ = '1.12.2'
 conf = configparser.ConfigParser()
 conf.read('djangoTool.conf')
 conf = conf['DEFAULT']
@@ -259,14 +259,14 @@ def system_check():
 @cit.as_session
 def make_messages():
     """Django i18n Make .po Messaages File"""
-    ktk.runCmd('django-admin makemessages')
+    run_by_py3('manage.py makemessages')
 
 
 @register('i18n: Compile Messages (.mo)')
 @cit.as_session
 def compile_messages():
     """Django i18n Compile .po files into .mo files"""
-    ktk.runCmd('django-admin compilemessages')
+    run_by_py3('manage.py compilemessages')
 
 
 if __name__ == '__main__':
