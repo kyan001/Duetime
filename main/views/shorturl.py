@@ -39,7 +39,7 @@ def shorturlAdd(request):
             messages.error(request, _("Argument URL cannot be empty"))
         else:
             with transaction.atomic():
-                shorturl = ShortUrl(name=name, url=url, userid=user.id)
+                shorturl = ShortUrl(name=name, url=url, userid=user.id, legal=None)
                 shorturl.save()
                 return redirect("/shorturl/detail?id={}".format(shorturl.id))
     return render(request, "shorturl/add.html")
@@ -125,6 +125,8 @@ def shorturlUpdate(request):
     if not url:
         raise Http404(_("Argument URL cannot be empty"))
     with transaction.atomic():
+        if url and url != shorturl.url:
+            shorturl.legal = None
         shorturl.name = name
         shorturl.url = url
         shorturl.save()
