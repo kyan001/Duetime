@@ -61,17 +61,17 @@
             </div>
         </div>
         <div class="row">
-            {% for shorturl in shorturls  %}
+            {% for shorturl in shorturls %}
                 <div class="col-xs-12 col-sm-6 col-md-4 shorturl-div category-{{ shorturl.category|default:'default' }}">
                     <a class="no-decoration" href="/shorturl/detail?id={{ shorturl.id }}">
                         <div class="ani-fast hover-shadow panel panel-{{ shorturl.category|default:'default' }}">
                             <div class="panel-heading no-bottom-border">
-                                <div class="row">
-                                    <div class="col-xs-10 text-nowrap overflow-x-auto">
+                                <div class="row-flex">
+                                    <div class="flex-11 text-nowrap overflow-x-auto">
                                         <span class="small text-muted">#{{ shorturl.id }}</span>
                                         <strong>{{ shorturl.name }}</strong>
-                                    </div><!--.col-->
-                                    <div class="col-xs-2">
+                                    </div><!--.flex-->
+                                    <div class="flex-1">
                                         <span class="pull-right">
                                             {% if shorturl.legal %}
                                                 <span class="text-success">
@@ -87,7 +87,7 @@
                                                 </span>
                                             {% endif %}
                                         </span>
-                                    </div><!--.col-->
+                                    </div><!--.flex-->
                                 </div><!--.row-->
                             </div><!--.panel-heading-->
                             <div class="panel-body bg-{{ shorturl.category|default:'default' }} text-{{ shorturl.category|default:'default' }}">
