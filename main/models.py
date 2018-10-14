@@ -75,12 +75,35 @@ class CardnoteItem(BaseModel):
         return card
 
 
+class ShortUrlManager(BaseManager):
+    def isUrlLegal(self, url, exclude=None):
+        """Check if a URL is already censored
+
+        Args:
+            url: [str] Target URL
+            exclude: [ShortUrl] The ShortUrl which should be excluded
+
+        Returns:
+            True: Target URL is legal
+            False: Target URL is illegal
+            None: Target URL is uncensored
+        """
+        if exclude:
+            precedent = self.filter(url=url).exclude(id=exclude.id).first()
+        else:
+            precedent = self.filter(url=url).first()
+        if not precedent:
+            return None
+        return precedent.legal
+
+
 class ShortUrl(BaseModel):
     userid = models.IntegerField()
     name = models.CharField(max_length=200, blank=True, default="")
     url = models.URLField(null=False, blank=False)
     pv = models.IntegerField(default=0)
     legal = models.NullBooleanField(default=None, null=True)
+    objects = ShortUrlManager()
 
     @property
     def user(self):
