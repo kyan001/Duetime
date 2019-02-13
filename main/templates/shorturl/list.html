@@ -116,9 +116,6 @@
 
 {% block js %}
     <script>
-        $(function(){
-            console.debug("Cached Tags: {{ tagcache }}")
-        })
         function show_only(cate){
             $(".shorturl-div").hide()
             $(".shorturl-div.category-" + cate).fadeIn()

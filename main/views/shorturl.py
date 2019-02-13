@@ -88,7 +88,6 @@ def shorturlList(request):
     context = {
         "shorturls": shorturls,
         "tagcate": zip(top_tags, CATEGORIES),
-        "tagcache": "{}:{}".format(CACHE_KEY, cached_tags)
     }
     return render(request, 'shorturl/list.html', context)
 
