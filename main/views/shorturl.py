@@ -7,7 +7,7 @@ from django.db import transaction
 from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.core.cache import cache
-import jieba.analyse
+from django.conf import settings
 
 from main.models import ShortUrl
 
@@ -68,14 +68,20 @@ def shorturlList(request):
     user = request.user
     shorturls = ShortUrl.objects.filter(userid=user.id).order_by('-created')
     names = " ".join([shorturl.name for shorturl in shorturls if shorturl.name])
-    CACHE_KEY = "names:{}:tags".format(names)
-    cached_tags = cache.get(CACHE_KEY)
-    if cached_tags:
-        top_tags = cached_tags
+    if settings.USE_JIEBA:
+        CACHE_KEY = "nameshash:{}:tags".format(hash(names))
+        print(CACHE_KEY)
+        cached_tags = cache.get(CACHE_KEY)
+        if cached_tags:
+            top_tags = cached_tags
+        else:
+            import jieba.analyse
+            top_tags = jieba.analyse.extract_tags(names, topK=5, withWeight=False)
+            CACHE_TIMEOUT = 60 * 60 * 24 * 30 * 3  # 3 month
+            cache.set(CACHE_KEY, top_tags, CACHE_TIMEOUT)
     else:
-        top_tags = jieba.analyse.extract_tags(names, topK=5, withWeight=False)
-        CACHE_TIMEOUT = 60 * 60 * 24 * 30 * 3  # 3 month
-        cache.set(CACHE_KEY, top_tags, CACHE_TIMEOUT)
+        from collections import Counter
+        top_tags = list(dict(Counter(names.split()).most_common(5)).keys())
     CATEGORIES = ['info', 'success', 'warning', 'danger']
     for shorturl in shorturls:
         if shorturl.name:
@@ -87,7 +93,7 @@ def shorturlList(request):
             shorturl.category = "default"
     context = {
         "shorturls": shorturls,
-        "tagcate": zip(top_tags, CATEGORIES),
+        "tagcate": zip(top_tags, CATEGORIES)
     }
     return render(request, 'shorturl/list.html', context)
 
