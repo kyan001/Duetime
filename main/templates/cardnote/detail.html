@@ -204,7 +204,7 @@
             new_ele.find("input[data-name='kword']").focus()
         }
         function moveToTop(ele){
-            $(ele).parents(".item-row").insertAfter("#col-name-row")
+            $(ele).parents(".item-row").insertBefore(".item-row:first")
         }
         function removeItemRow(ele){
             $(ele).parents(".item-row").fadeOut('fast', function(){
