@@ -48,7 +48,6 @@ class CardnoteCard(BaseModel):
     title = models.CharField(max_length=30)
     kcol = models.CharField(max_length=30, blank=True)
     vcol = models.CharField(max_length=30, blank=True)
-    username = models.CharField(max_length=30, blank=True)
     category = models.CharField(max_length=20, blank=True, choices=CATEGORIES, default='default')
 
     @property
