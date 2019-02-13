@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-24 16:17+0800\n"
+"POT-Creation-Date: 2019-02-14 02:28+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Japanese <i18n@duetime.cn>\n"
@@ -68,50 +68,45 @@ msgstr ""
 msgid "!"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:74
-msgid "Description"
-msgstr ""
-
-#: main/templates/cardnote/detail.html:81
+#: main/templates/cardnote/detail.html:80
 msgid "Sequence"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:83
-#: main/templates/cardnote/newcard.html:51
-#: main/templates/cardnote/newcard.html:55
-#: main/templates/cardnote/newcard.html:59 main/templates/shorturl/add.html:48
+#: main/templates/cardnote/detail.html:82
+#: main/templates/cardnote/newcard.html:49
+#: main/templates/cardnote/newcard.html:53 main/templates/shorturl/add.html:48
 #: main/templates/shorturl/add.html:53
 msgid "(Optional)"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:92
+#: main/templates/cardnote/detail.html:91
 msgid "Operation"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:100
-#: main/templates/cardnote/detail.html:197
+#: main/templates/cardnote/detail.html:99
+#: main/templates/cardnote/detail.html:196
 msgid "New"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:108
+#: main/templates/cardnote/detail.html:107
 msgid "Add Data"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:134 main/templates/shorturl/add.html:59
+#: main/templates/cardnote/detail.html:133 main/templates/shorturl/add.html:59
 #: main/templates/shorturl/detail.html:146
 msgid "Save"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:174 main/views/cardnote.py:45
+#: main/templates/cardnote/detail.html:173 main/views/cardnote.py:45
 #: main/views/cardnote.py:87
 msgid "Card Title cannot be empty"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:234
+#: main/templates/cardnote/detail.html:233
 msgid "Are you sure to delete this card?"
 msgstr ""
 
-#: main/templates/cardnote/detail.html:234
+#: main/templates/cardnote/detail.html:233
 msgid "(Delete cannot be undo)"
 msgstr ""
 
@@ -123,7 +118,7 @@ msgstr ""
 msgid "New Card"
 msgstr ""
 
-#: main/templates/cardnote/listitem.html:62
+#: main/templates/cardnote/listitem.html:61
 msgid "No Data"
 msgstr ""
 
@@ -136,28 +131,23 @@ msgid "Card Title"
 msgstr ""
 
 #: main/templates/cardnote/newcard.html:43
-#: main/templates/cardnote/newcard.html:49
-#: main/templates/cardnote/newcard.html:54
-#: main/templates/cardnote/newcard.html:58
+#: main/templates/cardnote/newcard.html:48
+#: main/templates/cardnote/newcard.html:52
 #: main/templates/shorturl/detail.html:116
 #: main/templates/shorturl/detail.html:123 main/templates/user/signup.html:28
 #: main/templates/user/signup.html:33 main/templates/user/signup.html:38
 msgid ":"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:49
-msgid "Card Description"
-msgstr ""
-
-#: main/templates/cardnote/newcard.html:54
+#: main/templates/cardnote/newcard.html:48
 msgid "1st Column Name"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:58
+#: main/templates/cardnote/newcard.html:52
 msgid "2nd Column Name"
 msgstr ""
 
-#: main/templates/cardnote/newcard.html:66
+#: main/templates/cardnote/newcard.html:60
 msgid "Next"
 msgstr ""
 
@@ -286,7 +276,7 @@ msgstr ""
 msgid "You are not the owner of this card."
 msgstr ""
 
-#: main/views/cardnote.py:64 main/views/shorturl.py:109
+#: main/views/cardnote.py:64 main/views/shorturl.py:115
 msgid "Delete failed"
 msgstr ""
 
@@ -295,7 +285,7 @@ msgstr ""
 msgid "Card 《{card.title}》 removed"
 msgstr ""
 
-#: main/views/cardnote.py:92 main/views/shorturl.py:135
+#: main/views/cardnote.py:92 main/views/shorturl.py:141
 msgid "Update failed"
 msgstr ""
 
@@ -304,25 +294,25 @@ msgstr ""
 msgid "Card 《{card.title}》 updated"
 msgstr ""
 
-#: main/views/shorturl.py:39 main/views/shorturl.py:126
+#: main/views/shorturl.py:39 main/views/shorturl.py:132
 msgid "Argument URL cannot be empty"
 msgstr ""
 
-#: main/views/shorturl.py:54 main/views/shorturl.py:101
-#: main/views/shorturl.py:121
+#: main/views/shorturl.py:55 main/views/shorturl.py:107
+#: main/views/shorturl.py:127
 msgid "ShortURL ID cannot be empty"
 msgstr ""
 
-#: main/views/shorturl.py:57 main/views/shorturl.py:104
-#: main/views/shorturl.py:124
+#: main/views/shorturl.py:58 main/views/shorturl.py:110
+#: main/views/shorturl.py:130
 msgid "You are not the owner of this shorturl"
 msgstr ""
 
-#: main/views/shorturl.py:107
+#: main/views/shorturl.py:113
 msgid "Shorturl removed!"
 msgstr ""
 
-#: main/views/shorturl.py:133
+#: main/views/shorturl.py:139
 msgid "Shorturl Updated!"
 msgstr ""
 

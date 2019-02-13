@@ -71,7 +71,6 @@
                                     </a>
                                 </span>
                             </div>
-                            <textarea class="form-control advanced-mode" name="description" placeholder="{% trans 'Description' %}">{{ card.description }}</textarea>
                         </div>
                         <table id="main-table" class="table table-condensed table-bordered table-hover">
                             <thead class="advanced-mode">
@@ -164,7 +163,7 @@
                     return false
                 }
             })
-            {% if card.kcol or card.vcol or card.description %}
+            {% if card.kcol or card.vcol %}
                 $(".advanced-mode").show()
             {% endif %}
         })
