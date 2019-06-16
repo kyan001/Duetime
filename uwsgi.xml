@@ -10,6 +10,6 @@
     <master/>
     <listen>128</listen>
     <processes>7</processes>
-    <plugins>python35</plugins>
+    <plugins>python3</plugins>
     <reload-on-rss>100</reload-on-rss>
 </uwsgi>
