@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-14 02:28+0800\n"
+"POT-Creation-Date: 2019-06-16 20:17+0800\n"
 "PO-Revision-Date: 2018-01-25 09:53+0800\n"
 "Last-Translator: Kyan <kai@duetime.cn>\n"
 "Language-Team: Chinese <i18n@duetime.cn>\n"
@@ -31,15 +31,16 @@ msgstr "登出"
 msgid "Log In"
 msgstr "登入"
 
-#: main/templates/base.html:142 main/templates/shorturl/add.html:4
-#: main/templates/shorturl/add.html:10 main/templates/shorturl/add.html:30
-#: main/templates/shorturl/detail.html:4 main/templates/shorturl/detail.html:10
+#: main/templates/base.html:142 main/templates/index/index.html:74
+#: main/templates/shorturl/add.html:4 main/templates/shorturl/add.html:10
+#: main/templates/shorturl/add.html:30 main/templates/shorturl/detail.html:4
+#: main/templates/shorturl/detail.html:10
 #: main/templates/shorturl/detail.html:43
 #: main/templates/shorturl/detail.html:91 main/templates/shorturl/list.html:4
 msgid "ShortURL"
 msgstr "短链接"
 
-#: main/templates/base.html:146
+#: main/templates/base.html:146 main/templates/index/index.html:84
 msgid "Card Note"
 msgstr "卡片笔记"
 
@@ -153,6 +154,14 @@ msgstr "下一步"
 #: main/templates/index/index.html:4
 msgid "Welcome"
 msgstr "欢迎"
+
+#: main/templates/index/index.html:75
+msgid "URL Shortener, Link Manager"
+msgstr "缩短网址，管理链接"
+
+#: main/templates/index/index.html:85
+msgid "Saved As Dictionary, Shows In Card"
+msgstr "字典本质，卡片形式"
 
 #: main/templates/shorturl/add.html:4 main/templates/shorturl/add.html:30
 msgid "Add"
